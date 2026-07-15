@@ -652,3 +652,5 @@ setInterval(
  60000
 );
 }
+
+alert("JS carregou");
