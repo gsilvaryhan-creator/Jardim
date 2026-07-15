@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,147 +12,214 @@
     <title>O Jardim Onde Você Floresce</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================
-         TELA INICIAL
-    ========================== -->
+    <!--
+        Aplicativo inteiro.
+        Apenas uma tela será mostrada por vez.
+    -->
 
-    <main id="introScreen" class="screen active">
-
-
-        <div class="intro-content">
-
-
-            <div class="intro-flower">
-                🌻
-            </div>
-
-
-            <h1>
-                O Jardim Onde Você Floresce
-            </h1>
-
-
-            <h2>
-                feito para Tainá
-            </h2>
-
-
-            <p>
-                Há pequenas coisas que eu guardo
-                e que me fazem lembrar de você.
-            </p>
-
-
-            <button id="enterGarden">
-                Entrar no jardim →
-            </button>
-
-
-        </div>
-
-
-    </main>
+    <main id="app">
 
 
 
+        <!-- ==========================
+             TELA INICIAL
+        =========================== -->
 
 
-    <!-- =========================
-         TRANSIÇÃO DA PÉTALA
-    ========================== -->
+        <section id="introScreen" class="screen active">
 
 
-    <section id="petalTransition" class="screen">
+            <div class="intro-content">
 
 
-        <div class="falling-petal">
-            🌸
-        </div>
-
-
-    </section>
-
-
-
-
-
-
-    <!-- =========================
-         JARDIM PRINCIPAL
-    ========================== -->
-
-
-    <main id="gardenScreen" class="screen">
-
-
-        <section id="garden">
-
-
-            <!--
-                As flores serão criadas
-                automaticamente pelo JavaScript.
-            -->
-
-
-            <div id="flowersContainer"></div>
-
-
-
-            <!-- partículas de luz -->
-
-            <div id="particlesContainer"></div>
-
-
-
-            <!-- folhas/elementos de vento -->
-
-            <div id="windContainer"></div>
-
-
-
-            <!-- insetos -->
-
-            <div id="insectsContainer"></div>
-
-
-
-            <!-- girassol final -->
-
-            <div id="finalSunflower" class="hidden">
-
-
-                <div class="sunflower">
+                <div class="intro-flower">
                     🌻
                 </div>
 
 
+                <h1>
+                    O Jardim Onde Você Floresce
+                </h1>
+
+
                 <h2>
-                    Amor, fiz este jardim com coisas
-                    que são importantes para mim
-                    e que guardo comigo.
+                    feito para Tainá
                 </h2>
 
 
                 <p>
-                    Isso porque eu gosto de você nos detalhes —
-                    no seu sorriso, na sua risada,
-                    no seu jeito e em cada pequena coisa
-                    que faz você ser a minha pequenininha.
+                    Há pequenas coisas que eu guardo
+                    e que me fazem lembrar de você.
                 </p>
 
 
-                <button id="backGarden">
-                    Voltar ao jardim
+                <button id="enterButton">
+                    Entrar no jardim →
                 </button>
 
 
             </div>
+
+
+        </section>
+
+
+
+
+
+
+        <!-- ==========================
+             TRANSIÇÃO
+        =========================== -->
+
+
+        <section id="transitionScreen" class="screen">
+
+
+            <div id="petal">
+
+                🌸
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- ==========================
+             JARDIM
+        =========================== -->
+
+
+        <section id="gardenScreen" class="screen">
+
+
+
+            <div id="garden">
+
+
+
+                <!-- flores criadas pelo JS -->
+
+                <div id="flowersContainer"></div>
+
+
+
+                <!-- partículas -->
+
+                <div id="particlesContainer"></div>
+
+
+
+                <!-- vento -->
+
+                <div id="windContainer"></div>
+
+
+
+                <!-- insetos -->
+
+                <div id="insectsContainer"></div>
+
+
+
+
+
+                <!-- FINAL DO JARDIM -->
+
+
+                <div id="finalMessage" class="hidden">
+
+
+                    <div class="final-flower">
+
+                        🌻
+
+                    </div>
+
+
+
+                    <h2>
+
+                        Amor, fiz este jardim com coisas
+                        que são importantes para mim
+                        e que guardo comigo.
+
+                    </h2>
+
+
+
+                    <p>
+
+                        Isso porque eu gosto de você nos detalhes —
+                        no seu sorriso, na sua risada,
+                        no seu jeito e em cada pequena coisa
+                        que faz você ser a minha pequenininha.
+
+                    </p>
+
+
+
+                    <button id="returnGarden">
+
+                        Voltar ao jardim
+
+                    </button>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div id="informationPanel">
+
+
+
+                <div id="counterBox">
+
+
+                    <h3>
+                        Tempo desde a primeira mensagem
+                    </h3>
+
+
+                    <p id="counter">
+
+                        Calculando...
+
+                    </p>
+
+
+                </div>
+
+
+
+            </div>
+
 
 
 
@@ -161,39 +229,48 @@
 
 
 
-        <!-- =========================
-             PAINEL DE INFORMAÇÕES
-        ========================== -->
 
 
-        <aside id="gardenInfo">
+
+        <!-- ==========================
+             CARTA
+        =========================== -->
 
 
-            <div id="relationshipCounter">
+        <div id="letterModal" class="hidden">
 
 
-                <h3>
-                    Tempo desde a primeira mensagem
-                </h3>
+            <div id="letterBox">
 
 
-                <p id="counter">
-                    Calculando...
+
+                <button id="closeLetter">
+
+                    ×
+
+                </button>
+
+
+
+                <h2 id="letterTitle">
+
+                </h2>
+
+
+
+                <p id="letterText">
+
                 </p>
+
 
 
             </div>
 
 
-
-            <button id="musicButton">
-
-                🔊 Música
-
-            </button>
+        </div>
 
 
-        </aside>
+
 
 
 
@@ -203,72 +280,10 @@
 
 
 
-
-
-
-    <!-- =========================
-         CARTA
-    ========================== -->
-
-
-    <div id="letterModal" class="modal hidden">
-
-
-        <div class="letter">
-
-
-            <button id="closeLetter">
-                ×
-            </button>
-
-
-
-            <h2 id="letterTitle">
-
-            </h2>
-
-
-
-            <p id="letterText">
-
-            </p>
-
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-    <!-- =========================
-         ÁUDIO
-    ========================== -->
-
-
-    <audio id="backgroundMusic" loop>
-
-        <source src="music.mp3" type="audio/mpeg">
-
-    </audio>
-
-
-
-
-
-
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 
 </body>
+
 
 </html>
