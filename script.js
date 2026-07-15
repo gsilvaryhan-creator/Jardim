@@ -1,7 +1,7 @@
 /* CONFIGURAÇÕES */
 const CONFIG = {
-  quantidadeFlores: 45,
-  quantidadeInsetos: 4,
+  quantidadeFlores: 32,
+  quantidadeInsetos: 2,
   velocidadeVento: 13,
   inicio: new Date(2026, 3, 27, 18, 14),
   cores: [
@@ -102,7 +102,7 @@ function atualizarContador() {
 function nascerFlorDourada() {
   if (goldenFlowerBorn) return;
   goldenFlowerBorn = true;
-  document.getElementById('hint').textContent = 'Uma última flor dourada nasceu no centro... ✨';
+  document.getElementById('hint').textContent = 'A última lembrança floresceu... 🌻'; 
   const flower = document.createElement('button');
   flower.type = 'button';
   flower.className = 'flower sunflower golden-final';
@@ -175,13 +175,13 @@ function gerarJardim() {
   positions.sort(() => Math.random() - .5);
   CARTAS.forEach((_, index) => criarFlor({ special: true, cardIndex: index, ...positions.pop() }));
   for (let index = 0; index < CONFIG.quantidadeFlores; index++) criarFlor({ ...positions.pop() });
-  for (let index = 0; index < 28; index++) {
+  for (let index = 0; index < 14; index++) {
     const particle = document.createElement('span');
     particle.className = 'particle';
     particle.style.cssText = `left:${numeroAleatorio(-10, 85)}%;top:${numeroAleatorio(15, 95)}%;--duration:${numeroAleatorio(7, 12)}s;--delay:${numeroAleatorio(-12, 0)}s;`;
     wind.appendChild(particle);
   }
-  for (let index = 0; index < 16; index++) {
+  for (let index = 0; index < 8; index++) {
     const leaf = document.createElement('span');
     leaf.className = 'breeze-leaf';
     leaf.style.cssText = `left:${numeroAleatorio(-15, 85)}%;top:${numeroAleatorio(18, 98)}%;--duration:${numeroAleatorio(9, 14)}s;--delay:${numeroAleatorio(-14, 0)}s;`;
