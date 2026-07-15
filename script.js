@@ -111,7 +111,13 @@ function nascerFlorDourada() {
   const flower = document.createElement('button');
   flower.type = 'button';
   flower.className = 'flower sunflower golden-final';
-  flower.style.cssText = '--petal:#f7cb55;--center:#815c32;--accent:#e8b85e;left:calc(50% - 41px);top:calc(50% - 41px);';
+ flower.style.cssText = `
+--petal:#f7cb55;
+--center:#815c32;
+--accent:#e8b85e;
+left:45%;
+top:78%;
+`;
   flower.setAttribute('aria-label', 'Abrir a última flor dourada');
   flower.innerHTML = desenhoDaFlor('sunflower');
   flower.addEventListener('click', () => { gardenScreen.hidden = true; finalScreen.hidden = false; window.scrollTo(0, 0); });
@@ -222,11 +228,13 @@ setTimeout(() => {
   transitionScreen.hidden = false;
   console.log("5");
 
-  setTimeout(() => {
+ setTimeout(() => {
 
     transitionScreen.hidden = true;
 
     gardenScreen.hidden = false;
+
+   criarFlorInicial();
 
     gardenScreen.classList.add('is-entering');
 
@@ -249,6 +257,30 @@ musicButton.addEventListener('click', alternarMusica);
 document.getElementById('restart-button').addEventListener('click', () => { finalScreen.hidden = true; gardenScreen.hidden = false; });
 
 /* INICIALIZAÇÃO */
+function criarFlorInicial() {
+
+  const flower = document.createElement('div');
+
+  flower.className = 'flower first-flower rose';
+
+  flower.style.cssText = `
+    --size:70px;
+    --petal:#e98c9e;
+    --center:#f3ca60;
+    --accent:#cf7085;
+    left:calc(50% - 35px);
+    top:calc(50% - 35px);
+  `;
+
+  flower.innerHTML = desenhoDaFlor('rose');
+
+  flowers.appendChild(flower);
+
+  setTimeout(() => {
+    flower.classList.add('born');
+  },100);
+
+}
 gerarJardim();
 atualizarContador();
 setInterval(atualizarContador, 60000);
