@@ -127,13 +127,16 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background: #f8fff3;
   animation: transitionFade 1s forwards;
 }
 
+.transition-screen:not([hidden]) {
+  display: flex;
+}
 .falling-petal {
   font-size: 42px;
   animation: petalFall 1s ease-in-out forwards;
