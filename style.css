@@ -17,7 +17,10 @@ button { font: inherit; }
 
 /* INTRO */
 .intro, .final-screen { min-height: 100svh; padding: 34px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at 20% 10%, #fff8d7 0 4%, transparent 25%), radial-gradient(circle at 85% 85%, #f7cbd3 0 3%, transparent 30%), #e4f1d9; }
-.intro.is-leaving { animation: fade-away .7s ease forwards; }
+.intro.is-leaving {
+  animation: fade-away .7s ease forwards;
+  pointer-events: none;
+}
 .intro-flower { color: var(--yellow); font-size: 54px; line-height: 1; margin-bottom: 20px; text-shadow: 0 3px 0 #e6aa42; }
 .eyebrow { margin: 0 0 10px; color: #78906e; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2, p { margin-top: 0; }
@@ -153,7 +156,7 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: none;
+  display:flex;
   justify-content: center;
   align-items: center;
   background: #f8fff3;
