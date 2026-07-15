@@ -205,6 +205,9 @@ function criarFlor({special=false, cardIndex=null, x, y, delay=0}) {
 },delay);
 
 }
+
+
+
 /* CARTAS */
 
 function abrirCarta(index, flower){
