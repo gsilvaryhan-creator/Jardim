@@ -1,3 +1,4 @@
+console.log("SCRIPT FUNCIONANDO");
 /* =====================================================
    O JARDIM ONDE VOCÊ FLORESCE
    Script principal
