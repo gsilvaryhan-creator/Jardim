@@ -538,21 +538,42 @@ function gerarJardim(){
 /* EVENTOS */
 
 
-document.getElementById('enter-button').addEventListener('click', () => {
+document
+.getElementById('enter-button')
+.addEventListener('click', () => {
 
   alert("BOTÃO FUNCIONOU");
 
+
   intro.hidden = true;
+
 
   transitionScreen.hidden = false;
 
+
   setTimeout(() => {
+
 
     transitionScreen.hidden = true;
 
+
     gardenScreen.hidden = false;
 
-  }, 1000);
+
+    window.scrollTo(0,0);
+
+
+    criarFlorInicial();
+
+
+    gerarJardim();
+
+
+    gardenScreen.classList.add('is-entering');
+
+
+  },1000);
+
 
 });
 
@@ -560,33 +581,33 @@ document.getElementById('enter-button').addEventListener('click', () => {
 
 document
 .getElementById('close-letter')
-.addEventListener('click',fecharCarta);
+.addEventListener('click', fecharCarta);
 
 
 
 document
 .querySelector('.modal-backdrop')
-.addEventListener('click',fecharCarta);
+.addEventListener('click', fecharCarta);
 
 
 
-document.addEventListener('keydown',event=>{
+document.addEventListener('keydown', event => {
 
- if(event.key==='Escape' && !modal.hidden){
+  if(event.key === 'Escape' && !modal.hidden){
 
-  fecharCarta();
+    fecharCarta();
 
- }
+  }
 
 });
 
 
 
-
-musicButton.addEventListener(
-'click',
-alternarMusica
-);
+// DESATIVADO TEMPORARIAMENTE
+// musicButton.addEventListener(
+// 'click',
+// alternarMusica
+// );
 
 
 
@@ -594,24 +615,26 @@ document
 .getElementById('restart-button')
 .addEventListener('click',()=>{
 
- finalScreen.hidden=true;
 
- gardenScreen.hidden=false;
+  finalScreen.hidden = true;
+
+
+  gardenScreen.hidden = false;
+
 
 });
 
 
-
-
-
-
 /* INICIALIZAÇÃO */
+
 
 atualizarContador();
 
+
 setInterval(
-  atualizarContador,
-  60000
+ atualizarContador,
+ 60000
 );
+
 
 alert("JS carregou");
