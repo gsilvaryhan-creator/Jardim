@@ -19,8 +19,7 @@
 <body>
 
 
-<main id="app">
-
+<div id="app">
 
 
     <!-- =========================
@@ -28,13 +27,13 @@
     ========================== -->
 
 
-    <section id="introScreen" class="screen active">
+    <section id="introScreen" class="screen">
 
 
-        <div class="intro-content">
+        <div class="intro-container">
 
 
-            <div class="intro-flower">
+            <div class="main-flower">
                 🌻
             </div>
 
@@ -55,11 +54,8 @@
             </p>
 
 
-
             <button id="enterButton">
-
                 Entrar no jardim →
-
             </button>
 
 
@@ -74,8 +70,9 @@
 
 
 
+
     <!-- =========================
-         TRANSIÇÃO
+         TRANSIÇÃO DA PÉTALA
     ========================== -->
 
 
@@ -98,30 +95,41 @@
 
 
 
+
     <!-- =========================
-         JARDIM
+         JARDIM PRINCIPAL
     ========================== -->
 
 
     <section id="gardenScreen" class="screen">
 
 
-
         <div id="garden">
 
 
+
+            <!-- Flores serão criadas pelo JS -->
 
             <div id="flowersContainer"></div>
 
 
 
+
+            <!-- Luzes -->
+
             <div id="particlesContainer"></div>
 
 
 
+
+            <!-- Folhas passando -->
+
             <div id="windContainer"></div>
 
 
+
+
+            <!-- Insetos -->
 
             <div id="insectsContainer"></div>
 
@@ -130,13 +138,16 @@
 
 
 
-            <!-- GIRASSOL FINAL -->
+
+            <!-- =========================
+                 GIRASSOL FINAL
+            ========================== -->
 
 
             <div id="finalMessage" class="hidden">
 
 
-                <div class="final-flower">
+                <div class="final-sunflower">
 
                     🌻
 
@@ -154,6 +165,7 @@
 
 
 
+
                 <p>
 
                     Isso porque eu gosto de você nos detalhes —
@@ -162,6 +174,7 @@
                     que faz você ser a minha pequenininha.
 
                 </p>
+
 
 
 
@@ -184,35 +197,34 @@
 
 
 
-        <!-- CONTADOR -->
 
 
-        <div id="informationPanel">
+        <!-- =========================
+             CONTADOR
+        ========================== -->
 
 
-            <div id="counterBox">
+        <div id="counterBox">
 
 
-                <h3>
+            <h3>
 
-                    Tempo desde a primeira mensagem
+                Tempo desde a primeira mensagem
 
-                </h3>
-
-
-
-                <p id="counter">
-
-                    Calculando...
-
-                </p>
+            </h3>
 
 
 
-            </div>
+            <p id="counter">
+
+                Carregando...
+
+            </p>
 
 
         </div>
+
+
 
 
 
@@ -234,9 +246,7 @@
     <div id="letterModal" class="hidden">
 
 
-
-        <div id="letterBox">
-
+        <div id="letterPaper">
 
 
             <button id="closeLetter">
@@ -247,16 +257,20 @@
 
 
 
-            <h2 id="letterTitle"></h2>
+
+            <h2 id="letterTitle">
+
+            </h2>
 
 
 
-            <p id="letterText"></p>
+            <p id="letterText">
+
+            </p>
 
 
 
         </div>
-
 
 
     </div>
@@ -265,8 +279,7 @@
 
 
 
-
-</main>
+</div>
 
 
 
@@ -276,5 +289,6 @@
 
 
 </body>
+
 
 </html>
