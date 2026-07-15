@@ -536,6 +536,7 @@ document
 .getElementById('enter-button')
 .addEventListener('click',()=>{
 
+  alert("cliquei");
 
  iniciarMusica?.();
 
