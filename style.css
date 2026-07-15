@@ -110,7 +110,7 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
 
 /* ANIMAÇÕES */
 @keyframes fade-away { to { opacity: 0; transform: scale(1.04); } }
-@keyframes special-glow { 50% { filter: drop-shadow(0 0 10px #fffdf2) drop-shadow(0 0 21px #ffffa5); } }
+@keyframes special-glow { 50% { filter: drop-shadow(0 0 10px #fffdf2) drop-shadow(0 0 12px #ffffa5); } }
 @keyframes open-flower { to { transform: rotate(var(--rotation)) scale(1.25); } }
 @keyframes drift { from { transform: translate(-20px, 20px); opacity: 0; } 15%, 80% { opacity: .8; } to { transform: translate(380px, -100px); opacity: 0; } }
 @keyframes leaf-breeze { 0% { transform: translate(-32px, 20px) rotate(-30deg); opacity: 0; } 15%, 75% { opacity: .75; } 55% { transform: translate(190px, -15px) rotate(120deg); } 100% { transform: translate(390px, -60px) rotate(230deg); opacity: 0; } }
