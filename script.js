@@ -200,9 +200,11 @@ function criarFlor({special=false, cardIndex=null, x, y, delay=0}) {
 
   setTimeout(()=>{
 
-    flower.classList.add('born');
+  flower.classList.add('born');
 
-  },delay);
+},delay);
+
+}
 /* CARTAS */
 
 function abrirCarta(index, flower){
