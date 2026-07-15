@@ -535,51 +535,19 @@ function gerarJardim(){
 
 document.getElementById('enter-button').addEventListener('click', () => {
 
-  console.log("Botão clicado");
+  alert("BOTÃO FUNCIONOU");
 
-  iniciarMusica();
+  intro.hidden = true;
 
-  intro.classList.add('is-leaving');
-
+  transitionScreen.hidden = false;
 
   setTimeout(() => {
 
-    intro.hidden = true;
+    transitionScreen.hidden = true;
 
-    transitionScreen.hidden = false;
+    gardenScreen.hidden = false;
 
-
-    setTimeout(() => {
-
-      transitionScreen.hidden = true;
-
-      gardenScreen.hidden = false;
-
-      window.scrollTo(0, 0);
-
-
-      // cria apenas a primeira rosa
-      criarFlorInicial();
-
-
-      gardenScreen.classList.add('is-entering');
-
-
-      console.log("Jardim aberto");
-
-
-      setTimeout(() => {
-
-        gardenScreen.classList.remove('is-entering');
-
-      }, 900);
-
-
-    }, 900);
-
-
-  }, 650);
-
+  }, 1000);
 
 });
 
