@@ -542,37 +542,46 @@ document
 .getElementById('enter-button')
 .addEventListener('click', () => {
 
+
   alert("BOTÃO FUNCIONOU");
 
 
-  intro.hidden = true;
-
-
-  transitionScreen.hidden = false;
+  intro.classList.add('is-leaving');
 
 
   setTimeout(() => {
 
 
-    transitionScreen.hidden = true;
+    intro.hidden = true;
 
 
-    gardenScreen.hidden = false;
+    transitionScreen.hidden = false;
 
 
-    window.scrollTo(0,0);
+    setTimeout(() => {
 
 
-    criarFlorInicial();
+      transitionScreen.hidden = true;
 
 
-    gerarJardim();
+      gardenScreen.hidden = false;
 
 
-    gardenScreen.classList.add('is-entering');
+      criarFlorInicial();
+
+      gerarJardim();
 
 
-  },1000);
+      gardenScreen.classList.add('is-entering');
+
+
+      window.scrollTo(0,0);
+
+
+    },1000);
+
+
+  },700);
 
 
 });
