@@ -34,6 +34,7 @@ const wind = document.getElementById('wind');
 const insects = document.getElementById('insects');
 const modal = document.getElementById('letter-modal');
 const finalScreen = document.getElementById('final-screen');
+const transitionScreen = document.getElementById('transition-screen');
 const musicButton = document.getElementById('music-button');
 const seenCards = new Set();
 let activeFlower = null;
@@ -202,11 +203,32 @@ document.getElementById('enter-button').addEventListener('click', () => {
   iniciarMusica();
   atualizarBotaoDeMusica();
   intro.classList.add('is-leaving');
+
+setTimeout(() => {
+
+  intro.hidden = true;
+
+  transitionScreen.hidden = false;
+
   setTimeout(() => {
-    intro.hidden = true;
+
+    transitionScreen.hidden = true;
+
     gardenScreen.hidden = false;
+
+    gardenScreen.classList.add('is-entering');
+
     atualizarContador();
-  }, 650);
+
+    setTimeout(() => {
+
+      gardenScreen.classList.remove('is-entering');
+
+    }, 900);
+
+  }, 900);
+
+}, 650);
 });
 document.getElementById('close-letter').addEventListener('click', fecharCarta);
 document.querySelector('.modal-backdrop').addEventListener('click', fecharCarta);
