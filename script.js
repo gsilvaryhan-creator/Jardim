@@ -201,14 +201,19 @@ function gerarJardim() {
 /* EVENTOS */
 document.getElementById('enter-button').addEventListener('click', () => {
   iniciarMusica();
+  console.log("1");
   atualizarBotaoDeMusica();
+  console.log("2");
   intro.classList.add('is-leaving');
-
+console.log("3");
+  
 setTimeout(() => {
 
   intro.hidden = true;
+  console.log("4");
 
   transitionScreen.hidden = false;
+  console.log("5");
 
   setTimeout(() => {
 
