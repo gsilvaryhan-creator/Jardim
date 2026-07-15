@@ -213,49 +213,57 @@ for (let index = 0; index < CONFIG.quantidadeFlores; index++) {
 
 /* EVENTOS */
 document.getElementById('enter-button').addEventListener('click', () => {
+
   iniciarMusica();
-  console.log("1");
   atualizarBotaoDeMusica();
-  console.log("2");
+
   intro.classList.add('is-leaving');
-console.log("3");
-  
-setTimeout(() => {
 
-  intro.hidden = true;
-  console.log("4");
+  setTimeout(() => {
 
-  transitionScreen.hidden = false;
-  console.log("5");
+    intro.hidden = true;
 
- setTimeout(() => {
-
-    transitionScreen.hidden = true;
-
-    gardenScreen.hidden = false;
-
-   criarFlorInicial();
-
-    gardenScreen.classList.add('is-entering');
-
-    atualizarContador();
+    transitionScreen.hidden = false;
 
     setTimeout(() => {
 
-      gardenScreen.classList.remove('is-entering');
+      transitionScreen.hidden = true;
+
+      gardenScreen.hidden = false;
+
+      criarFlorInicial();
+
+      gardenScreen.classList.add('is-entering');
+
+      atualizarContador();
+
+      setTimeout(() => {
+
+        gardenScreen.classList.remove('is-entering');
+
+      }, 900);
 
     }, 900);
 
-  }, 900);
+  }, 650);
 
-}, 650);
 });
-document.getElementById('close-letter').addEventListener('click', fecharCarta);
-document.querySelector('.modal-backdrop').addEventListener('click', fecharCarta);
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && !modal.hidden) fecharCarta(); });
-musicButton.addEventListener('click', alternarMusica);
-document.getElementById('restart-button').addEventListener('click', () => { finalScreen.hidden = true; gardenScreen.hidden = false; });
 
+
+document.getElementById('close-letter').addEventListener('click', fecharCarta);
+
+document.querySelector('.modal-backdrop').addEventListener('click', fecharCarta);
+
+document.addEventListener('keydown', event => { 
+  if (event.key === 'Escape' && !modal.hidden) fecharCarta(); 
+});
+
+musicButton.addEventListener('click', alternarMusica);
+
+document.getElementById('restart-button').addEventListener('click', () => { 
+  finalScreen.hidden = true; 
+  gardenScreen.hidden = false; 
+});
 /* INICIALIZAÇÃO */
 function criarFlorInicial() {
 
