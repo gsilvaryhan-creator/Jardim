@@ -174,8 +174,17 @@ function gerarJardim() {
     }
   }
   positions.sort(() => Math.random() - .5);
-  CARTAS.forEach((_, index) => criarFlor({ special: true, cardIndex: index, ...positions.pop() }));
-  for (let index = 0; index < CONFIG.quantidadeFlores; index++) criarFlor({ ...positions.pop() });
+  CARTAS.forEach((_, index) => {
+  setTimeout(() => {
+    criarFlor({ special: true, cardIndex: index, ...positions.pop() });
+  }, 900 + index * 120);
+});
+
+for (let index = 0; index < CONFIG.quantidadeFlores; index++) {
+  setTimeout(() => {
+    criarFlor({ ...positions.pop() });
+  }, 2300 + index * 70);
+}
   for (let index = 0; index < 14; index++) {
     const particle = document.createElement('span');
     particle.className = 'particle';
@@ -196,6 +205,28 @@ function gerarJardim() {
     insect.style.cssText = `left:${numeroAleatorio(8, 80)}%;top:${numeroAleatorio(10, 80)}%;--duration:${numeroAleatorio(4, 8)}s;--delay:${numeroAleatorio(-6, 0)}s;`;
     insects.appendChild(insect);
   }
+}
+
+function criarFlorInicial() {
+  const flower = document.createElement('div');
+
+  flower.className = 'flower first-flower sunflower';
+  flower.style.cssText = `
+    --size:80px;
+    --petal:#f7cb55;
+    --center:#815c32;
+    --accent:#e8b85e;
+    left:calc(50% - 40px);
+    top:calc(50% - 40px);
+  `;
+
+  flower.innerHTML = desenhoDaFlor('sunflower');
+
+  flowers.appendChild(flower);
+
+  setTimeout(() => {
+    flower.classList.add('born');
+  }, 100);
 }
 
 /* EVENTOS */
@@ -220,6 +251,8 @@ setTimeout(() => {
     transitionScreen.hidden = true;
 
     gardenScreen.hidden = false;
+
+    criarFlorInicial();
 
     gardenScreen.classList.add('is-entering');
 
