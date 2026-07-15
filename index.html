@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#9fcaa0" />
+  <title>O Jardim Onde Você Floresce</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section id="intro" class="intro" aria-labelledby="intro-title">
+      <div class="intro-flower" aria-hidden="true">✿</div>
+      <p class="eyebrow">feito para Tainá</p>
+      <h1 id="intro-title">O Jardim Onde<br />Você Floresce</h1>
+      <p class="intro-text">Há pequenas coisas que eu guardo<br />e que me fazem lembrar de você.</p>
+      <button id="enter-button" class="enter-button" type="button">Entrar no jardim <span>→</span></button>
+    </section>
 
+    <section id="garden-screen" class="garden-screen" aria-label="Jardim interativo" hidden>
+      <header class="garden-header">
+        <p>Um jardim feito para você, amor.</p>
+        <p id="counter" class="counter" aria-label="Tempo desde a primeira mensagem"></p>
+        <button id="music-button" class="music-button" type="button" aria-pressed="true">🔊 Música</button>
+      </header>
+
+      <div id="garden" class="garden" role="application" aria-label="Toque nas flores que brilham para descobrir as cartas">
+        <div class="garden-texture" aria-hidden="true"></div>
+        <div id="wind" class="wind" aria-hidden="true"></div>
+        <div id="flowers" class="flowers"></div>
+        <div id="insects" class="insects" aria-hidden="true"></div>
+        <p id="hint" class="hint">Procure as flores que têm um brilho suave ✨</p>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="letter-modal" class="modal" hidden aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <article class="letter" role="dialog" aria-modal="true" aria-labelledby="letter-title">
+      <button id="close-letter" class="close-letter" type="button" aria-label="Fechar carta">×</button>
+      <span id="letter-flower" class="letter-flower" aria-hidden="true">✿</span>
+      <h2 id="letter-title"></h2>
+      <p id="letter-text"></p>
+      <small id="letter-progress"></small>
+    </article>
+  </div>
+
+  <section id="final-screen" class="final-screen" hidden aria-labelledby="final-title">
+    <div class="final-bouquet" aria-hidden="true">🌻<span>🌷</span><span>🌼</span></div>
+    <p class="eyebrow">para a minha pequenininha</p>
+    <h2 id="final-title">Amor, fiz este jardim<br />com coisas que são importantes<br />para mim e que guardo comigo.</h2>
+    <p>Isso porque eu gosto de você nos detalhes — no seu sorriso, na sua risada, no seu jeito e em cada pequena coisa que faz você ser a minha pequenininha.</p>
+    <p class="final-heart">🌹 ❤️</p>
+    <button id="restart-button" class="restart-button" type="button">Voltar ao jardim</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
