@@ -119,6 +119,32 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
 @keyframes discovery-ring { 0% { transform: scale(.72); opacity: 0; } 35% { opacity: .9; } 100% { transform: scale(1.16); opacity: 0; } }
 @keyframes button-breathe { 50% { box-shadow: 0 5px 0 #537a52, 0 0 0 7px #f4ffed70; } }
 @keyframes golden-bloom { from { opacity: 0; transform: rotate(-35deg) scale(.15); } 70% { transform: rotate(8deg) scale(1.12); } to { opacity: 1; transform: rotate(0) scale(1); } }
+.first-flower {
+  z-index: 8;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.first-flower.born {
+  animation: flowerBirth 1.2s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes flowerBirth {
+  0% {
+    opacity:0;
+    transform:scale(0) rotate(-40deg);
+  }
+
+  70% {
+    opacity:1;
+    transform:scale(1.15) rotate(8deg);
+  }
+
+  100% {
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
 /* ========================= */
 /* TRANSIÇÃO */
 /* ========================= */
