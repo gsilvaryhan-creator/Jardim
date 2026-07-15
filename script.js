@@ -1,3 +1,4 @@
+alert("TESTE JS");
 /* CONFIGURAÇÕES */
 const CONFIG = {
   quantidadeFlores: 38,
