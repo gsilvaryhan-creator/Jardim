@@ -1,7 +1,7 @@
 /* CONFIGURAÇÕES */
 const CONFIG = {
-  quantidadeFlores: 32,
-  quantidadeInsetos: 2,
+  quantidadeFlores: 38,
+  quantidadeInsetos: 3,
   velocidadeVento: 13,
   inicio: new Date(2026, 3, 27, 18, 14),
   cores: [
