@@ -205,27 +205,6 @@ for (let index = 0; index < CONFIG.quantidadeFlores; index++) {
   }
 }
 
-  const flower = document.createElement('div');
-
-  flower.className = 'flower first-flower sunflower';
-  flower.style.cssText = `
-    --size:80px;
-    --petal:#f7cb55;
-    --center:#815c32;
-    --accent:#e8b85e;
-    left:calc(50% - 40px);
-    top:calc(50% - 40px);
-  `;
-
-  flower.innerHTML = desenhoDaFlor('sunflower');
-
-  flowers.appendChild(flower);
-
-  setTimeout(() => {
-    flower.classList.add('born');
-  }, 100);
-}
-
 /* EVENTOS */
 document.getElementById('enter-button').addEventListener('click', () => {
   iniciarMusica();
@@ -248,8 +227,6 @@ setTimeout(() => {
     transitionScreen.hidden = true;
 
     gardenScreen.hidden = false;
-
-    criarFlorInicial();
 
     gardenScreen.classList.add('is-entering');
 
