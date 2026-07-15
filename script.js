@@ -560,25 +560,21 @@ document
 
     setTimeout(() => {
 
+  transitionScreen.hidden = true;
 
-      transitionScreen.hidden = true;
+  intro.style.display = "none";
 
+  gardenScreen.hidden = false;
 
-      gardenScreen.hidden = false;
+  gardenScreen.style.display = "block";
 
+  criarFlorInicial();
 
-      criarFlorInicial();
+  gerarJardim();
 
-      gerarJardim();
+  window.scrollTo(0,0);
 
-
-      gardenScreen.classList.add('is-entering');
-
-
-      window.scrollTo(0,0);
-
-
-    },1000);
+},1000);
 
 
   },700);
