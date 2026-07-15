@@ -533,65 +533,55 @@ function gerarJardim(){
 /* EVENTOS */
 
 
-document
-.getElementById('enter-button')
-.addEventListener('click',()=>{
+document.getElementById('enter-button').addEventListener('click', () => {
 
-  alert("cliquei");
+  console.log("Botão clicado");
 
- iniciarMusica?.();
+  iniciarMusica();
 
-
- intro.classList.add('is-leaving');
+  intro.classList.add('is-leaving');
 
 
+  setTimeout(() => {
 
- setTimeout(()=>{
+    intro.hidden = true;
 
-
-   intro.hidden=true;
-
-
-   transitionScreen.hidden=false;
+    transitionScreen.hidden = false;
 
 
+    setTimeout(() => {
 
-   setTimeout(()=>{
+      transitionScreen.hidden = true;
 
+      gardenScreen.hidden = false;
 
-     transitionScreen.hidden=true;
-
-
-     gardenScreen.hidden=false;
-
+      window.scrollTo(0, 0);
 
 
-     window.scrollTo(0,0);
+      // cria apenas a primeira rosa
+      criarFlorInicial();
 
 
-
-     criarFlorInicial();
-
+      gardenScreen.classList.add('is-entering');
 
 
-     gerarJardim();
+      console.log("Jardim aberto");
 
 
+      setTimeout(() => {
 
-     gardenScreen.classList.add('is-entering');
+        gardenScreen.classList.remove('is-entering');
 
-
-
-   },900);
-
+      }, 900);
 
 
- },650);
+    }, 900);
 
+
+  }, 650);
 
 
 });
-
 
 
 
@@ -644,14 +634,11 @@ document
 
 /* INICIALIZAÇÃO */
 
-
 atualizarContador();
 
-
 setInterval(
- atualizarContador,
- 60000
+  atualizarContador,
+  60000
 );
-}
 
 alert("JS carregou");
