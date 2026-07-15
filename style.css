@@ -1,6 +1,6 @@
 /* ==================================================
    O JARDIM ONDE VOCÊ FLORESCE
-   CSS PRINCIPAL
+   CSS DEFINITIVO
 ================================================== */
 
 
@@ -9,33 +9,28 @@
 ========================= */
 
 
-* {
+*{
 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 
 }
-
 
 
 html,
-body {
+body{
 
+    width:100%;
+    height:100%;
 
-    width: 100%;
-    height: 100%;
+    overflow:hidden;
 
-
-    overflow: hidden;
-
-
-    font-family: Georgia, serif;
-
+    font-family:
+    "Georgia",
+    serif;
 
 }
-
-
 
 
 
@@ -44,22 +39,24 @@ body {
 ========================= */
 
 
-:root {
+:root{
 
 
-    --green-light: #dcefd4;
+    --green-light:#dcefd4;
 
-    --cream: #fffaf0;
+    --cream:#fffaf0;
 
-    --green: #628d65;
+    --green:#628d65;
 
-    --pink: #f4afbd;
+    --dark-green:#40632b;
 
-    --flower-pink: #e98c9e;
+    --pink:#f4afbd;
 
-    --yellow: #f3ca60;
+    --flower-pink:#e98c9e;
 
-    --lavender: #bfa8db;
+    --yellow:#f3ca60;
+
+    --lavender:#bfa8db;
 
 
 }
@@ -69,22 +66,17 @@ body {
 
 
 
-
-
 /* =========================
-   APLICATIVO
+   APP
 ========================= */
 
 
-#app {
-
+#app{
 
     width:100%;
     height:100%;
 
-
     position:relative;
-
 
 }
 
@@ -98,11 +90,10 @@ body {
 ========================= */
 
 
-.screen {
+.screen{
 
 
     position:absolute;
-
 
     inset:0;
 
@@ -115,12 +106,11 @@ body {
     align-items:center;
 
 
-
 }
 
 
 
-.screen.active {
+.screen.active{
 
 
     display:flex;
@@ -134,21 +124,24 @@ body {
 
 
 
-
 /* =========================
-   INTRO
+   TELA INICIAL
 ========================= */
 
 
-#introScreen {
+#introScreen{
 
 
     background:
 
     radial-gradient(
+
         circle,
-        white,
+
+        #ffffff,
+
         var(--green-light)
+
     );
 
 
@@ -156,7 +149,11 @@ body {
 
 
 
-.intro-content {
+
+.intro-content{
+
+
+    width:min(90%,600px);
 
 
     text-align:center;
@@ -165,15 +162,13 @@ body {
     padding:30px;
 
 
-    max-width:550px;
-
-
 }
 
 
 
 
-.intro-flower {
+
+.intro-flower{
 
 
     font-size:90px;
@@ -181,7 +176,7 @@ body {
 
     animation:
 
-    float 4s infinite ease-in-out;
+    floating 4s infinite ease-in-out;
 
 
 }
@@ -189,7 +184,10 @@ body {
 
 
 
-.intro-content h1 {
+.intro-content h1{
+
+
+    margin-top:20px;
 
 
     color:var(--green);
@@ -198,28 +196,24 @@ body {
     font-size:42px;
 
 
-    margin-top:20px;
-
-
 }
 
 
 
-.intro-content h2 {
-
-
-    color:#9c6b77;
+.intro-content h2{
 
 
     margin-top:10px;
 
 
+    color:#a06b76;
+
+
 }
 
 
 
-
-.intro-content p {
+.intro-content p{
 
 
     margin-top:25px;
@@ -228,10 +222,10 @@ body {
     color:#555;
 
 
-    line-height:1.6;
-
-
     font-size:18px;
+
+
+    line-height:1.6;
 
 
 }
@@ -240,31 +234,32 @@ body {
 
 
 
-button {
+
+button{
 
 
     margin-top:30px;
 
 
-    padding:14px 35px;
+    padding:15px 38px;
 
 
     border:none;
 
 
-    border-radius:40px;
+    border-radius:50px;
 
 
     cursor:pointer;
-
-
-    font-size:18px;
 
 
     background:var(--flower-pink);
 
 
     color:white;
+
+
+    font-size:18px;
 
 
     transition:.3s;
@@ -274,10 +269,10 @@ button {
 
 
 
-button:hover {
+button:hover{
 
 
-    transform:scale(1.05);
+    transform:scale(1.06);
 
 
 }
@@ -293,7 +288,7 @@ button:hover {
 ========================= */
 
 
-#transitionScreen {
+#transitionScreen{
 
 
     background:var(--cream);
@@ -303,19 +298,14 @@ button:hover {
 
 
 
-
-#petal {
+#petal{
 
 
     font-size:80px;
 
 
-    animation:
-
-    petalFall 2s forwards;
-
-
 }
+
 
 
 
@@ -328,7 +318,7 @@ button:hover {
 ========================= */
 
 
-#gardenScreen {
+#gardenScreen{
 
 
     flex-direction:column;
@@ -339,9 +329,11 @@ button:hover {
 
     linear-gradient(
 
+        180deg,
+
         #dcefd4,
 
-        #bfdcaf
+        #b7d9a8
 
     );
 
@@ -351,31 +343,22 @@ button:hover {
 
 
 
-
-#garden {
+#garden{
 
 
     width:90%;
 
-    height:80%;
+
+    height:78%;
 
 
     max-width:1200px;
 
 
-
     position:relative;
 
 
-
     overflow:hidden;
-
-
-
-    border-radius:
-
-    45% 55% 50% 50%;
-
 
 
     background:
@@ -385,7 +368,7 @@ button:hover {
 
         160deg,
 
-        #7ca874,
+        #78a96b,
 
         #628d65
 
@@ -393,9 +376,15 @@ button:hover {
 
 
 
+    border-radius:
+
+    48% 52% 45% 55%;
+
+
+
     box-shadow:
 
-    0 20px 40px rgba(0,0,0,.15);
+    0 20px 50px rgba(0,0,0,.15);
 
 
 
@@ -408,21 +397,31 @@ button:hover {
 
 
 /* =========================
-   CAMADAS DO JARDIM
+   CAMADAS INTERNAS
 ========================= */
 
 
 #flowersContainer,
 #particlesContainer,
 #windContainer,
-#insectsContainer {
+#insectsContainer{
 
 
     position:absolute;
 
-
     inset:0;
 
+
+    pointer-events:none;
+
+
+}
+
+
+
+#flowersContainer{
+
+    pointer-events:auto;
 
 }
 
@@ -438,46 +437,56 @@ button:hover {
 ========================= */
 
 
-.flower {
+.flower{
 
 
     position:absolute;
 
 
-    cursor:pointer;
-
-
     font-size:35px;
 
 
-    transform:scale(0);
-
-
-    animation:
-
-    flowerBorn 1s forwards;
+    cursor:pointer;
 
 
     user-select:none;
 
 
+    transform:scale(0);
+
+
 }
 
 
 
+.flower:hover{
 
 
-.special-flower {
+    transform:
+
+    scale(1.2);
+
+
+}
+
+
+
+.special-flower{
 
 
     filter:
 
     drop-shadow(
-        0 0 10px white
+
+        0 0 12px white
+
     );
 
 
 }
+
+
+
 
 
 
@@ -489,13 +498,18 @@ button:hover {
 ========================= */
 
 
-#letterModal {
+#letterModal{
 
 
     position:fixed;
 
 
     inset:0;
+
+
+    background:
+
+    rgba(0,0,0,.35);
 
 
     display:flex;
@@ -507,21 +521,14 @@ button:hover {
     align-items:center;
 
 
-    background:
-
-    rgba(0,0,0,.35);
-
-
-    z-index:100;
+    z-index:50;
 
 
 }
 
 
 
-
-
-.hidden {
+.hidden{
 
 
     display:none!important;
@@ -531,7 +538,9 @@ button:hover {
 
 
 
-#letterBox {
+
+
+#letterBox{
 
 
     width:min(90%,450px);
@@ -540,15 +549,19 @@ button:hover {
     padding:40px;
 
 
-    background:var(--cream);
+    background:
+
+    var(--cream);
 
 
-    border-radius:12px;
+
+    border-radius:15px;
 
 
     box-shadow:
 
     0 20px 50px rgba(0,0,0,.3);
+
 
 
     transform:rotate(-2deg);
@@ -558,8 +571,7 @@ button:hover {
 
 
 
-
-#closeLetter {
+#closeLetter{
 
 
     float:right;
@@ -584,10 +596,10 @@ button:hover {
 
 
 
-#letterBox h2 {
+#letterBox h2{
 
 
-    color:#9c6b77;
+    color:#a05c68;
 
 
     margin-bottom:20px;
@@ -597,13 +609,13 @@ button:hover {
 
 
 
-#letterBox p {
+#letterBox p{
 
 
     color:#555;
 
 
-    line-height:1.7;
+    line-height:1.8;
 
 
 }
@@ -621,7 +633,7 @@ button:hover {
 ========================= */
 
 
-#informationPanel {
+#informationPanel{
 
 
     margin-top:15px;
@@ -631,12 +643,13 @@ button:hover {
 
 
 
-#counterBox {
+#counterBox{
 
 
     background:
 
     rgba(255,255,255,.8);
+
 
 
     padding:15px 25px;
@@ -652,7 +665,7 @@ button:hover {
 
 
 
-#counterBox h3 {
+#counterBox h3{
 
 
     color:var(--green);
@@ -665,7 +678,8 @@ button:hover {
 
 
 
-#counter {
+
+#counter{
 
 
     margin-top:8px;
@@ -685,7 +699,7 @@ button:hover {
 ========================= */
 
 
-#finalMessage {
+#finalMessage{
 
 
     position:absolute;
@@ -694,12 +708,12 @@ button:hover {
     inset:0;
 
 
+    z-index:20;
+
+
     background:
 
-    rgba(255,250,240,.92);
-
-
-    z-index:20;
+    rgba(255,250,240,.94);
 
 
     display:flex;
@@ -724,15 +738,11 @@ button:hover {
 
 
 
-.final-flower {
+
+.final-flower{
 
 
-    font-size:140px;
-
-
-    animation:
-
-    grow 2s;
+    font-size:130px;
 
 
 }
@@ -740,24 +750,12 @@ button:hover {
 
 
 
-#finalMessage h2 {
 
 
-    max-width:600px;
+#finalMessage h2{
 
 
     color:var(--green);
-
-
-    margin-top:25px;
-
-
-}
-
-
-
-
-#finalMessage p {
 
 
     max-width:600px;
@@ -766,10 +764,26 @@ button:hover {
     margin-top:20px;
 
 
+}
+
+
+
+
+#finalMessage p{
+
+
+    max-width:600px;
+
+
     line-height:1.7;
 
 
+    margin-top:20px;
+
+
 }
+
+
 
 
 
@@ -782,10 +796,10 @@ button:hover {
 ========================= */
 
 
-@keyframes float {
+@keyframes floating{
 
 
-    50% {
+    50%{
 
 
         transform:translateY(-15px);
@@ -793,14 +807,19 @@ button:hover {
 
     }
 
+
 }
 
 
 
-@keyframes flowerBorn {
 
 
-    0% {
+
+
+@keyframes flowerBorn{
+
+
+    0%{
 
 
         transform:
@@ -813,7 +832,7 @@ button:hover {
 
 
 
-    80% {
+    80%{
 
 
         transform:
@@ -826,7 +845,7 @@ button:hover {
 
 
 
-    100% {
+    100%{
 
 
         transform:
@@ -843,10 +862,13 @@ button:hover {
 
 
 
-@keyframes petalFall {
 
 
-    0% {
+
+@keyframes petalFall{
+
+
+    0%{
 
 
         transform:
@@ -862,17 +884,7 @@ button:hover {
 
 
 
-    30% {
-
-
-        opacity:1;
-
-
-    }
-
-
-
-    100% {
+    100%{
 
 
         transform:
@@ -882,38 +894,6 @@ button:hover {
 
 
         opacity:0;
-
-
-    }
-
-
-}
-
-
-
-
-@keyframes grow {
-
-
-    from {
-
-
-        transform:scale(0);
-
-
-        opacity:0;
-
-
-    }
-
-
-    to {
-
-
-        transform:scale(1);
-
-
-        opacity:1;
 
 
     }
@@ -936,46 +916,47 @@ button:hover {
 
 
 
-.intro-content h1 {
+    .intro-content h1{
 
 
-    font-size:30px;
+        font-size:30px;
 
 
-}
-
-
-
-.intro-flower {
-
-
-    font-size:70px;
-
-
-}
+    }
 
 
 
-#garden {
+    .intro-flower{
 
 
-    width:95%;
+        font-size:70px;
 
 
-    height:75%;
-
-
-}
+    }
 
 
 
-.final-flower {
+
+    #garden{
 
 
-    font-size:90px;
+        width:95%;
 
 
-}
+        height:75%;
+
+
+    }
+
+
+
+    .final-flower{
+
+
+        font-size:90px;
+
+
+    }
 
 
 }
