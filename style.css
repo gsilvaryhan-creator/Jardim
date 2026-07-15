@@ -253,3 +253,47 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
     transform:scale(1);
   }
 }
+/* NASCIMENTO DAS FLORES */
+
+.flower {
+  opacity: 0;
+  transform: scale(0.1) rotate(var(--rotation));
+}
+
+.flower.born {
+  animation: flowerBorn .8s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+
+@keyframes flowerBorn {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.1) rotate(-30deg);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.15) rotate(8deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rotation));
+  }
+
+}
+
+
+/* A rosa inicial */
+
+.first-flower {
+  z-index: 6;
+}
+
+
+/* O girassol final fica acima de tudo */
+
+.golden-final {
+  z-index: 20;
+}
