@@ -4,10 +4,9 @@
 ================================================== */
 
 
-/* =========================
+/* ==========================
    RESET
-========================= */
-
+========================== */
 
 *{
 
@@ -27,17 +26,15 @@ body{
     overflow:hidden;
 
     font-family:
-    "Georgia",
+    Georgia,
     serif;
 
 }
 
 
-
-/* =========================
+/* ==========================
    CORES
-========================= */
-
+========================== */
 
 :root{
 
@@ -48,7 +45,7 @@ body{
 
     --green:#628d65;
 
-    --dark-green:#40632b;
+    --deep-green:#40632b;
 
     --pink:#f4afbd;
 
@@ -66,9 +63,10 @@ body{
 
 
 
-/* =========================
+
+/* ==========================
    APP
-========================= */
+========================== */
 
 
 #app{
@@ -85,9 +83,11 @@ body{
 
 
 
-/* =========================
+
+
+/* ==========================
    SISTEMA DE TELAS
-========================= */
+========================== */
 
 
 .screen{
@@ -124,9 +124,10 @@ body{
 
 
 
-/* =========================
-   TELA INICIAL
-========================= */
+
+/* ==========================
+   INTRO
+========================== */
 
 
 #introScreen{
@@ -150,7 +151,7 @@ body{
 
 
 
-.intro-content{
+.intro-container{
 
 
     width:min(90%,600px);
@@ -167,8 +168,7 @@ body{
 
 
 
-
-.intro-flower{
+.main-flower{
 
 
     font-size:90px;
@@ -176,7 +176,7 @@ body{
 
     animation:
 
-    floating 4s infinite ease-in-out;
+    float 4s infinite ease-in-out;
 
 
 }
@@ -184,7 +184,7 @@ body{
 
 
 
-.intro-content h1{
+.intro-container h1{
 
 
     margin-top:20px;
@@ -200,20 +200,21 @@ body{
 
 
 
-.intro-content h2{
+.intro-container h2{
 
 
     margin-top:10px;
 
 
-    color:#a06b76;
+    color:#a46b77;
 
 
 }
 
 
 
-.intro-content p{
+
+.intro-container p{
 
 
     margin-top:25px;
@@ -235,13 +236,15 @@ body{
 
 
 
+
+
 button{
 
 
     margin-top:30px;
 
 
-    padding:15px 38px;
+    padding:15px 35px;
 
 
     border:none;
@@ -269,10 +272,11 @@ button{
 
 
 
+
 button:hover{
 
 
-    transform:scale(1.06);
+    transform:scale(1.05);
 
 
 }
@@ -283,9 +287,11 @@ button:hover{
 
 
 
-/* =========================
+
+
+/* ==========================
    TRANSIÇÃO
-========================= */
+========================== */
 
 
 #transitionScreen{
@@ -313,9 +319,9 @@ button:hover{
 
 
 
-/* =========================
+/* ==========================
    JARDIM
-========================= */
+========================== */
 
 
 #gardenScreen{
@@ -325,7 +331,6 @@ button:hover{
 
 
     background:
-
 
     linear-gradient(
 
@@ -343,19 +348,21 @@ button:hover{
 
 
 
+
+
 #garden{
+
+
+    position:relative;
 
 
     width:90%;
 
 
-    height:78%;
+    height:75%;
 
 
     max-width:1200px;
-
-
-    position:relative;
 
 
     overflow:hidden;
@@ -366,7 +373,7 @@ button:hover{
 
     linear-gradient(
 
-        160deg,
+        150deg,
 
         #78a96b,
 
@@ -378,14 +385,13 @@ button:hover{
 
     border-radius:
 
-    48% 52% 45% 55%;
+    45% 55% 50% 50%;
 
 
 
     box-shadow:
 
     0 20px 50px rgba(0,0,0,.15);
-
 
 
 }
@@ -396,9 +402,9 @@ button:hover{
 
 
 
-/* =========================
-   CAMADAS INTERNAS
-========================= */
+/* ==========================
+   CAMADAS
+========================== */
 
 
 #flowersContainer,
@@ -409,7 +415,27 @@ button:hover{
 
     position:absolute;
 
+
     inset:0;
+
+
+}
+
+
+
+#flowersContainer{
+
+
+    pointer-events:auto;
+
+
+}
+
+
+
+#particlesContainer,
+#windContainer,
+#insectsContainer{
 
 
     pointer-events:none;
@@ -419,22 +445,13 @@ button:hover{
 
 
 
-#flowersContainer{
-
-    pointer-events:auto;
-
-}
 
 
 
 
-
-
-
-
-/* =========================
+/* ==========================
    FLORES
-========================= */
+========================== */
 
 
 .flower{
@@ -459,28 +476,13 @@ button:hover{
 
 
 
-.flower:hover{
-
-
-    transform:
-
-    scale(1.2);
-
-
-}
-
-
 
 .special-flower{
 
 
-    filter:
+    animation:
 
-    drop-shadow(
-
-        0 0 12px white
-
-    );
+    glow 2s infinite alternate;
 
 
 }
@@ -492,10 +494,9 @@ button:hover{
 
 
 
-
-/* =========================
+/* ==========================
    CARTA
-========================= */
+========================== */
 
 
 #letterModal{
@@ -512,19 +513,21 @@ button:hover{
     rgba(0,0,0,.35);
 
 
+
     display:flex;
-
-
-    justify-content:center;
 
 
     align-items:center;
 
 
-    z-index:50;
+    justify-content:center;
+
+
+    z-index:100;
 
 
 }
+
 
 
 
@@ -539,8 +542,7 @@ button:hover{
 
 
 
-
-#letterBox{
+#letterPaper{
 
 
     width:min(90%,450px);
@@ -571,6 +573,7 @@ button:hover{
 
 
 
+
 #closeLetter{
 
 
@@ -589,14 +592,14 @@ button:hover{
     color:#555;
 
 
-    font-size:30px;
+    font-size:35px;
 
 
 }
 
 
 
-#letterBox h2{
+#letterPaper h2{
 
 
     color:#a05c68;
@@ -609,7 +612,8 @@ button:hover{
 
 
 
-#letterBox p{
+
+#letterPaper p{
 
 
     color:#555;
@@ -628,22 +632,15 @@ button:hover{
 
 
 
-/* =========================
+/* ==========================
    CONTADOR
-========================= */
-
-
-#informationPanel{
-
-
-    margin-top:15px;
-
-
-}
-
+========================== */
 
 
 #counterBox{
+
+
+    margin-top:15px;
 
 
     background:
@@ -665,13 +662,11 @@ button:hover{
 
 
 
+
 #counterBox h3{
 
 
     color:var(--green);
-
-
-    font-size:15px;
 
 
 }
@@ -694,9 +689,10 @@ button:hover{
 
 
 
-/* =========================
+
+/* ==========================
    FINAL
-========================= */
+========================== */
 
 
 #finalMessage{
@@ -708,12 +704,13 @@ button:hover{
     inset:0;
 
 
-    z-index:20;
-
-
     background:
 
-    rgba(255,250,240,.94);
+    rgba(255,250,240,.95);
+
+
+
+    z-index:20;
 
 
     display:flex;
@@ -722,10 +719,10 @@ button:hover{
     flex-direction:column;
 
 
-    justify-content:center;
-
-
     align-items:center;
+
+
+    justify-content:center;
 
 
     text-align:center;
@@ -738,8 +735,7 @@ button:hover{
 
 
 
-
-.final-flower{
+.final-sunflower{
 
 
     font-size:130px;
@@ -761,15 +757,14 @@ button:hover{
     max-width:600px;
 
 
-    margin-top:20px;
-
-
 }
 
 
 
-
 #finalMessage p{
+
+
+    margin-top:20px;
 
 
     max-width:600px;
@@ -778,9 +773,6 @@ button:hover{
     line-height:1.7;
 
 
-    margin-top:20px;
-
-
 }
 
 
@@ -790,29 +782,22 @@ button:hover{
 
 
 
-
-/* =========================
+/* ==========================
    ANIMAÇÕES
-========================= */
+========================== */
 
 
-@keyframes floating{
+@keyframes float{
 
 
     50%{
 
-
         transform:translateY(-15px);
-
 
     }
 
 
 }
-
-
-
-
 
 
 
@@ -863,28 +848,59 @@ button:hover{
 
 
 
+@keyframes glow{
+
+
+    from{
+
+
+        filter:
+        drop-shadow(
+        0 0 5px white
+        );
+
+
+    }
+
+
+    to{
+
+
+        filter:
+        drop-shadow(
+        0 0 20px white
+        );
+
+
+    }
+
+
+}
+
+
+
 
 
 @keyframes petalFall{
 
 
-    0%{
+    from{
 
 
         transform:
 
-        translateY(-300px)
+        translateY(-200px)
         rotate(0);
 
 
-        opacity:0;
+        opacity:1;
 
 
     }
 
 
 
-    100%{
+    to{
 
 
         transform:
@@ -905,18 +921,52 @@ button:hover{
 
 
 
+@keyframes windMove{
 
 
-/* =========================
+    from{
+
+
+        transform:
+        translateX(-100px)
+        rotate(0);
+
+
+    }
+
+
+
+    to{
+
+
+        transform:
+        translateX(1200px)
+        rotate(360deg);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
    MOBILE
-========================= */
+========================== */
 
 
 @media(max-width:600px){
 
 
 
-    .intro-content h1{
+    .intro-container h1{
 
 
         font-size:30px;
@@ -926,7 +976,7 @@ button:hover{
 
 
 
-    .intro-flower{
+    .main-flower{
 
 
         font-size:70px;
@@ -943,14 +993,15 @@ button:hover{
         width:95%;
 
 
-        height:75%;
+        height:70%;
 
 
     }
 
 
 
-    .final-flower{
+
+    .final-sunflower{
 
 
         font-size:90px;
