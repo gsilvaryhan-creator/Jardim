@@ -234,3 +234,22 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
   }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
+.flower.born {
+  animation: bloom .8s ease forwards;
+}
+
+@keyframes bloom {
+  from {
+    opacity:0;
+    transform:scale(0);
+  }
+
+  60% {
+    transform:scale(1.2);
+  }
+
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
