@@ -70,6 +70,10 @@ function criarFlor({ special = false, cardIndex = null, x, y }) {
     flower.addEventListener('click', () => abrirCarta(cardIndex, flower));
   }
   flowers.appendChild(flower);
+
+setTimeout(() => {
+  flower.classList.add('born');
+}, Math.random() * 1200);
 }
 
 function abrirCarta(index, flower) {
@@ -174,16 +178,10 @@ function gerarJardim() {
     }
   }
   positions.sort(() => Math.random() - .5);
-  CARTAS.forEach((_, index) => {
-  setTimeout(() => {
-    criarFlor({ special: true, cardIndex: index, ...positions.pop() });
-  }, 900 + index * 120);
-});
+  CARTAS.forEach((_, index) => criarFlor({ special: true, cardIndex: index, ...positions.pop() }));
 
 for (let index = 0; index < CONFIG.quantidadeFlores; index++) {
-  setTimeout(() => {
-    criarFlor({ ...positions.pop() });
-  }, 2300 + index * 70);
+  criarFlor({ ...positions.pop() });
 }
   for (let index = 0; index < 14; index++) {
     const particle = document.createElement('span');
@@ -207,7 +205,6 @@ for (let index = 0; index < CONFIG.quantidadeFlores; index++) {
   }
 }
 
-function criarFlorInicial() {
   const flower = document.createElement('div');
 
   flower.className = 'flower first-flower sunflower';
