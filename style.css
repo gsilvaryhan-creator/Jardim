@@ -119,4 +119,69 @@ h1 { margin-bottom: 18px; color: #557251; font-weight: normal; font-size: clamp(
 @keyframes discovery-ring { 0% { transform: scale(.72); opacity: 0; } 35% { opacity: .9; } 100% { transform: scale(1.16); opacity: 0; } }
 @keyframes button-breathe { 50% { box-shadow: 0 5px 0 #537a52, 0 0 0 7px #f4ffed70; } }
 @keyframes golden-bloom { from { opacity: 0; transform: rotate(-35deg) scale(.15); } 70% { transform: rotate(8deg) scale(1.12); } to { opacity: 1; transform: rotate(0) scale(1); } }
+/* ========================= */
+/* TRANSIÇÃO */
+/* ========================= */
+
+.transition-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fff3;
+  animation: transitionFade 1s forwards;
+}
+
+.falling-petal {
+  font-size: 42px;
+  animation: petalFall 1s ease-in-out forwards;
+}
+
+.garden-screen.is-entering .garden {
+  animation: gardenZoom .9s ease forwards;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-180px) rotate(0deg);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(220px) rotate(260deg);
+    opacity: 0;
+  }
+}
+
+@keyframes transitionFade {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gardenZoom {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
