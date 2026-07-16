@@ -1,133 +1,135 @@
-/* ==========================================
-   CONFIGURAÇÕES INICIAIS
-========================================== */
+/* =====================================
+   CONFIGURAÇÕES
+===================================== */
 
 
-document.addEventListener("DOMContentLoaded", () => {
+const startDate = new Date("2026-04-27T18:14:00");
+
+
+let openedLetters = new Set();
+
+let gardenStarted = false;
 
 
 
-/* ==========================================
-   ELEMENTOS PRINCIPAIS
-========================================== */
+
+
+
+/* =====================================
+   ELEMENTOS
+===================================== */
 
 
 const intro = document.getElementById("intro");
 
-const enterGarden = document.getElementById("enterGarden");
-
 const transition = document.getElementById("transition");
+
+const gardenScreen = document.getElementById("gardenScreen");
+
+
+const enterButton = document.getElementById("enterGarden");
+
 
 const garden = document.getElementById("garden");
 
-const flowersContainer = document.getElementById("flowersContainer");
 
-const counter = document.getElementById("counter");
-
-const letterModal = document.getElementById("letterModal");
+const modal = document.getElementById("letterModal");
 
 const letterTitle = document.getElementById("letterTitle");
 
-const letterMessage = document.getElementById("letterMessage");
+const letterText = document.getElementById("letterText");
 
 const closeLetter = document.getElementById("closeLetter");
 
-const finalPage = document.getElementById("finalPage");
 
-const returnGarden = document.getElementById("returnGarden");
-
-const finalFlower = document.getElementById("finalFlower");
+const counter = document.getElementById("counter");
 
 
+const finalSunflower = document.getElementById("finalSunflower");
 
-/*
-Proteção contra elementos inexistentes
-*/
+const finalMessage = document.getElementById("finalMessage");
 
-if(!intro || !garden){
 
-    console.error(
-        "Elementos principais não encontrados."
-    );
-
-    return;
-
-}
+const backGarden = document.getElementById("backGarden");
 
 
 
-/* ==========================================
+
+
+
+/* =====================================
    CARTAS
-========================================== */
+===================================== */
 
 
 const letters = [
 
+
 {
 title:"Seu cabelo",
-message:
-"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
+text:"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
 },
+
 
 {
 title:"Seus olhos",
-message:
-"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
+text:"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
 },
+
 
 {
 title:"O seu sorriso",
-message:
-"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
+text:"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
 },
+
 
 {
 title:"Minha pitucha",
-message:
-"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida, não vejo minha rotina sem você."
+text:"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida."
 },
+
 
 {
 title:"Quando você ri de mim",
-message:
-"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
+text:"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
 },
+
 
 {
 title:"O jeito que você cuida",
-message:
-"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas para muita gente, mas eu vejo e admiro muito em você."
+text:"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas, mas eu vejo e admiro muito em você."
 },
+
 
 {
 title:"Baixo, não guitarra",
-message:
-"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso. Até hoje acho engraçado lembrar disso, porque foi uma das nossas primeiras brincadeiras."
+text:"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso."
 },
+
 
 {
 title:"A cartinha de girassol",
-message:
-"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda, mas o que eu mais amo nela é saber que você separou um tempo e carinho para fazer algo pensando em mim."
+text:"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda porque você separou tempo e carinho pensando em mim."
 },
+
 
 {
 title:"As nossas calls",
-message:
-"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
+text:"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
 },
+
 
 {
 title:"As minhas piadinhas",
-message:
-"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é o meu jeito de brincar com você e criar momentos bobos."
+text:"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é meu jeito de brincar com você e criar momentos bobos."
 },
+
 
 {
 title:"O nosso caminho",
-message:
-"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
+text:"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
 }
+
 
 ];
 
@@ -135,61 +137,87 @@ message:
 
 
 
-let openedLetters = 0;
 
 
 
+/* =====================================
+   BOTÃO ENTRAR
+===================================== */
 
 
-/* ==========================================
-   ENTRAR NO JARDIM
-========================================== */
+enterButton.addEventListener("click",()=>{
 
 
-if(enterGarden){
+    if(gardenStarted) return;
 
 
-enterGarden.addEventListener(
-"click",
-()=>{
-
-
-intro.style.opacity="0";
-
-
-setTimeout(()=>{
-
-
-intro.classList.add("hidden");
-
-
-transition.classList.remove("hidden");
+    gardenStarted=true;
 
 
 
-setTimeout(()=>{
+    intro.style.opacity="0";
 
 
-transition.classList.add("hidden");
-
-garden.classList.remove("hidden");
+    setTimeout(()=>{
 
 
-createFlowers();
-
-createParticles();
+        intro.classList.add("hidden");
 
 
-
-},3000);
-
+        transition.classList.remove("hidden");
 
 
-},1000);
+        setTimeout(()=>{
+
+
+            transition.classList.add("hidden");
+
+
+            gardenScreen.classList.remove("hidden");
+
+
+            createGarden();
+
+
+
+        },3000);
+
+
+
+    },1000);
 
 
 
 });
+
+
+
+
+
+
+
+
+/* =====================================
+   CRIAÇÃO DO JARDIM
+===================================== */
+
+
+function createGarden(){
+
+
+    createFlowers();
+
+
+    createParticles();
+
+
+    createLeaves();
+
+
+    updateCounter();
+
+
+    setInterval(updateCounter,1000);
 
 
 }
@@ -198,116 +226,136 @@ createParticles();
 
 
 
-/* ==========================================
-   CRIAÇÃO DAS FLORES
-========================================== */
+
+
+/* =====================================
+   FLORES
+===================================== */
 
 
 function createFlowers(){
 
 
-if(!flowersContainer)return;
+
+    const normalFlowers=[
+
+        "🌷",
+        "🌹",
+        "🌼",
+        "🌸",
+        "💐",
+        "🪻"
+
+    ];
 
 
 
-const flowerTypes=[
-
-"🌹",
-"🌷",
-"🌸",
-"🌼",
-"💐",
-"🌺"
-
-];
+    for(let i=0;i<40;i++){
 
 
+        let flower=document.createElement("div");
 
-let specialPositions=[
 
-2,6,10,13,17,20,
-24,28,31,35,38
+        flower.className="flower";
 
-];
+
+        flower.innerHTML=
+        normalFlowers[
+        Math.floor(Math.random()*normalFlowers.length)
+        ];
 
 
 
-for(let i=0;i<40;i++){
-
-
-const flower=document.createElement("div");
-
-
-flower.classList.add("flower");
+        placeFlower(flower);
 
 
 
-let randomFlower =
-flowerTypes[
-Math.floor(Math.random()*flowerTypes.length)
-];
-
-
-flower.innerHTML=randomFlower;
+        flower.style.animationDelay=
+        `${i*0.08}s`;
 
 
 
-flower.style.left =
-(10 + Math.random()*75)+"%";
+        garden.appendChild(flower);
 
 
-flower.style.top =
-(10 + Math.random()*75)+"%";
-
-
-
-flower.style.animationDelay =
-(i*80)+"ms";
+    }
 
 
 
-if(
-specialPositions.includes(i)
-){
 
 
-flower.classList.add(
-"special-flower"
-);
+    letters.forEach((letter,index)=>{
 
 
-let letterIndex =
-specialPositions.indexOf(i);
+        let flower=document.createElement("div");
 
 
+        flower.className=
+        "flower special-flower";
 
-flower.dataset.letter =
-letterIndex;
+
+        flower.dataset.id=index;
 
 
 
-flower.addEventListener(
-"click",
-()=>{
-
-openLetter(letterIndex);
-
-}
-
-);
-
-
-}
+        flower.innerHTML="🌹";
 
 
 
-flowersContainer.appendChild(flower);
+        placeFlower(flower);
+
+
+
+        flower.style.animationDelay=
+        `${index*0.15}s`;
+
+
+
+        flower.addEventListener("click",()=>{
+
+            openLetter(index);
+
+        });
+
+
+
+        garden.appendChild(flower);
+
+
+
+    });
 
 
 
 }
 
 
+
+
+
+
+
+
+
+/* =====================================
+   POSIÇÃO SEGURA DAS FLORES
+===================================== */
+
+
+function placeFlower(element){
+
+
+    let x=Math.random()*75+10;
+
+    let y=Math.random()*75+10;
+
+
+
+    element.style.left=x+"%";
+
+    element.style.top=y+"%";
+
+
 }
 
 
@@ -317,43 +365,39 @@ flowersContainer.appendChild(flower);
 
 
 
-/* ==========================================
-   ABRIR CARTA
-========================================== */
+
+/* =====================================
+   CARTAS
+===================================== */
 
 
 function openLetter(index){
 
 
-if(!letters[index])return;
+    openedLetters.add(index);
 
 
 
-letterTitle.textContent =
-letters[index].title;
+    letterTitle.textContent=
+    letters[index].title;
 
 
-letterMessage.textContent =
-letters[index].message;
-
-
-
-letterModal.classList.remove(
-"hidden"
-);
+    letterText.textContent=
+    letters[index].text;
 
 
 
-openedLetters++;
+    modal.classList.remove("hidden");
 
 
 
-if(openedLetters>=letters.length){
+    if(openedLetters.size===letters.length){
 
-setTimeout(showFinal,1500);
 
-}
+        setTimeout(showFinal,1000);
 
+
+    }
 
 
 }
@@ -363,23 +407,13 @@ setTimeout(showFinal,1500);
 
 
 
-if(closeLetter){
+closeLetter.addEventListener("click",()=>{
 
 
-closeLetter.addEventListener(
-"click",
-()=>{
-
-letterModal.classList.add(
-"hidden"
-);
-
-}
-
-);
+    modal.classList.add("hidden");
 
 
-}
+});
 
 
 
@@ -387,65 +421,29 @@ letterModal.classList.add(
 
 
 
-/* ==========================================
-   FINAL
-========================================== */
+/* =====================================
+   GIRASSOL FINAL
+===================================== */
 
 
 function showFinal(){
 
 
-garden.classList.add(
-"hidden"
-);
+    finalSunflower.classList.remove("hidden");
 
 
-finalPage.classList.remove(
-"hidden"
-);
+    setTimeout(()=>{
 
 
-
-if(finalFlower){
-
-finalFlower.style.animation =
-"finalBloom 2s infinite alternate";
-
-}
+        finalMessage.classList.remove("hidden");
 
 
-}
-
-
-
-
-
-
-if(returnGarden){
-
-
-returnGarden.addEventListener(
-"click",
-()=>{
-
-
-finalPage.classList.add(
-"hidden"
-);
-
-
-garden.classList.remove(
-"hidden"
-);
+    },2000);
 
 
 
 }
 
-);
-
-
-}
 
 
 
@@ -453,60 +451,67 @@ garden.classList.remove(
 
 
 
-/* ==========================================
+backGarden.addEventListener("click",()=>{
+
+
+    finalMessage.classList.add("hidden");
+
+
+});
+
+
+
+
+
+
+
+
+/* =====================================
    CONTADOR
-========================================== */
+===================================== */
 
 
 function updateCounter(){
 
 
-const start =
-new Date(
-"2026-04-27T18:14:00"
-);
+    let now=new Date();
+
+
+    let diff=
+    now-startDate;
 
 
 
-const now =
-new Date();
+    let seconds=
+    Math.floor(diff/1000);
 
 
 
-const diff =
-now-start;
+    let days=
+    Math.floor(seconds/86400);
 
 
 
-if(diff<0)return;
+    seconds%=86400;
 
 
 
-const seconds =
-Math.floor(diff/1000);
+    let hours=
+    Math.floor(seconds/3600);
 
 
 
-const days =
-Math.floor(seconds/(60*60*24));
-
-
-const hours =
-Math.floor(
-(seconds%(60*60*24))/(60*60)
-);
-
-
-const minutes =
-Math.floor(
-(seconds%(60*60))/60
-);
+    seconds%=3600;
 
 
 
-counter.innerHTML =
+    let minutes=
+    Math.floor(seconds/60);
 
-`${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem ❤️`;
+
+
+    counter.textContent=
+    `${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem`;
 
 
 
@@ -514,66 +519,43 @@ counter.innerHTML =
 
 
 
-updateCounter();
-
-
-setInterval(
-updateCounter,
-60000
-);
 
 
 
 
-
-
-
-
-/* ==========================================
+/* =====================================
    PARTÍCULAS
-========================================== */
+===================================== */
 
 
 function createParticles(){
 
 
-const area =
-document.getElementById(
-"particles"
-);
+    const area=
+    document.getElementById("particles");
 
 
-if(!area)return;
+    for(let i=0;i<20;i++){
 
 
-
-for(let i=0;i<25;i++){
-
-
-let p=document.createElement(
-"span"
-);
+        let p=document.createElement("div");
 
 
-p.classList.add(
-"particle"
-);
+        p.className="particle";
 
 
-
-p.style.left =
-Math.random()*100+"%";
-
-
-p.style.animationDelay =
-Math.random()*5+"s";
+        p.style.left=
+        Math.random()*100+"%";
 
 
+        p.style.animationDuration=
+        (5+Math.random()*10)+"s";
 
-area.appendChild(p);
+
+        area.appendChild(p);
 
 
-}
+    }
 
 
 }
@@ -583,4 +565,47 @@ area.appendChild(p);
 
 
 
-});
+
+
+/* =====================================
+   FOLHAS
+===================================== */
+
+
+function createLeaves(){
+
+
+    const area=
+    document.getElementById("windLeaves");
+
+
+
+    for(let i=0;i<5;i++){
+
+
+        let leaf=document.createElement("div");
+
+
+        leaf.className="leaf";
+
+
+        leaf.innerHTML="🍃";
+
+
+        leaf.style.top=
+        Math.random()*80+"%";
+
+
+        leaf.style.animationDelay=
+        i+"s";
+
+
+
+        area.appendChild(leaf);
+
+
+
+    }
+
+
+}
