@@ -1,159 +1,133 @@
-/* =====================================================
-   O JARDIM ONDE VOCÊ FLORESCE
-   SCRIPT COMPLETO
-===================================================== */
+/* ==========================================
+   CONFIGURAÇÕES INICIAIS
+========================================== */
 
 
-/* ===============================
-   ELEMENTOS
-================================ */
-
-
-const intro = document.querySelector("#intro");
-
-const enterButton =
-document.querySelector("#enterGarden");
-
-
-const transition =
-document.querySelector("#transition");
-
-
-const garden =
-document.querySelector("#garden");
-
-
-const flowersContainer =
-document.querySelector("#flowersContainer");
-
-
-const letterModal =
-document.querySelector("#letterModal");
-
-
-const letterTitle =
-document.querySelector("#letterTitle");
-
-
-const letterMessage =
-document.querySelector("#letterMessage");
-
-
-const closeLetter =
-document.querySelector("#closeLetter");
-
-
-const counter =
-document.querySelector("#counter");
-
-
-const finalPage =
-document.querySelector("#finalPage");
-
-
-const finalFlower =
-document.querySelector("#finalFlower");
-
-
-const returnButton =
-document.querySelector("#returnGarden");
+document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* ==========================================
+   ELEMENTOS PRINCIPAIS
+========================================== */
+
+
+const intro = document.getElementById("intro");
+
+const enterGarden = document.getElementById("enterGarden");
+
+const transition = document.getElementById("transition");
+
+const garden = document.getElementById("garden");
+
+const flowersContainer = document.getElementById("flowersContainer");
+
+const counter = document.getElementById("counter");
+
+const letterModal = document.getElementById("letterModal");
+
+const letterTitle = document.getElementById("letterTitle");
+
+const letterMessage = document.getElementById("letterMessage");
+
+const closeLetter = document.getElementById("closeLetter");
+
+const finalPage = document.getElementById("finalPage");
+
+const returnGarden = document.getElementById("returnGarden");
+
+const finalFlower = document.getElementById("finalFlower");
 
 
 
+/*
+Proteção contra elementos inexistentes
+*/
 
-/* ===============================
-   ESTADO
-================================ */
+if(!intro || !garden){
 
+    console.error(
+        "Elementos principais não encontrados."
+    );
 
-let gardenStarted = false;
+    return;
 
-
-let openedLetters = [];
-
-
-
-
-
+}
 
 
 
-
-/* ===============================
+/* ==========================================
    CARTAS
-================================ */
+========================================== */
 
 
 const letters = [
 
 {
 title:"Seu cabelo",
-text:"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem precisar fazer esforço."
+message:
+"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
 },
-
 
 {
 title:"Seus olhos",
-text:"Os seus olhos são grandes e brilhantes. Às vezes eu paro para olhar e penso em como eles conseguem mostrar tanta coisa sem dizer uma palavra."
+message:
+"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
 },
-
 
 {
 title:"O seu sorriso",
-text:"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o dia fica melhor junto."
+message:
+"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
 },
-
 
 {
 title:"Minha pitucha",
-text:"Eu acho muito fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigante na minha vida."
+message:
+"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida, não vejo minha rotina sem você."
 },
-
 
 {
 title:"Quando você ri de mim",
-text:"Eu gosto quando você ri das coisas que eu falo. Até uma piada ruim fica melhor quando você ri."
+message:
+"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
 },
-
 
 {
 title:"O jeito que você cuida",
-text:"Eu percebo como você se importa, presta atenção e tenta ajudar. Eu admiro muito isso em você."
+message:
+"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas para muita gente, mas eu vejo e admiro muito em você."
 },
-
 
 {
 title:"Baixo, não guitarra",
-text:"Eu nunca esqueço quando você confundia baixo com guitarra e colocava a culpa no corretor. Virou uma lembrança muito nossa."
+message:
+"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso. Até hoje acho engraçado lembrar disso, porque foi uma das nossas primeiras brincadeiras."
 },
-
 
 {
 title:"A cartinha de girassol",
-text:"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. O carinho por trás dela é o que torna ela especial."
+message:
+"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda, mas o que eu mais amo nela é saber que você separou um tempo e carinho para fazer algo pensando em mim."
 },
-
 
 {
 title:"As nossas calls",
-text:"Eu amo nossos momentos simples, nossas conversas e as vezes que ficávamos juntos mesmo de longe."
+message:
+"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
 },
-
 
 {
 title:"As minhas piadinhas",
-text:"Mesmo quando eu faço alguma piadinha e você fica brava, é meu jeito de criar momentos com você."
+message:
+"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é o meu jeito de brincar com você e criar momentos bobos."
 },
-
 
 {
 title:"O nosso caminho",
-text:"A gente ainda tem muita coisa para viver. Eu quero continuar descobrindo tudo isso com você."
+message:
+"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
 }
-
 
 ];
 
@@ -161,53 +135,49 @@ text:"A gente ainda tem muita coisa para viver. Eu quero continuar descobrindo t
 
 
 
+let openedLetters = 0;
 
 
 
 
-/* ===============================
+
+/* ==========================================
    ENTRAR NO JARDIM
-================================ */
+========================================== */
 
 
-if(enterButton){
+if(enterGarden){
 
 
-enterButton.onclick = function(){
+enterGarden.addEventListener(
+"click",
+()=>{
 
 
-if(gardenStarted)
-return;
+intro.style.opacity="0";
 
 
-gardenStarted = true;
+setTimeout(()=>{
 
 
-
-if(intro)
 intro.classList.add("hidden");
 
 
-
-if(transition)
 transition.classList.remove("hidden");
-
 
 
 
 setTimeout(()=>{
 
 
-if(transition)
 transition.classList.add("hidden");
 
-
-if(garden)
 garden.classList.remove("hidden");
 
 
-
 createFlowers();
+
+createParticles();
 
 
 
@@ -215,52 +185,8 @@ createFlowers();
 
 
 
-};
+},1000);
 
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   CRIAR FLORES
-================================ */
-
-
-function createFlowers(){
-
-
-
-if(!flowersContainer)
-return;
-
-
-
-// flores normais
-
-for(let i=0;i<30;i++){
-
-
-createFlower(false);
-
-
-}
-
-
-
-// flores especiais
-
-letters.forEach(
-(item,index)=>{
-
-
-createFlower(true,index);
 
 
 });
@@ -272,45 +198,77 @@ createFlower(true,index);
 
 
 
+/* ==========================================
+   CRIAÇÃO DAS FLORES
+========================================== */
+
+
+function createFlowers(){
+
+
+if(!flowersContainer)return;
 
 
 
+const flowerTypes=[
 
-function createFlower(special,index){
+"🌹",
+"🌷",
+"🌸",
+"🌼",
+"💐",
+"🌺"
+
+];
 
 
 
-const flower =
-document.createElement("div");
+let specialPositions=[
 
+2,6,10,13,17,20,
+24,28,31,35,38
+
+];
+
+
+
+for(let i=0;i<40;i++){
+
+
+const flower=document.createElement("div");
 
 
 flower.classList.add("flower");
 
 
 
+let randomFlower =
+flowerTypes[
+Math.floor(Math.random()*flowerTypes.length)
+];
 
-let x =
-Math.random()*75+10;
 
-
-let y =
-Math.random()*70+10;
+flower.innerHTML=randomFlower;
 
 
 
 flower.style.left =
-x+"%";
+(10 + Math.random()*75)+"%";
 
 
 flower.style.top =
-y+"%";
+(10 + Math.random()*75)+"%";
 
 
 
+flower.style.animationDelay =
+(i*80)+"ms";
 
-if(special){
 
+
+if(
+specialPositions.includes(i)
+){
 
 
 flower.classList.add(
@@ -318,30 +276,37 @@ flower.classList.add(
 );
 
 
-
-flower.dataset.id=index;
-
-
-
-flower.onclick=function(){
+let letterIndex =
+specialPositions.indexOf(i);
 
 
-openLetter(index);
+
+flower.dataset.letter =
+letterIndex;
 
 
-};
 
+flower.addEventListener(
+"click",
+()=>{
 
+openLetter(letterIndex);
 
 }
 
-
-
-flowersContainer.appendChild(
-flower
 );
 
 
+}
+
+
+
+flowersContainer.appendChild(flower);
+
+
+
+}
+
 
 }
 
@@ -352,18 +317,15 @@ flower
 
 
 
-
-/* ===============================
+/* ==========================================
    ABRIR CARTA
-================================ */
+========================================== */
 
 
 function openLetter(index){
 
 
-
-if(!letterModal)
-return;
+if(!letters[index])return;
 
 
 
@@ -371,9 +333,8 @@ letterTitle.textContent =
 letters[index].title;
 
 
-
 letterMessage.textContent =
-letters[index].text;
+letters[index].message;
 
 
 
@@ -383,22 +344,19 @@ letterModal.classList.remove(
 
 
 
-if(!openedLetters.includes(index)){
+openedLetters++;
 
 
-openedLetters.push(index);
 
+if(openedLetters>=letters.length){
 
-checkFinal();
-
-
-}
-
-
+setTimeout(showFinal,1500);
 
 }
 
 
+
+}
 
 
 
@@ -408,15 +366,17 @@ checkFinal();
 if(closeLetter){
 
 
-closeLetter.onclick=function(){
-
+closeLetter.addEventListener(
+"click",
+()=>{
 
 letterModal.classList.add(
 "hidden"
 );
 
+}
 
-};
+);
 
 
 }
@@ -427,37 +387,29 @@ letterModal.classList.add(
 
 
 
-
-
-/* ===============================
+/* ==========================================
    FINAL
-================================ */
+========================================== */
 
 
-function checkFinal(){
+function showFinal(){
 
 
-
-if(openedLetters.length === letters.length){
-
-
-
-setTimeout(()=>{
+garden.classList.add(
+"hidden"
+);
 
 
-if(finalPage)
-finalPage.classList.remove("hidden");
-
-
-
-if(finalFlower)
-finalFlower.classList.remove("hidden");
+finalPage.classList.remove(
+"hidden"
+);
 
 
 
-},1000);
+if(finalFlower){
 
-
+finalFlower.style.animation =
+"finalBloom 2s infinite alternate";
 
 }
 
@@ -469,21 +421,44 @@ finalFlower.classList.remove("hidden");
 
 
 
+if(returnGarden){
+
+
+returnGarden.addEventListener(
+"click",
+()=>{
+
+
+finalPage.classList.add(
+"hidden"
+);
+
+
+garden.classList.remove(
+"hidden"
+);
 
 
 
-/* ===============================
+}
+
+);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
    CONTADOR
-================================ */
+========================================== */
 
 
 function updateCounter(){
-
-
-
-if(!counter)
-return;
-
 
 
 const start =
@@ -503,43 +478,35 @@ now-start;
 
 
 
-if(diff<0){
-
-counter.textContent=
-"Começando em breve";
-
-return;
-
-}
+if(diff<0)return;
 
 
 
-
-const minutes =
-Math.floor(diff/60000);
+const seconds =
+Math.floor(diff/1000);
 
 
 
 const days =
-Math.floor(minutes/(60*24));
-
+Math.floor(seconds/(60*60*24));
 
 
 const hours =
 Math.floor(
-(minutes/60)%24
+(seconds%(60*60*24))/(60*60)
+);
+
+
+const minutes =
+Math.floor(
+(seconds%(60*60))/60
 );
 
 
 
-const mins =
-minutes%60;
+counter.innerHTML =
 
-
-
-counter.textContent =
-
-`${days} dias, ${hours} horas e ${mins} minutos`;
+`${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem ❤️`;
 
 
 
@@ -552,7 +519,7 @@ updateCounter();
 
 setInterval(
 updateCounter,
-1000
+60000
 );
 
 
@@ -562,31 +529,58 @@ updateCounter,
 
 
 
-
-/* ===============================
-   VOLTAR AO JARDIM
-================================ */
-
-
-if(returnButton){
+/* ==========================================
+   PARTÍCULAS
+========================================== */
 
 
-returnButton.onclick=function(){
+function createParticles(){
 
 
+const area =
+document.getElementById(
+"particles"
+);
 
-if(finalPage)
-finalPage.classList.add("hidden");
 
-
-
-if(garden)
-garden.classList.remove("hidden");
+if(!area)return;
 
 
 
-};
+for(let i=0;i<25;i++){
 
+
+let p=document.createElement(
+"span"
+);
+
+
+p.classList.add(
+"particle"
+);
+
+
+
+p.style.left =
+Math.random()*100+"%";
+
+
+p.style.animationDelay =
+Math.random()*5+"s";
+
+
+
+area.appendChild(p);
 
 
 }
+
+
+}
+
+
+
+
+
+
+});
