@@ -3,15 +3,13 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#dcefd4">
+<title>O Jardim Onde Você Floresce</title>
 
-    <title>O Jardim Onde Você Floresce</title>
-
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -22,260 +20,240 @@
 <div id="app">
 
 
-    <!-- =========================
-         TELA INICIAL
-    ========================== -->
+
+<!-- =========================
+     TELA INICIAL
+========================= -->
 
 
-    <section id="introScreen" class="screen">
+<section id="introScreen" class="screen active">
 
 
-        <div class="intro-container">
+    <div class="introContent">
 
 
-            <div class="main-flower">
-                🌻
-            </div>
+        <div class="magicLights"></div>
 
 
-            <h1>
-                O Jardim Onde Você Floresce
-            </h1>
-
-
-            <h2>
-                feito para Tainá
-            </h2>
-
-
-            <p>
-                Há pequenas coisas que eu guardo
-                e que me fazem lembrar de você.
-            </p>
-
-
-            <button id="enterButton">
-                Entrar no jardim →
-            </button>
-
-
+        <div class="introFlower">
+            🌻
         </div>
 
 
-    </section>
+        <h1>
+            O Jardim Onde Você Floresce
+        </h1>
 
 
+        <h2>
+            feito para Tainá
+        </h2>
 
 
+        <p>
+            Há pequenas coisas que eu guardo
+            e que me fazem lembrar de você.
+        </p>
 
 
-
-
-    <!-- =========================
-         TRANSIÇÃO DA PÉTALA
-    ========================== -->
-
-
-    <section id="transitionScreen" class="screen">
-
-
-        <div id="petal">
-
-            🌸
-
-        </div>
-
-
-    </section>
-
-
-
-
-
-
-
-
-
-    <!-- =========================
-         JARDIM PRINCIPAL
-    ========================== -->
-
-
-    <section id="gardenScreen" class="screen">
-
-
-        <div id="garden">
-
-
-
-            <!-- Flores serão criadas pelo JS -->
-
-            <div id="flowersContainer"></div>
-
-
-
-
-            <!-- Luzes -->
-
-            <div id="particlesContainer"></div>
-
-
-
-
-            <!-- Folhas passando -->
-
-            <div id="windContainer"></div>
-
-
-
-
-            <!-- Insetos -->
-
-            <div id="insectsContainer"></div>
-
-
-
-
-
-
-
-            <!-- =========================
-                 GIRASSOL FINAL
-            ========================== -->
-
-
-            <div id="finalMessage" class="hidden">
-
-
-                <div class="final-sunflower">
-
-                    🌻
-
-                </div>
-
-
-
-                <h2>
-
-                    Amor, fiz este jardim com coisas
-                    que são importantes para mim
-                    e que guardo comigo.
-
-                </h2>
-
-
-
-
-                <p>
-
-                    Isso porque eu gosto de você nos detalhes —
-                    no seu sorriso, na sua risada,
-                    no seu jeito e em cada pequena coisa
-                    que faz você ser a minha pequenininha.
-
-                </p>
-
-
-
-
-                <button id="returnGarden">
-
-                    Voltar ao jardim
-
-                </button>
-
-
-            </div>
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-        <!-- =========================
-             CONTADOR
-        ========================== -->
-
-
-        <div id="counterBox">
-
-
-            <h3>
-
-                Tempo desde a primeira mensagem
-
-            </h3>
-
-
-
-            <p id="counter">
-
-                Carregando...
-
-            </p>
-
-
-        </div>
-
-
-
-
-
-    </section>
-
-
-
-
-
-
-
-
-
-    <!-- =========================
-         CARTA
-    ========================== -->
-
-
-    <div id="letterModal" class="hidden">
-
-
-        <div id="letterPaper">
-
-
-            <button id="closeLetter">
-
-                ×
-
-            </button>
-
-
-
-
-            <h2 id="letterTitle">
-
-            </h2>
-
-
-
-            <p id="letterText">
-
-            </p>
-
-
-
-        </div>
+        <button id="enterButton">
+            Entrar no jardim →
+        </button>
 
 
     </div>
 
 
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     TRANSIÇÃO
+========================= -->
+
+
+<section id="transitionScreen" class="screen">
+
+
+    <div id="petal">
+        🌸
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     JARDIM
+========================= -->
+
+
+<section id="gardenScreen" class="screen">
+
+
+
+    <div id="garden">
+
+
+
+        <div id="particlesContainer"></div>
+
+
+        <div id="windContainer"></div>
+
+
+        <div id="insectsContainer"></div>
+
+
+        <div id="flowersContainer"></div>
+
+
+
+
+
+        <!-- GIRASSOL FINAL -->
+
+
+        <div id="finalMessage" class="hidden">
+
+
+            <div class="finalFlower">
+
+                🌻
+
+            </div>
+
+
+
+            <h2>
+
+                Amor, fiz este jardim com coisas
+                que são importantes para mim
+                e que guardo comigo.
+
+            </h2>
+
+
+
+            <p>
+
+                Isso porque eu gosto de você nos detalhes —
+                no seu sorriso, na sua risada,
+                no seu jeito e em cada pequena coisa
+                que faz você ser a minha pequenininha.
+
+            </p>
+
+
+
+            <button id="returnButton">
+
+                Voltar ao jardim
+
+            </button>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- CONTADOR -->
+
+
+    <div id="counterBox">
+
+
+        <h3>
+            Tempo desde a primeira mensagem
+        </h3>
+
+
+        <p id="relationshipCounter">
+
+            0 dias, 0 horas e 0 minutos
+
+        </p>
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+
+<div id="letterModal" class="hidden">
+
+
+
+    <div id="letter">
+
+
+
+        <button id="closeLetter">
+
+            ×
+
+        </button>
+
+
+
+
+        <h2 id="letterTitle">
+
+            Título
+
+        </h2>
+
+
+
+
+        <p id="letterText">
+
+            Texto da lembrança
+
+        </p>
+
+
+
+
+    </div>
 
 
 
@@ -285,10 +263,16 @@
 
 
 
+
+
+
+
 <script src="script.js"></script>
 
 
-</body>
+</div>
 
+
+</body>
 
 </html>
