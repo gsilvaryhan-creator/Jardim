@@ -1,340 +1,494 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#FFF8F0">
+<meta charset="UTF-8">
 
-    <title>O Jardim Onde Você Floresce</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#FFF8F0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>
+O Jardim Onde Você Floresce 🌻
+</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Container principal da experiência -->
-    <main id="app">
 
+<main id="app">
 
-        <!-- =========================
-             TELA INTRO
-        ========================== -->
 
-        <section id="intro" class="screen active">
 
-            <div class="background-particles" id="introParticles"></div>
+<!-- =========================
+INTRO
+========================= -->
 
-            <div class="intro-content">
 
-                <div class="intro-flower">
-                    🌻
-                </div>
+<section 
+id="intro"
+class="screen active">
 
 
-                <h1>
-                    O Jardim Onde Você Floresce
-                </h1>
+<div class="intro-content">
 
 
-                <h2>
-                    feito para Tainá
-                </h2>
+<div class="intro-flower">
+🌻
+</div>
 
 
-                <p>
-                    Há pequenas coisas que guardo comigo e que sempre me fazem lembrar de você.
-                </p>
+<h1>
+O Jardim Onde Você Floresce
+</h1>
 
 
-                <button id="enterGardenBtn" class="primary-button">
-                    Entrar no Jardim →
-                </button>
+<h2>
+feito para Tainá
+</h2>
 
-            </div>
 
+<p>
+Há pequenas coisas que guardo comigo e que sempre me fazem lembrar de você.
+</p>
 
-            <div class="floating-flower">
-                🌸
-            </div>
 
-        </section>
 
+<button 
+id="enterGarden"
+class="main-button">
 
+Entrar no Jardim →
 
+</button>
 
-        <!-- =========================
-             TRANSIÇÃO
-        ========================== -->
 
-        <section id="transition" class="screen">
+</div>
 
-            <div class="transition-content">
 
-                <div id="fallingPetal">
-                    🌸
-                </div>
+</section>
 
-            </div>
 
-        </section>
 
 
 
 
+<!-- =========================
+TRANSITION
+========================= -->
 
-        <!-- =========================
-             JARDIM
-        ========================== -->
 
-        <section id="garden" class="screen">
+<section 
+id="transition"
+class="screen">
 
 
-            <div class="garden-top">
+<div class="transition-content">
 
 
-                <div class="counter">
+<div id="fallingPetal">
+🌸
+</div>
 
-                    <span class="counter-title">
-                        Nosso tempo juntos
-                    </span>
 
+<p>
+Preparando seu jardim...
+</p>
 
-                    <div class="counter-values">
 
-                        <div>
-                            <strong id="days">
-                                0
-                            </strong>
+</div>
 
-                            <small>
-                                dias
-                            </small>
-                        </div>
 
+</section>
 
-                        <div>
-                            <strong id="hours">
-                                0
-                            </strong>
 
-                            <small>
-                                horas
-                            </small>
-                        </div>
 
 
-                        <div>
-                            <strong id="minutes">
-                                0
-                            </strong>
 
-                            <small>
-                                minutos
-                            </small>
-                        </div>
 
+<!-- =========================
+GARDEN
+========================= -->
 
-                    </div>
 
-                </div>
+<section 
+id="garden"
+class="screen">
 
 
+<div class="garden-background">
 
-                <button id="musicBtn" class="music-button">
-                    🔊 Música
-                </button>
 
+<div class="garden-light"></div>
 
-            </div>
 
+<div id="particles-container"></div>
 
 
+<div id="leaves-container"></div>
 
 
-            <div class="garden-area" id="gardenArea">
 
+<div 
+id="flowers-container">
 
-                <div class="garden-light"></div>
+</div>
 
 
-                <div class="grass-layer"></div>
 
+</div>
 
-                <div id="leavesContainer"></div>
 
 
-                <div id="particlesContainer"></div>
 
 
-                <!-- Flores serão criadas pelo JavaScript -->
+<div class="garden-ui">
 
-                <div id="flowersContainer"></div>
 
+<div class="counter-box">
 
 
-                <!-- Carta dinâmica -->
+<span>
+Nosso tempo juntos
+</span>
 
-                <div id="letterModal" class="letter-modal">
 
+<div id="loveCounter">
 
-                    <div class="letter-paper">
 
+<div>
+<strong id="days">
+0
+</strong>
 
-                        <button id="closeLetter" class="close-letter">
-                            ×
-                        </button>
+<p>
+Dias
+</p>
 
+</div>
 
-                        <h3 id="letterTitle">
-                        </h3>
 
 
-                        <p id="letterText">
-                        </p>
+<div>
+<strong id="hours">
+0
+</strong>
 
+<p>
+Horas
+</p>
 
-                    </div>
+</div>
 
 
-                </div>
 
+<div>
+<strong id="minutes">
+0
+</strong>
 
+<p>
+Minutos
+</p>
 
-            </div>
+</div>
 
 
 
-        </section>
+</div>
 
 
+</div>
 
 
 
 
-        <!-- =========================
-             TELA FINAL
-        ========================== -->
+<button 
+id="musicButton"
+class="music-button">
 
-        <section id="final" class="screen">
+🔊 Música
 
+</button>
 
-            <div class="final-overlay"></div>
 
 
-            <div class="final-card">
+</div>
 
 
-                <div class="final-sunflower" id="finalSunflower">
-                    🌻
-                </div>
 
+</section>
 
 
-                <h1>
-                    Para minha pequenininha 🌻
-                </h1>
+    <!-- =========================
+MODAL DAS CARTAS
+========================= -->
 
 
+<div 
+id="letterModal"
+class="modal">
 
-                <div class="final-message">
 
+<div class="letter-card">
 
-                    <p>
-                        Amor,
-                    </p>
 
+<button 
+id="closeLetter"
+class="close-button">
 
-                    <p>
-                        fiz este jardim com pequenas coisas que são importantes para mim.
-                    </p>
+×
 
+</button>
 
-                    <p>
-                        Cada flor representa um detalhe que mora comigo.
-                    </p>
 
 
-                    <p>
-                        Seu sorriso.
-                    </p>
+<div class="letter-content">
 
 
-                    <p>
-                        Sua risada.
-                    </p>
+<div class="letter-icon">
+🌷
+</div>
 
 
-                    <p>
-                        Seu jeitinho.
-                    </p>
+<h3 id="letterTitle">
 
+</h3>
 
-                    <p>
-                        As nossas conversas.
-                    </p>
 
+<p id="letterText">
 
-                    <p>
-                        Tudo isso foi florescendo dentro de mim.
-                    </p>
+</p>
 
 
-                    <p>
-                        Espero que sempre que voltar aqui consiga sentir um pedacinho do quanto você é especial para mim.
-                    </p>
 
+<button 
+id="nextLetter"
+class="letter-button">
 
-                    <p>
-                        Com todo meu carinho,
-                    </p>
+Continuar 🌼
 
+</button>
 
-                    <p>
-                        João ❤️
-                    </p>
 
+</div>
 
-                </div>
 
+</div>
 
 
+</div>
 
-                <button id="backGardenBtn" class="primary-button">
 
-                    🌼 Voltar ao Jardim
 
-                </button>
 
 
 
-            </div>
+<!-- =========================
+OVERLAY FINAL DO GIRASSOL
+========================= -->
 
 
+<div 
+id="sunflowerTransition"
+class="sunflower-transition">
 
-        </section>
 
+<div 
+id="giantSunflower">
 
+🌻
 
-    </main>
+</div>
 
 
+</div>
 
 
 
-    <!-- Áudio controlado pelo JavaScript -->
-    <audio id="backgroundMusic" loop>
 
-    </audio>
 
 
+<!-- =========================
+FINAL
+========================= -->
 
-    <script src="script.js"></script>
+
+<section 
+id="final"
+class="screen">
+
+
+
+<div class="final-card">
+
+
+
+<div class="final-flower">
+
+🌻
+
+</div>
+
+
+
+<h1>
+
+Para minha pequenininha 🌻
+
+</h1>
+
+
+
+<div class="final-message">
+
+
+<p>
+
+Amor,
+
+</p>
+
+
+
+<p>
+
+Fiz este jardim com pequenas coisas que são importantes para mim.
+
+</p>
+
+
+
+<p>
+
+Cada flor representa um detalhe que mora comigo.
+
+</p>
+
+
+
+<p>
+
+Seu sorriso.
+
+<br>
+
+Sua risada.
+
+<br>
+
+Seu jeitinho.
+
+<br>
+
+As nossas conversas.
+
+</p>
+
+
+
+<p>
+
+Tudo isso foi florescendo dentro de mim.
+
+</p>
+
+
+
+<p>
+
+Espero que sempre que voltar aqui consiga sentir um pedacinho do quanto você é especial para mim.
+
+</p>
+
+
+
+<p>
+
+Com todo meu carinho,
+
+</p>
+
+
+
+<p>
+
+João ❤️
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<button 
+id="backGarden"
+class="main-button">
+
+🌼 Voltar ao Jardim
+
+</button>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+
+
+
+
+<!-- =========================
+AUDIO
+========================= -->
+
+
+<audio 
+id="backgroundMusic"
+loop>
+
+
+<source 
+src="music.mp3"
+type="audio/mpeg">
+
+
+</audio>
+
+
+
+
+<script src="script.js"></script>
+
 
 </body>
+
 </html>
+
+
