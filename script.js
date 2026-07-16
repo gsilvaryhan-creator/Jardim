@@ -1,113 +1,75 @@
-/* ==================================================
+/* =========================================
    O JARDIM ONDE VOCÊ FLORESCE
-   SCRIPT DEFINITIVO
-================================================== */
-
-
-document.addEventListener("DOMContentLoaded", iniciar);
+   SCRIPT.JS FINAL
+========================================= */
 
 
 
-function iniciar(){
-
-
-console.log("🌻 Jardim iniciado");
-
-
-
-/* ==========================
+/* ===============================
    ELEMENTOS
-========================== */
+================================ */
 
 
-const introScreen =
-document.getElementById("introScreen");
+const introScreen = document.getElementById("introScreen");
+
+const transitionScreen = document.getElementById("transitionScreen");
+
+const gardenScreen = document.getElementById("gardenScreen");
 
 
-const transitionScreen =
-document.getElementById("transitionScreen");
+const enterButton = document.getElementById("enterButton");
 
 
-const gardenScreen =
-document.getElementById("gardenScreen");
+const flowersContainer = document.getElementById("flowersContainer");
 
+const particlesContainer = document.getElementById("particlesContainer");
 
+const windContainer = document.getElementById("windContainer");
 
-const enterButton =
-document.getElementById("enterButton");
-
-
-const petal =
-document.getElementById("petal");
-
-
-
-const flowersContainer =
-document.getElementById("flowersContainer");
-
-
-const particlesContainer =
-document.getElementById("particlesContainer");
-
-
-const windContainer =
-document.getElementById("windContainer");
-
-
-const insectsContainer =
-document.getElementById("insectsContainer");
+const insectsContainer = document.getElementById("insectsContainer");
 
 
 
-const letterModal =
-document.getElementById("letterModal");
+const letterModal = document.getElementById("letterModal");
 
+const letterTitle = document.getElementById("letterTitle");
 
-const letterTitle =
-document.getElementById("letterTitle");
+const letterText = document.getElementById("letterText");
 
-
-const letterText =
-document.getElementById("letterText");
-
-
-const closeLetter =
-document.getElementById("closeLetter");
+const closeLetter = document.getElementById("closeLetter");
 
 
 
-const counter =
-document.getElementById("counter");
+const counter = document.getElementById("relationshipCounter");
 
 
-const finalMessage =
-document.getElementById("finalMessage");
+const finalMessage = document.getElementById("finalMessage");
 
-
-const returnGarden =
-document.getElementById("returnGarden");
+const returnButton = document.getElementById("returnButton");
 
 
 
 
 
-/* ==========================
-   VERIFICAÇÃO
-========================== */
+/* ===============================
+   VERIFICAÇÃO DE SEGURANÇA
+================================ */
+
+
+console.log("🌻 Jardim carregado");
+
 
 
 if(
+!enterButton ||
 !introScreen ||
 !transitionScreen ||
-!gardenScreen ||
-!enterButton
+!gardenScreen
 ){
 
 console.error(
 "Erro: elementos principais não encontrados"
 );
-
-return;
 
 }
 
@@ -117,96 +79,124 @@ return;
 
 
 
-/* ==========================
-   ESTADO
-========================== */
 
 
-let jardimAberto=false;
-
-let cartasAbertas=0;
-
-const totalCartas=11;
-
-
-
-
-
-
-
-
-/* ==========================
+/* ===============================
    CARTAS
-========================== */
+================================ */
 
 
-const cartas=[
+const cartas = [
 
 
-[
-"Seu cabelo",
+{
+
+titulo:"Seu cabelo",
+
+texto:
 "Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
-],
+
+},
 
 
-[
-"Seus olhos",
+{
+
+titulo:"Seus olhos",
+
+texto:
 "Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
-],
+
+},
 
 
-[
-"O seu sorriso",
+{
+
+titulo:"O seu sorriso",
+
+texto:
 "O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
-],
+
+},
 
 
-[
-"Minha pitucha",
-"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida, não vejo minha rotina sem você."
-],
+{
+
+titulo:"Minha pitucha",
+
+texto:
+"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida."
+
+},
 
 
-[
-"Quando você ri de mim",
+{
+
+titulo:"Quando você ri de mim",
+
+texto:
 "Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
-],
+
+},
 
 
-[
-"O jeito que você cuida",
-"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas para muita gente, mas eu vejo e admiro muito em você."
-],
+{
+
+titulo:"O jeito que você cuida",
+
+texto:
+"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar."
+
+},
 
 
-[
-"Baixo, não guitarra",
-"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso."
-],
+{
+
+titulo:"Baixo, não guitarra",
+
+texto:
+"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava a diferença."
+
+},
 
 
-[
-"A cartinha de girassol",
-"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda, mas o que eu mais amo nela é saber que você separou um tempo e carinho para fazer algo pensando em mim."
-],
+{
+
+titulo:"A cartinha de girassol",
+
+texto:
+"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela mostra o carinho que você colocou nela."
+
+},
 
 
-[
-"As nossas calls",
-"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
-],
+{
+
+titulo:"As nossas calls",
+
+texto:
+"Eu gosto muito dos nossos momentos simples, como nossas calls enquanto eu cozinhava e você ia me ensinando."
+
+},
 
 
-[
-"As minhas piadinhas",
-"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é o meu jeito de brincar com você e criar momentos bobos."
-],
+{
+
+titulo:"As minhas piadinhas",
+
+texto:
+"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é meu jeito de brincar com você."
+
+},
 
 
-[
-"O nosso caminho",
+{
+
+titulo:"O nosso caminho",
+
+texto:
 "A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
-]
+
+}
 
 
 ];
@@ -215,54 +205,38 @@ const cartas=[
 
 
 
+let cartasAbertas = 0;
 
 
 
-/* ==========================
-   ENTRADA DO JARDIM
-========================== */
-
-
-enterButton.onclick=function(){
 
 
 
-if(jardimAberto){
 
-return;
-
-}
-
+/* ===============================
+   ENTRAR NO JARDIM
+================================ */
 
 
-jardimAberto=true;
-
+enterButton.addEventListener(
+"click",
+()=>{
 
 
 introScreen.classList.remove("active");
 
 
-
-setTimeout(function(){
-
+setTimeout(()=>{
 
 
 transitionScreen.classList.add("active");
 
 
-petal.style.animation=
-"petalFall 2s forwards";
+},600);
 
 
 
-},500);
-
-
-
-
-
-setTimeout(function(){
-
+setTimeout(()=>{
 
 
 transitionScreen.classList.remove("active");
@@ -276,11 +250,13 @@ iniciarJardim();
 
 
 
-},2500);
+},3000);
 
 
 
-};
+}
+
+);
 
 
 
@@ -290,9 +266,9 @@ iniciarJardim();
 
 
 
-/* ==========================
-   INICIAR JARDIM
-========================== */
+/* ===============================
+   CRIAR FLORES
+================================ */
 
 
 function iniciarJardim(){
@@ -300,77 +276,31 @@ function iniciarJardim(){
 
 criarFlores();
 
-
 criarParticulas();
 
+criarInsetos();
 
 criarVento();
 
 
-criarInsetos();
-
-
-atualizarContador();
-
-
 }
 
-
-
-
-
-
-
-
-
-/* ==========================
-   FLORES
-========================== */
 
 
 function criarFlores(){
 
 
 
-let especiais=[];
-
-
-while(especiais.length<11){
-
-
-let n=
-Math.floor(Math.random()*40);
-
-
-
-if(!especiais.includes(n)){
-
-
-especiais.push(n);
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-const tipos=[
+const flores = [
 
 "🌹",
 "🌷",
-"🌸",
 "🌼",
-"💐"
+"🌸",
+"💐",
+"🌺"
 
 ];
-
-
 
 
 
@@ -378,7 +308,7 @@ for(let i=0;i<40;i++){
 
 
 
-const flor=
+let flor =
 document.createElement("div");
 
 
@@ -387,56 +317,59 @@ flor.className="flower";
 
 
 
-flor.innerHTML=
-tipos[
+flor.innerHTML =
+flores[
 Math.floor(
-Math.random()*tipos.length
+Math.random()*flores.length
 )
 ];
 
 
 
-flor.style.left=
-(10+Math.random()*75)+"%";
+let x =
+Math.random()*80+10;
+
+
+let y =
+Math.random()*75+10;
 
 
 
-flor.style.top=
-(10+Math.random()*75)+"%";
+flor.style.left=x+"%";
+
+flor.style.top=y+"%";
 
 
 
-flor.style.animation=
-`flowerBorn .8s forwards ${i*0.08}s`;
+flor.style.animationDelay=
+(i*0.08)+"s";
 
 
 
 
 
-if(especiais.includes(i)){
+if(i<11){
+
 
 
 flor.classList.add(
-"special-flower"
+"specialFlower"
 );
 
 
-flor.dataset.carta=
-especiais.indexOf(i);
+
+flor.dataset.carta=i;
 
 
 
-flor.onclick=function(){
+flor.addEventListener(
+"click",
+()=>abrirCarta(i)
+);
 
-
-abrirCarta(this);
-
-
-};
 
 
 }
-
 
 
 
@@ -448,32 +381,32 @@ flowersContainer.appendChild(flor);
 
 
 
-   
-
-
 }
 
 
-/* ==========================
+
+
+
+
+
+
+
+/* ===============================
    CARTAS
-========================== */
+================================ */
 
 
-function abrirCarta(flor){
-
-
-const indice =
-Number(flor.dataset.carta);
+function abrirCarta(numero){
 
 
 
 letterTitle.innerText =
-cartas[indice][0];
+cartas[numero].titulo;
 
 
 
 letterText.innerText =
-cartas[indice][1];
+cartas[numero].texto;
 
 
 
@@ -483,67 +416,21 @@ letterModal.classList.remove(
 
 
 
-if(!flor.dataset.lida){
+if(
+!cartas[numero].aberta
+){
 
 
-flor.dataset.lida="true";
+cartas[numero].aberta=true;
 
 
 cartasAbertas++;
 
 
-
-verificarFinal();
-
-
-}
+if(cartasAbertas===11){
 
 
-
-}
-
-
-
-
-
-
-if(closeLetter){
-
-
-closeLetter.onclick=function(){
-
-
-letterModal.classList.add(
-"hidden"
-);
-
-
-};
-
-
-}
-
-
-
-
-
-
-
-
-/* ==========================
-   FINAL
-========================== */
-
-
-function verificarFinal(){
-
-
-if(cartasAbertas===totalCartas){
-
-
-
-setTimeout(function(){
-
+setTimeout(()=>{
 
 
 finalMessage.classList.remove(
@@ -551,10 +438,11 @@ finalMessage.classList.remove(
 );
 
 
-
 },1000);
 
 
+}
+
 
 }
 
@@ -565,22 +453,20 @@ finalMessage.classList.remove(
 
 
 
-if(returnGarden){
+
+closeLetter.addEventListener(
+"click",
+()=>{
 
 
-returnGarden.onclick=function(){
-
-
-finalMessage.classList.add(
+letterModal.classList.add(
 "hidden"
 );
 
 
-};
-
-
 }
 
+);
 
 
 
@@ -589,12 +475,13 @@ finalMessage.classList.add(
 
 
 
-/* ==========================
+
+/* ===============================
    CONTADOR
-========================== */
+================================ */
 
 
-const primeiraMensagem =
+const inicio =
 new Date(
 "2026-04-27T18:14:00"
 );
@@ -605,39 +492,37 @@ function atualizarContador(){
 
 
 
-const agora =
+let agora =
 new Date();
 
 
 
-const diferenca =
-agora - primeiraMensagem;
+let tempo =
+agora - inicio;
 
 
 
-
-const dias =
+let dias =
 Math.floor(
-diferenca /
-(1000*60*60*24)
+tempo /
+86400000
 );
 
 
 
-const horas =
+let horas =
 Math.floor(
-diferenca /
-(1000*60*60)
+tempo /
+3600000
 )%24;
 
 
 
-const minutos =
+let minutos =
 Math.floor(
-diferenca /
-(1000*60)
+tempo /
+60000
 )%60;
-
 
 
 
@@ -656,6 +541,7 @@ atualizarContador,
 );
 
 
+atualizarContador();
 
 
 
@@ -663,9 +549,11 @@ atualizarContador,
 
 
 
-/* ==========================
+
+
+/* ===============================
    PARTICULAS
-========================== */
+================================ */
 
 
 function criarParticulas(){
@@ -676,43 +564,26 @@ for(let i=0;i<30;i++){
 
 
 
-const brilho =
+let p =
 document.createElement("span");
 
 
 
-brilho.innerHTML="✦";
+p.innerHTML="✦";
 
 
 
-brilho.style.position=
-"absolute";
-
-
-
-brilho.style.left=
+p.style.left=
 Math.random()*100+"%";
 
 
 
-brilho.style.top=
+p.style.top=
 Math.random()*100+"%";
 
 
 
-brilho.style.opacity=
-Math.random();
-
-
-
-brilho.style.fontSize=
-"14px";
-
-
-
-particlesContainer.appendChild(
-brilho
-);
+particlesContainer.appendChild(p);
 
 
 
@@ -730,41 +601,34 @@ brilho
 
 
 
-/* ==========================
+/* ===============================
    VENTO
-========================== */
+================================ */
 
 
 function criarVento(){
 
 
 
-for(let i=0;i<8;i++){
+for(let i=0;i<6;i++){
 
 
 
-const folha =
+let folha =
 document.createElement("span");
-
 
 
 folha.innerHTML="🍃";
 
 
-
-folha.style.position=
-"absolute";
-
-
-
-folha.style.left=
-"-10%";
-
+folha.style.position="absolute";
 
 
 folha.style.top=
 Math.random()*90+"%";
 
+
+folha.style.left="-20%";
 
 
 folha.style.animation=
@@ -772,9 +636,7 @@ folha.style.animation=
 
 
 
-windContainer.appendChild(
-folha
-);
+windContainer.appendChild(folha);
 
 
 
@@ -792,88 +654,80 @@ folha
 
 
 
-/* ==========================
+/* ===============================
    INSETOS
-========================== */
+================================ */
 
 
 function criarInsetos(){
 
 
 
-const lista=[
-
+const insetos=[
 "🦋",
-"🐞",
-"🐝"
-
+"🐝",
+"🐞"
 ];
 
 
 
-
-for(let i=0;i<4;i++){
-
+for(let i=0;i<5;i++){
 
 
-const inseto =
+
+let inseto =
 document.createElement("span");
 
 
 
-inseto.innerHTML =
-lista[
-i % lista.length
-];
+inseto.innerHTML=
+insetos[i%3];
 
 
 
-inseto.style.position=
-"absolute";
-
+inseto.style.position="absolute";
 
 
 inseto.style.left=
 Math.random()*80+"%";
 
 
-
 inseto.style.top=
 Math.random()*80+"%";
 
 
-
-inseto.style.fontSize=
-"25px";
+insectsContainer.appendChild(inseto);
 
 
 
-inseto.style.animation=
-"float 5s infinite";
+}
 
 
 
-insectsContainer.appendChild(
-inseto
+}
+
+
+
+
+
+
+
+
+/* ===============================
+   VOLTAR AO JARDIM
+================================ */
+
+
+returnButton.addEventListener(
+"click",
+()=>{
+
+
+finalMessage.classList.add(
+"hidden"
 );
 
 
-
 }
 
-
-}
-
-
-
-
-
-
-
-console.log(
-"🌻 Todos os sistemas carregados"
 );
-
-
-
-}
