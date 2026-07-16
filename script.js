@@ -1,371 +1,120 @@
-/* ==========================================
-   CONFIGURAÇÕES
-========================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
 
-const intro = document.getElementById("intro");
-const transition = document.getElementById("transition");
-const gardenScreen = document.getElementById("gardenScreen");
-const finalScreen = document.getElementById("finalScreen");
+/* =====================================
+   ELEMENTOS
+===================================== */
 
 
-const enterButton = document.getElementById("enterGarden");
-
-const garden = document.getElementById("garden");
-
-
-const modal = document.getElementById("letterModal");
-const letterTitle = document.getElementById("letterTitle");
-const letterText = document.getElementById("letterText");
-
-const closeLetter = document.getElementById("closeLetter");
+const telaInicial = document.getElementById(
+    "tela-inicial"
+);
 
 
-const counter = document.getElementById("counter");
+const telaJardim = document.getElementById(
+    "tela-jardim"
+);
 
 
-const finalButton = document.getElementById("finalButton");
-
-const backGarden = document.getElementById("backGarden");
-
-
-const musicButton = document.getElementById("musicButton");
-const music = document.getElementById("backgroundMusic");
+const telaFinal = document.getElementById(
+    "tela-final"
+);
 
 
+const botaoEntrar = document.getElementById(
+    "botao-entrar"
+);
 
 
-
-/* ==========================================
-   ESTADO DO JOGO
-========================================== */
-
-
-let openedLetters = 0;
+const musica = document.getElementById(
+    "musica-jardim"
+);
 
 
-let lettersOpened = [];
-
-
-let musicPlaying = false;
+const jardim = document.getElementById(
+    "jardim"
+);
 
 
 
 
-
-/* ==========================================
-   FLORES INICIAIS NASCENDO
-========================================== */
-
-
-window.addEventListener("load",()=>{
+/* =====================================
+   CONTROLE
+===================================== */
 
 
-    createParticles();
+let cartasEncontradas = [];
 
 
-    createGardenFlowers();
-
-
-});
+let jardimIniciado = false;
 
 
 
 
 
-/* ==========================================
+/* =====================================
+   DATA DO CONTADOR
+===================================== */
+
+
+const dataInicio = new Date(
+    2026,
+    3,
+    27,
+    18,
+    14,
+    0
+);
+
+
+
+
+
+
+/* =====================================
    ENTRAR NO JARDIM
-========================================== */
+===================================== */
 
 
-enterButton.addEventListener("click",()=>{
+if(botaoEntrar){
 
 
-    intro.classList.remove("active");
-
-
-    setTimeout(()=>{
-
-
-        transition.classList.add("active");
-
-
-    },600);
-
-
-
-    setTimeout(()=>{
-
-
-        transition.classList.remove("active");
-
-
-        gardenScreen.classList.add("active");
-
-
-    },3000);
-
-
-
-});
-
-
-
-
-
-/* ==========================================
-   CRIAR FLORES DO JARDIM
-========================================== */
-
-
-function createGardenFlowers(){
-
-
-const normalFlowers=[
-
-"🌷",
-"🌹",
-"🌸",
-"🌺",
-"💮",
-"🌼"
-
-];
-
-
-for(let i=0;i<40;i++){
-
-
-    const flower=document.createElement("div");
-
-
-    flower.classList.add("flower");
-
-
-    flower.innerHTML=
-    normalFlowers[
-        Math.floor(
-            Math.random()*normalFlowers.length
-        )
-    ];
-
-
-
-    /*
-    Mantém dentro do jardim
-    com margem para celular
-    */
-
-
-    const x=Math.random()*75+10;
-
-    const y=Math.random()*75+10;
-
-
-
-    flower.style.left=x+"%";
-
-    flower.style.top=y+"%";
-
-
-
-    flower.style.animationDelay=
-    (i*0.08)+"s";
-
-
-
-    garden.appendChild(flower);
-
-
-
-}
-
-
-
-createSpecialFlowers();
-
-
-}
-
-
-
-
-
-/* ==========================================
-   FLORES COM CARTAS
-========================================== */
-
-
-function createSpecialFlowers(){
-
-
-
-flowerMemories.forEach((memory,index)=>{
-
-
-const flower=document.createElement("div");
-
-
-flower.classList.add(
-"flower",
-"special-flower"
-);
-
-
-
-flower.innerHTML="🌹";
-
-
-
-/*
-
-Posições limitadas para
-não sair do jardim
-
-*/
-
-
-const x=Math.random()*70+12;
-
-const y=Math.random()*70+12;
-
-
-
-flower.style.left=x+"%";
-
-flower.style.top=y+"%";
-
-
-
-flower.style.animationDelay=
-(index+3)*0.2+"s";
-
-
-
-flower.dataset.index=index;
-
-
-
-flower.addEventListener(
+botaoEntrar.addEventListener(
 "click",
 ()=>{
 
 
-openLetter(index);
+    telaInicial.classList.remove(
+        "ativa"
+    );
 
 
-}
-);
+    telaJardim.classList.add(
+        "ativa"
+    );
 
 
+    iniciarMusica();
 
-garden.appendChild(flower);
 
 
+    if(!jardimIniciado){
 
-});
 
+        jardimIniciado = true;
 
-}
 
+        setTimeout(()=>{
 
 
+            iniciarJardim();
 
 
-/* ==========================================
-   ABRIR CARTA
-========================================== */
+        },300);
 
 
-function openLetter(index){
 
-
-if(!lettersOpened.includes(index)){
-
-
-lettersOpened.push(index);
-
-openedLetters++;
-
-
-}
-
-
-
-const memory=
-flowerMemories[index];
-
-
-
-letterTitle.innerText=
-memory.title;
-
-
-letterText.innerText=
-memory.text;
-
-
-
-modal.classList.add("show");
-
-
-
-checkFinal();
-
-
-}
-
-
-
-
-
-closeLetter.addEventListener(
-"click",
-()=>{
-
-
-modal.classList.remove("show");
-
-
-});
-
-
-
-
-
-/* ==========================================
-   LIBERAR GIRASSOL FINAL
-========================================== */
-
-
-function checkFinal(){
-
-
-if(openedLetters>=flowerMemories.length){
-
-
-finalButton.classList.remove("hidden");
-
-
-}
-
-
-
-}
-
-
-
-
-
-finalButton.addEventListener(
-"click",
-()=>{
-
-
-gardenScreen.classList.remove("active");
-
-
-finalScreen.classList.add("active");
+    }
 
 
 
@@ -373,27 +122,7 @@ finalScreen.classList.add("active");
 
 
 
-
-
-
-
-/* ==========================================
-   VOLTAR AO JARDIM
-========================================== */
-
-
-backGarden.addEventListener(
-"click",
-()=>{
-
-
-finalScreen.classList.remove("active");
-
-
-gardenScreen.classList.add("active");
-
-
-});
+}
 
 
 
@@ -401,64 +130,115 @@ gardenScreen.classList.add("active");
 
 
 
-/* ==========================================
-   CONTADOR DESDE PRIMEIRA MENSAGEM
-========================================== */
+/* =====================================
+   MÚSICA
+===================================== */
+
+
+function iniciarMusica(){
+
+
+    if(!musica)
+    return;
 
 
 
-function updateCounter(){
+    musica.volume = 0.25;
 
 
-const start=
-new Date(
-"2026-04-27T18:14:00"
+
+    musica.play()
+    .catch(()=>{
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   CONTADOR
+===================================== */
+
+
+function atualizarContador(){
+
+
+const contador =
+document.getElementById(
+    "contador"
 );
 
 
 
-const now=new Date();
+if(!contador)
+return;
 
 
 
-const difference=
-now-start;
+const agora = new Date();
+
+
+const diferenca =
+agora - dataInicio;
 
 
 
-const seconds=
+if(diferenca < 0)
+return;
+
+
+
+const segundos =
 Math.floor(
-difference/1000
+    diferenca / 1000
 );
 
 
 
-const days=
+const dias =
 Math.floor(
-seconds/(60*60*24)
+    segundos / 86400
 );
 
 
 
-const hours=
+const horas =
 Math.floor(
-(seconds%(60*60*24))
-/(60*60)
+    (segundos % 86400)
+    /
+    3600
 );
 
 
 
-const minutes=
+const minutos =
 Math.floor(
-(seconds%(60*60))
-/60
+    (segundos % 3600)
+    /
+    60
 );
 
 
 
-counter.innerHTML=
+const seg =
+segundos % 60;
 
-`${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem 💛`;
+
+
+
+contador.innerHTML =
+
+`${dias} dias, ${horas} horas, ${minutos} minutos e ${seg} segundos`;
 
 
 
@@ -467,67 +247,119 @@ counter.innerHTML=
 
 
 setInterval(
-updateCounter,
-1000
-);
-
-
-updateCounter();
-
-
-
-
-
-
-
-/* ==========================================
-   PARTÍCULAS DE LUZ
-========================================== */
-
-
-function createParticles(){
-
-
-
-const container=
-document.getElementById(
-"particles"
+    atualizarContador,
+    1000
 );
 
 
 
-for(let i=0;i<25;i++){
-
-
-const particle=
-document.createElement("div");
+atualizarContador();
 
 
 
-particle.classList.add(
-"particle"
-);
 
 
 
-particle.style.left=
-Math.random()*100+"%";
+
+/* =====================================
+   INICIAR JARDIM
+===================================== */
+
+
+function iniciarJardim(){
 
 
 
-particle.style.top=
-Math.random()*100+"%";
+    posicionarFloresEspeciais();
+
+criarPetalasVento();
+
+    criarFloresNormaisComAnimacao();
 
 
 
-particle.style.animationDelay=
-Math.random()*5+"s";
+}
+
+/* =====================================
+   CRIAR FLORES NORMAIS
+===================================== */
+
+
+function criarFloresNormaisComAnimacao(){
 
 
 
-container.appendChild(
-particle
-);
+    const tipos = [
+
+
+        "🌹",
+        "🌷",
+        "🌼",
+        "🌸",
+        "🌺",
+        "🪻",
+        "🌱",
+        "🍀"
+
+
+    ];
+
+
+
+    const quantidade = 60;
+
+
+
+
+
+    for(
+        let i = 0;
+        i < quantidade;
+        i++
+    ){
+
+
+
+        setTimeout(()=>{
+
+
+
+            const flor =
+            document.createElement(
+                "div"
+            );
+
+
+
+            flor.classList.add(
+                "flor",
+                "normal"
+            );
+
+
+
+            flor.textContent =
+            tipos[
+                Math.floor(
+                    Math.random()
+                    *
+                    tipos.length
+                )
+            ];
+
+
+
+            colocarFlorNoJardim(
+                flor
+            );
+
+
+
+        }, i * 45);
+
+
+
+    }
 
 
 
@@ -535,50 +367,1013 @@ particle
 
 
 
+
+
+
+
+
+/* =====================================
+   POSICIONAR FLOR NORMAL
+===================================== */
+
+
+function colocarFlorNoJardim(
+    flor
+){
+
+
+
+    if(!jardim)
+    return;
+
+
+
+    jardim.appendChild(
+        flor
+    );
+
+
+
+    const largura =
+    jardim.clientWidth;
+
+
+
+    const altura =
+    jardim.clientHeight;
+
+
+
+    let tentativa = 0;
+
+
+
+    let conseguiu = false;
+
+
+
+
+
+    while(
+        !conseguiu &&
+        tentativa < 100
+    ){
+
+
+
+        const x =
+        Math.random()
+        *
+        (largura - 40);
+
+
+
+        const y =
+        Math.random()
+        *
+        (altura - 40);
+
+
+
+
+        flor.style.left =
+        `${x}px`;
+
+
+
+        flor.style.top =
+        `${y}px`;
+
+
+
+
+
+        conseguiu =
+        verificarEspaco(
+            flor
+        );
+
+
+
+        tentativa++;
+
+
+
+    }
+
+
+
 }
 
 
 
 
 
-/* ==========================================
-   MÚSICA OPCIONAL
-========================================== */
 
 
-musicButton.addEventListener(
-"click",
-()=>{
+
+/* =====================================
+   EVITAR FLORES JUNTAS DEMAIS
+===================================== */
 
 
-if(!musicPlaying){
+function verificarEspaco(
+    novaFlor
+){
 
 
-music.play();
+
+    const flores =
+    jardim.querySelectorAll(
+        ".flor"
+    );
 
 
-musicButton.innerHTML="🔇";
+
+    const nova =
+    novaFlor.getBoundingClientRect();
 
 
-musicPlaying=true;
+
+
+
+    for(
+        let flor of flores
+    ){
+
+
+
+        if(
+            flor === novaFlor
+        )
+        continue;
+
+
+
+        const outra =
+        flor.getBoundingClientRect();
+
+
+
+
+
+        const distanciaX =
+        Math.abs(
+            nova.left -
+            outra.left
+        );
+
+
+
+        const distanciaY =
+        Math.abs(
+            nova.top -
+            outra.top
+        );
+
+
+
+
+
+        if(
+            distanciaX < 40 &&
+            distanciaY < 40
+        ){
+
+
+
+            return false;
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+    return true;
+
 
 
 }
 
-else{
 
 
-music.pause();
 
 
-musicButton.innerHTML="🔊";
 
 
-musicPlaying=false;
+
+
+/* =====================================
+   FLORES ESPECIAIS
+=
+
+
+
+
+
+
+
+
+
+/* =====================================
+   CLIQUE NAS FLORES ESPECIAIS
+===================================== */
+
+function posicionarFloresEspeciais(){
+
+
+    const flores =
+    document.querySelectorAll(
+        ".flor.especial"
+    );
+
+
+
+    const posicoes = [
+
+
+        [12,15],
+        [35,12],
+        [65,15],
+        [85,25],
+        [20,45],
+        [50,35],
+        [80,45],
+        [25,75],
+        [55,65],
+        [75,80],
+        [45,85]
+
+
+    ];
+
+
+
+
+
+    flores.forEach(
+    (flor,index)=>{
+
+
+        const pos =
+        posicoes[index];
+
+
+
+        if(!pos)
+        return;
+
+
+
+
+        // esconde antes de posicionar
+
+   flor.style.visibility = "hidden";
+
+
+flor.style.left =
+`${pos[0]}%`;
+
+
+flor.style.top =
+`${pos[1]}%`;
+
+
+
+flor.style.transform =
+"translate(-50%, -50%)";
+
+
+
+
+
+       setTimeout(()=>{
+
+
+    flor.style.visibility =
+    "visible";
+
+
+    flor.classList.add(
+        "nascendo"
+    );
+
+
+},2000 + index * 300);
+
+
+
+    });
+
 
 
 }
+
+const floresEspeciais =
+document.querySelectorAll(
+    ".flor.especial"
+);
+
+
+
+
+
+floresEspeciais.forEach(
+(flor)=>{
+
+
+
+    flor.addEventListener(
+    "click",
+    ()=>{
+
+
+
+        const numero =
+        Number(
+            flor.dataset.carta
+        );
+
+
+
+
+        flor.classList.add(
+            "abrindo"
+        );
+
+
+
+
+
+        setTimeout(()=>{
+
+
+
+            flor.classList.remove(
+                "abrindo"
+            );
+
+
+
+            abrirCarta(
+                numero
+            );
+
+
+
+        },800);
+
+
+
+    });
 
 
 
 });
+
+/* =====================================
+   CARTAS DO JARDIM
+===================================== */
+
+
+const cartas = {
+
+
+
+1:{
+emoji:"🌷",
+
+titulo:"Seu cabelo",
+
+texto:
+"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
+
+},
+
+
+
+
+2:{
+emoji:"✨",
+
+titulo:"Seus olhos",
+
+texto:
+"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
+
+},
+
+
+
+
+3:{
+emoji:"😁",
+
+titulo:"O seu sorriso",
+
+texto:
+"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
+
+},
+
+
+
+
+4:{
+emoji:"😚",
+
+titulo:"Minha pitucha",
+
+texto:
+"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida. Eu não consigo imaginar minha rotina sem você nela."
+
+},
+
+
+
+
+5:{
+emoji:"🤣",
+
+titulo:"Quando você ri de mim",
+
+texto:
+"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
+
+},
+
+
+
+
+6:{
+emoji:"🌼",
+
+titulo:"O jeito que você cuida",
+
+texto:
+"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas para muita gente, mas eu vejo e admiro muito em você."
+
+},
+
+
+
+
+7:{
+emoji:"🎸",
+
+titulo:"Baixo, não guitarra",
+
+texto:
+"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso.\n\nAté hoje eu acho engraçado lembrar disso, porque foi uma das nossas primeiras brincadeiras e uma das pequenas coisas que fizeram eu gostar ainda mais dos nossos momentos juntos."
+
+},
+
+
+
+
+8:{
+emoji:"🌻",
+
+titulo:"A cartinha de girassol",
+
+texto:
+"Eu nunca vou esquecer da cartinha de girassol que você fez para mim.\n\nEla é linda, mas o que eu mais amo nela é saber que você separou um tempo e colocou carinho em algo pensando em mim.\n\nÉ uma lembrança simples, mas que significa muito para mim."
+
+},
+
+
+
+
+9:{
+emoji:"📞",
+
+titulo:"As nossas calls",
+
+texto:
+"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia.\n\nMesmo sendo algo simples, são momentos que eu guardo com carinho."
+
+},
+
+
+
+
+10:{
+emoji:"🤪",
+
+titulo:"As minhas piadinhas",
+
+texto:
+"Eu sei que às vezes faço uma piadinha e deixo você meio brava.\n\nMas é o meu jeito de brincar com você, de criar momentos bobos e arrancar um sorriso seu."
+
+},
+
+
+
+
+11:{
+emoji:"🍃",
+
+titulo:"O nosso caminho",
+
+texto:
+"A gente ainda é novo e tem muita coisa para viver.\n\nMas eu quero continuar passando por tudo isso com você, criando novas lembranças e cuidando daquilo que a gente tem."
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+/* =====================================
+   ELEMENTOS DA CARTA
+===================================== */
+
+
+const modalCarta =
+document.getElementById(
+    "modal-carta"
+);
+
+
+
+const tituloCarta =
+document.getElementById(
+    "titulo-carta"
+);
+
+const emojiCarta =
+document.getElementById(
+    "emoji-carta"
+);
+
+const textoCarta =
+document.getElementById(
+    "texto-carta"
+);
+
+
+
+const contadorCartas =
+document.getElementById(
+    "contador-cartas"
+);
+
+
+
+const fecharCarta =
+document.getElementById(
+    "fechar-carta"
+);
+
+
+
+
+
+
+
+
+
+
+/* =====================================
+   ABRIR CARTA
+===================================== */
+
+
+function abrirCarta(numero){
+
+
+
+    const carta =
+    cartas[numero];
+
+
+
+    if(!carta)
+    return;
+
+
+
+
+
+    tituloCarta.textContent =
+    carta.titulo;
+
+emojiCarta.textContent =
+carta.emoji;
+
+
+    textoCarta.textContent =
+    carta.texto;
+
+
+
+
+
+    if(
+        !cartasEncontradas.includes(
+            numero
+        )
+    ){
+
+
+
+        cartasEncontradas.push(
+            numero
+        );
+
+
+
+    }
+
+
+
+
+
+
+    contadorCartas.textContent =
+
+    `${cartasEncontradas.length} de 11`;
+
+
+
+
+
+    modalCarta.classList.add(
+        "ativo"
+    );
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   FECHAR CARTA
+===================================== */
+
+
+if(fecharCarta){
+
+
+
+fecharCarta.addEventListener(
+"click",
+()=>{
+
+
+
+    modalCarta.classList.remove(
+        "ativo"
+    );
+
+
+
+    verificarTodasCartas();
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+if(modalCarta){
+
+
+
+modalCarta.addEventListener(
+"click",
+(e)=>{
+
+
+
+    if(
+        e.target === modalCarta
+    ){
+
+
+
+        modalCarta.classList.remove(
+            "ativo"
+        );
+
+
+
+        verificarTodasCartas();
+
+
+
+    }
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   VERIFICAR 11 CARTAS
+===================================== */
+
+
+function verificarTodasCartas(){
+
+
+
+    if(
+        cartasEncontradas.length === 11
+    ){
+
+
+
+        setTimeout(()=>{
+
+
+            mostrarGirassol();
+
+
+
+        },700);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   MOSTRAR GIRASSOL
+===================================== */
+
+
+function mostrarGirassol(){
+
+
+
+    const girassol =
+    document.getElementById(
+        "girassol-final"
+    );
+
+
+
+    if(!girassol)
+    return;
+
+
+
+
+    girassol.classList.add(
+        "ativo"
+    );
+
+criarParticulasGirassol();
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   BOTÃO DA TELA FINAL
+===================================== */
+
+
+const botaoFinal =
+document.getElementById(
+    "botao-final"
+);
+
+
+
+if(botaoFinal){
+
+
+
+botaoFinal.addEventListener(
+"click",
+()=>{
+
+
+
+    const girassol =
+    document.getElementById(
+        "girassol-final"
+    );
+
+
+
+    if(girassol){
+
+
+        girassol.classList.remove(
+            "ativo"
+        );
+
+
+    }
+
+
+
+
+
+    telaJardim.classList.remove(
+        "ativa"
+    );
+
+
+
+    telaFinal.classList.add(
+        "ativa"
+    );
+
+
+
+});
+
+
+
+}
+
+
+
+
+});
+/* =====================================
+   PÉTALAS VOANDO NO JARDIM
+===================================== */
+
+
+function criarPetalasVento(){
+
+
+    const jardim =
+document.querySelector(
+    "#jardim"
+);
+
+
+
+    if(!jardim)
+    return;
+
+
+
+    for(
+        let i = 0;
+        i < 8;
+        i++
+    ){
+
+
+
+        const petala =
+        document.createElement(
+            "div"
+        );
+
+
+
+        petala.classList.add(
+            "petala-vento"
+        );
+
+
+
+        petala.style.left =
+        Math.random()*100 + "%";
+
+
+
+        petala.style.top =
+        Math.random()*50 + "%";
+
+
+
+        petala.style.animationDelay =
+        Math.random()*8 + "s";
+
+
+
+        jardim.appendChild(
+            petala
+        );
+
+
+
+    }
+
+
+}
+// =====================================
+// PARTICULAS DO GIRASSOL FINAL
+// =====================================
+
+
+function criarParticulasGirassol(){
+
+
+    const girassol = 
+    document.querySelector(
+        "#girassol-final"
+    );
+
+
+    if(!girassol)
+    return;
+
+
+
+    for(
+        let i = 0;
+        i < 12;
+        i++
+    ){
+
+
+        const particula =
+        document.createElement(
+            "div"
+        );
+
+
+
+        particula.classList.add(
+            "particula-dourada"
+        );
+
+
+
+        particula.style.left =
+        (45 + Math.random()*10) + "%";
+
+
+
+        particula.style.top =
+        (45 + Math.random()*15) + "%";
+
+
+
+        particula.style.animationDelay =
+        Math.random()*3 + "s";
+
+
+
+        girassol.appendChild(
+            particula
+        );
+
+
+
+    }
+
+
+}
