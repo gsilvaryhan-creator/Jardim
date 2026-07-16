@@ -1,24 +1,26 @@
 /* =====================================
-   CONFIGURAÇÃO GERAL
+   O JARDIM ONDE VOCÊ FLORESCE
+   STYLE COMPLETO
 ===================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
-body {
 
-    min-height:100vh;
-
-    overflow-x:hidden;
+body{
 
     font-family:
     "Segoe UI",
     Arial,
     sans-serif;
+
+    overflow:hidden;
 
     background:#dcefd4;
 
@@ -28,46 +30,19 @@ body {
 
 
 
-button {
 
-    border:none;
-
-    cursor:pointer;
-
-    padding:15px 35px;
-
-    border-radius:50px;
-
-    font-size:17px;
-
-    background:#f3ca60;
-
-    color:#593b1f;
-
-    transition:.3s;
-
-}
-
-
-
-button:hover {
-
-    transform:scale(1.05);
-
-}
 
 
 
 /* =====================================
-   SISTEMA DE PÁGINAS
+   GERAL
 ===================================== */
 
 
-.page {
+.screen{
 
     width:100%;
-
-    min-height:100vh;
+    height:100vh;
 
     display:flex;
 
@@ -75,15 +50,26 @@ button:hover {
 
     align-items:center;
 
+    position:absolute;
+
+    transition:
+    opacity 1s ease,
+    transform 1s ease;
+
 }
 
 
 
-.hidden {
+.hidden{
 
     display:none !important;
 
 }
+
+
+
+
+
 
 
 
@@ -93,101 +79,134 @@ button:hover {
 ===================================== */
 
 
-#intro {
+#intro{
+
+    background:
+    linear-gradient(
+    180deg,
+    #fffaf0,
+    #dcefd4
+    );
+
+}
 
 
-background:
 
-linear-gradient(
+.intro-content{
 
-180deg,
+    text-align:center;
 
-#fffaf0,
+    padding:30px;
 
-#dcefd4
+}
 
-);
+
+
+.main-flower{
+
+    font-size:90px;
+
+    animation:
+    flowerIntro 2s infinite alternate;
+
+}
+
+
+
+@keyframes flowerIntro{
+
+
+from{
+
+transform:translateY(0);
+
+}
+
+
+to{
+
+transform:translateY(-15px);
+
+}
 
 
 }
 
 
 
-.intro-box {
+
+h1{
+
+    font-size:42px;
+
+    color:#628d65;
+
+    margin-bottom:10px;
+
+}
 
 
-text-align:center;
 
-max-width:600px;
+h2{
 
-padding:30px;
+    color:#e98c9e;
 
-animation:
+    margin-bottom:20px;
 
-fadeIn 1.5s ease;
+}
+
+
+
+p{
+
+    max-width:500px;
+
+    line-height:1.6;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+button{
+
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#f3ca60;
+
+    color:#593b1f;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
 
 
 }
 
 
 
-.main-flower {
 
+button:hover{
 
-font-size:100px;
+    transform:scale(1.05);
 
-
-animation:
-
-float 3s infinite ease-in-out;
-
+    background:#e98c9e;
 
 }
 
 
-
-.intro-box h1 {
-
-
-font-size:
-
-clamp(30px,5vw,55px);
-
-
-color:#628d65;
-
-margin-top:20px;
-
-
-}
-
-
-
-.intro-box h2 {
-
-
-color:#e98c9e;
-
-font-weight:400;
-
-margin-top:10px;
-
-
-}
-
-
-
-.intro-box p {
-
-
-margin:30px 0;
-
-font-size:18px;
-
-line-height:1.6;
-
-
-}
 
 
 
@@ -200,27 +219,54 @@ line-height:1.6;
 ===================================== */
 
 
-#transition {
+#transition{
+
+    background:#fffaf0;
+
+}
 
 
-background:#fffaf0;
+
+.petal{
+
+    font-size:80px;
+
+    animation:
+
+    fallingPetal 3s linear forwards;
+
+}
+
+
+
+@keyframes fallingPetal{
+
+
+0%{
+
+transform:
+translateY(-200px)
+rotate(0deg);
+
+opacity:1;
+
+}
+
+
+100%{
+
+transform:
+translateY(600px)
+rotate(360deg);
+
+opacity:0;
+
+}
 
 
 }
 
 
-.falling-petal {
-
-
-font-size:80px;
-
-
-animation:
-
-petalFall 3s forwards;
-
-
-}
 
 
 
@@ -233,88 +279,105 @@ petalFall 3s forwards;
 ===================================== */
 
 
-#garden {
+#garden{
 
-
-flex-direction:column;
-
-padding:20px;
 
 background:
 
 linear-gradient(
-
+180deg,
 #dcefd4,
-
-#b7dcae
-
+#c7e5bd
 );
 
 
-}
-
-
-
-.garden-top {
-
-
-text-align:center;
-
-margin-bottom:20px;
-
-
-}
-
-
-
-.garden-top h1 {
-
-
-font-size:40px;
-
-color:#628d65;
-
+flex-direction:column;
 
 }
 
 
 
 
+.garden-header{
 
-#counterBox {
+    text-align:center;
 
+    padding-top:20px;
+
+    z-index:10;
+
+}
+
+
+
+.garden-header h1{
+
+    font-size:32px;
+
+}
+
+
+
+#counter{
+
+
+margin-top:10px;
+
+font-size:18px;
 
 background:#fffaf0;
 
-padding:15px 25px;
+padding:10px 20px;
 
-border-radius:25px;
+border-radius:20px;
+
+display:inline-block;
+
+}
+
+
+
+
+
+
+
+#gardenArea{
+
+
+position:relative;
+
+width:90%;
+
+height:65%;
+
+
+margin-top:20px;
+
+
+background:
+
+radial-gradient(
+circle,
+#b8dca9,
+#8fc58a
+);
+
+
+border-radius:50%;
+
+
+overflow:hidden;
 
 
 box-shadow:
 
-0 8px 20px rgba(0,0,0,.15);
-
-
-margin-top:15px;
+0 0 40px rgba(0,0,0,.15);
 
 
 }
 
 
 
-
-#counter {
-
-
-margin-top:8px;
-
-font-size:18px;
-
-color:#9c2a22;
-
-
-}
 
 
 
@@ -322,57 +385,11 @@ color:#9c2a22;
 
 
 /* =====================================
-   ÁREA DO JARDIM
+   FLORES
 ===================================== */
 
 
-#gardenArea {
-
-
-position:relative;
-
-
-width:min(95vw,900px);
-
-
-height:min(70vh,600px);
-
-
-background:
-
-
-radial-gradient(
-
-circle,
-
-#91c982,
-
-#628d65
-
-);
-
-
-
-border-radius:
-
-50%;
-
-
-overflow:hidden;
-
-
-
-box-shadow:
-
-inset 0 0 50px rgba(0,0,0,.2);
-
-
-}
-
-
-
-
-#flowersContainer {
+#flowersContainer{
 
 
 position:absolute;
@@ -386,17 +403,7 @@ height:100%;
 
 
 
-
-
-
-
-
-/* =====================================
-   FLORES CRIADAS PELO JS
-===================================== */
-
-
-.flower {
+.flower{
 
 
 position:absolute;
@@ -407,11 +414,17 @@ width:35px;
 height:35px;
 
 
-cursor:pointer;
+background:#e98c9e;
+
+
+border-radius:
+
+50% 50% 50% 0;
 
 
 transform:
 
+rotate(-45deg)
 scale(0);
 
 
@@ -420,85 +433,78 @@ animation:
 growFlower .8s forwards;
 
 
-z-index:2;
+cursor:pointer;
 
 
 }
 
 
 
-
-
-/* pétalas */
-
-
-.flower::before {
+.flower::after{
 
 
 content:"";
 
-
 position:absolute;
-
-
-width:100%;
-
-height:100%;
-
-
-background:#e98c9e;
-
-
-border-radius:50%;
-
-
-box-shadow:
-
-
-20px 0 #f4afbd,
-
--20px 0 #f4afbd,
-
-0 20px #f4afbd,
-
-0 -20px #f4afbd;
-
-
-}
-
-
-
-
-
-/* centro */
-
-
-.flower::after {
-
-
-content:"";
-
-
-position:absolute;
-
 
 width:15px;
 
 height:15px;
 
-
 background:#f3ca60;
-
 
 border-radius:50%;
 
+top:10px;
 
 left:10px;
 
-top:10px;
+
+}
+
+
+
+
+
+
+
+@keyframes growFlower{
+
+
+0%{
+
+transform:
+
+rotate(-45deg)
+scale(0);
+
+}
+
+
+80%{
+
+transform:
+
+rotate(-45deg)
+scale(1.2);
+
+}
+
+
+100%{
+
+transform:
+
+rotate(-45deg)
+scale(1);
+
+}
+
 
 
 }
+
+
 
 
 
@@ -508,84 +514,53 @@ top:10px;
 /* FLORES ESPECIAIS */
 
 
-.special-flower {
+.special-flower{
 
 
 animation:
 
 growFlower .8s forwards,
-
-glowFlower 2s infinite alternate;
-
-
-}
-
-
-
-.special-flower::before {
-
-
-background:#f4afbd;
-
-
-box-shadow:
-
-
-20px 0 #e98c9e,
-
--20px 0 #e98c9e,
-
-0 20px #e98c9e,
-
-0 -20px #e98c9e;
+glowFlower 2s infinite;
 
 
 }
 
 
 
+@keyframes glowFlower{
 
 
+0%{
+
+filter:
+drop-shadow(0 0 0px #fff);
+
+}
 
 
+50%{
 
-/* =====================================
-   GIRASSOL FINAL
-===================================== */
+filter:
 
-
-#finalFlower {
-
-
-position:absolute;
-
-
-left:50%;
-
-top:50%;
-
-
-transform:
-
-translate(-50%,-50%);
+drop-shadow(
+0 0 18px #fff
+);
 
 
 }
 
 
+100%{
 
-.big-sunflower {
+filter:
+drop-shadow(0 0 0px #fff);
 
+}
 
-font-size:130px;
-
-
-animation:
-
-sunGrow 2s ease;
 
 
 }
+
 
 
 
@@ -599,11 +574,10 @@ sunGrow 2s ease;
 ===================================== */
 
 
-.modal {
+#letterModal{
 
 
-position:fixed;
-
+position:absolute;
 
 inset:0;
 
@@ -615,12 +589,11 @@ rgba(0,0,0,.35);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
 
+align-items:center;
 
-z-index:20;
+z-index:50;
 
 
 }
@@ -628,40 +601,73 @@ z-index:20;
 
 
 
-
-.letter {
-
-
-position:relative;
-
-
-width:min(90%,450px);
+.letter{
 
 
 background:#fffaf0;
+
+width:85%;
+
+max-width:500px;
 
 
 padding:35px;
 
 
-border-radius:20px;
+border-radius:10px;
 
 
 box-shadow:
 
-0 20px 50px rgba(0,0,0,.3);
+0 15px 40px rgba(0,0,0,.3);
 
 
 animation:
 
-letterOpen .5s ease;
+openLetter .5s;
+
+
+position:relative;
 
 
 }
 
 
 
-#closeLetter {
+@keyframes openLetter{
+
+
+from{
+
+transform:
+
+scale(.5)
+rotate(-10deg);
+
+opacity:0;
+
+}
+
+
+to{
+
+transform:
+
+scale(1)
+rotate(0);
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+
+#closeLetter{
 
 
 position:absolute;
@@ -669,41 +675,18 @@ position:absolute;
 
 right:15px;
 
-top:15px;
+top:10px;
 
 
-padding:5px 15px;
+background:none;
 
+font-size:30px;
 
-background:#e98c9e;
-
-
-color:white;
-
+padding:0;
 
 }
 
 
-
-.letter h2 {
-
-
-color:#9c2a22;
-
-margin-bottom:20px;
-
-
-}
-
-
-
-.letter p {
-
-
-line-height:1.7;
-
-
-}
 
 
 
@@ -716,31 +699,20 @@ line-height:1.7;
 ===================================== */
 
 
-#finalPage {
+#finalPage{
 
 
 background:
 
 linear-gradient(
-
 #fffaf0,
-
 #dcefd4
-
 );
 
 
+flex-direction:column;
+
 text-align:center;
-
-
-}
-
-
-
-.final-box {
-
-
-max-width:600px;
 
 padding:30px;
 
@@ -749,272 +721,90 @@ padding:30px;
 
 
 
-.final-sunflower {
+#finalFlower{
 
 
-font-size:150px;
+font-size:130px;
 
 
 animation:
 
-sunGrow 2s ease;
+finalGrow 2s;
 
 
 }
 
 
 
-.final-box p {
+@keyframes finalGrow{
 
 
-margin:20px 0;
-
-line-height:1.7;
-
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   ANIMAÇÕES
-===================================== */
-
-
-@keyframes fadeIn {
-
-
-from {
-
-opacity:0;
-
-transform:scale(.9);
-
-}
-
-
-to {
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-
-}
-
-
-
-
-
-@keyframes float {
-
-
-50% {
-
-transform:translateY(-15px);
-
-}
-
-
-}
-
-
-
-
-
-@keyframes growFlower {
-
-
-to {
-
-transform:scale(1);
-
-}
-
-
-}
-
-
-
-
-
-@keyframes glowFlower {
-
-
-from {
-
-
-filter:
-
-drop-shadow(
-
-0 0 5px #f3ca60
-
-);
-
-
-}
-
-
-to {
-
-
-filter:
-
-drop-shadow(
-
-0 0 25px #f3ca60
-
-);
-
-
-}
-
-
-}
-
-
-
-
-@keyframes petalFall {
-
-
-from {
-
-transform:
-
-translateY(-100vh)
-rotate(0deg);
-
-opacity:1;
-
-}
-
-
-to {
-
-transform:
-
-translateY(100vh)
-rotate(360deg);
-
-opacity:0;
-
-
-}
-
-}
-
-
-
-
-@keyframes letterOpen {
-
-
-from {
-
-opacity:0;
-
-transform:
-
-scale(.7)
-rotate(-5deg);
-
-
-}
-
-
-to {
-
-
-opacity:1;
-
-transform:
-
-scale(1)
-rotate(0);
-
-
-}
-
-
-}
-
-
-
-
-@keyframes sunGrow {
-
-
-from {
+from{
 
 transform:scale(0);
 
-opacity:0;
-
 }
 
 
-to {
+to{
 
 transform:scale(1);
 
-opacity:1;
-
 }
 
 
 }
+
+
+
+
 
 
 
 
 
 /* =====================================
-   CELULAR
+   MOBILE
 ===================================== */
 
 
 @media(max-width:600px){
 
 
-.garden-top h1{
+h1{
 
-font-size:32px;
-
-}
-
-
-#gardenArea {
-
-
-height:60vh;
-
+font-size:30px;
 
 }
 
 
 
-.main-flower {
+.intro-content p{
+
+font-size:16px;
+
+}
 
 
-font-size:75px;
+
+#gardenArea{
+
+
+width:95%;
+
+height:60%;
 
 
 }
 
 
 
-button {
+.flower{
 
 
-font-size:15px;
+width:28px;
+
+height:28px;
 
 
 }
