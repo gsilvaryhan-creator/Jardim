@@ -1,77 +1,34 @@
-/* ==========================
-RESET
-========================== */
+/* =================================
+   RESET GERAL
+================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
-html,
-body {
+html,body{
 
-    width: 100%;
-    min-height: 100%;
+    width:100%;
+    height:100%;
 
-    overflow-x: hidden;
-
-}
-
-
-body {
-
-    background: #FFF8F0;
-
-    color: #593B1F;
-
-    font-family: "Quicksand", sans-serif;
+    overflow-x:hidden;
 
 }
 
 
+body{
 
-/* ==========================
-APP
-========================== */
+    font-family:
+    "Segoe UI",
+    "Poppins",
+    sans-serif;
 
+    background:#dcefd4;
 
-#app {
-
-    width: 100%;
-    min-height: 100vh;
-
-    position: relative;
-
-}
-
-
-
-.screen {
-
-    position: absolute;
-
-    inset: 0;
-
-    min-height: 100vh;
-
-    width: 100%;
-
-    display: none;
-
-    justify-content: center;
-
-    align-items: center;
-
-    overflow: hidden;
-
-}
-
-
-.screen.active {
-
-    display: flex;
+    color:#593b1f;
 
 }
 
@@ -79,140 +36,106 @@ APP
 
 
 
-/* ==========================
-INTRO
-========================== */
+/* =================================
+   TELAS
+================================= */
 
 
-#intro {
+.screen{
+
+    position:fixed;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+
+}
+
+
+.screen.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+
+
+
+
+/* =================================
+   TELA INICIAL
+================================= */
+
+
+#intro{
 
     background:
 
     radial-gradient(
-        circle at top,
-        #ffffff,
-        #FFF8F0
+    circle,
+    #fffaf0,
+    #dcefd4
     );
 
 }
 
 
 
-.intro-content {
+.intro-content{
 
-    width: 90%;
+    width:90%;
 
-    max-width: 430px;
+    max-width:420px;
 
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 18px;
+    text-align:center;
 
 }
 
 
 
-.intro-flower {
+.magic-flower{
 
-    font-size: 70px;
+    font-size:70px;
 
     animation:
 
-    floatFlower 3s ease-in-out infinite;
+    floatFlower 3s infinite ease-in-out;
 
 }
 
 
 
-.intro-content h1 {
+@keyframes floatFlower{
 
-    font-family: "Caveat", cursive;
+    0%,100%{
 
-    font-size: clamp(38px, 10vw, 55px);
+        transform:translateY(0);
 
-    line-height: 1;
+    }
 
-    color: #9C2A22;
+    50%{
 
-}
+        transform:translateY(-12px);
 
-
-
-.intro-content h2 {
-
-    font-size: 22px;
-
-    color: #40632B;
-
-    font-weight: 600;
-
-}
-
-
-
-.intro-content p {
-
-    font-size: 17px;
-
-    line-height: 1.6;
-
-    max-width: 340px;
-
-}
-
-
-
-
-/* ==========================
-BUTTONS
-========================== */
-
-
-.main-button {
-
-    margin-top: 15px;
-
-    min-height: 48px;
-
-    padding:
-
-    12px 28px;
-
-    border: none;
-
-    border-radius: 50px;
-
-    background: #9C2A22;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-family: "Quicksand";
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-
-    transform .2s ease,
-
-    opacity .2s ease;
-
-}
-
-
-
-.main-button:active {
-
-    transform: scale(.95);
+    }
 
 }
 
@@ -220,339 +143,130 @@ BUTTONS
 
 
 
+h1{
 
-/* ==========================
-TRANSITION
-========================== */
+    font-size:32px;
 
+    line-height:1.2;
 
-#transition {
+    margin:20px 0;
 
-    background:
-
-    linear-gradient(
-
-    180deg,
-
-    #FFF8F0,
-
-    #F7E6D4
-
-    );
+    color:#9c2a22;
 
 }
 
 
 
-.transition-content {
+h2{
 
-    text-align: center;
+    color:#628d65;
 
-}
-
-
-
-.transition-content p {
-
-    margin-top: 20px;
-
-    font-size: 18px;
-
-    color: #593B1F;
+    margin-bottom:20px;
 
 }
 
 
 
-#fallingPetal {
+p{
 
-    font-size: 55px;
+    font-size:17px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    border-radius:30px;
+
+}
+
+
+
+
+
+#enterGarden{
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    background:#f3ca60;
+
+    color:#593b1f;
+
+    box-shadow:
+
+    0 8px 20px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+
+#enterGarden:active{
+
+    transform:scale(.95);
+
+}
+
+
+
+
+
+/* =================================
+   TRANSIÇÃO PÉTALA
+================================= */
+
+
+#transition{
+
+    background:#fffaf0;
+
+}
+
+
+
+.falling-petal{
+
+    font-size:60px;
 
     animation:
 
-    petalFall 2s ease forwards;
+    petalFall 2.5s ease forwards;
 
 }
 
 
 
+@keyframes petalFall{
 
 
-
-/* ==========================
-GARDEN BASE
-========================== */
-
-
-#garden {
-
-    background:
-
-    linear-gradient(
-
-    180deg,
-
-    #B8DFA5,
-
-    #40632B
-
-    );
-
-}
-
-
-
-.garden-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-}
-
-
-
-.garden-light {
-
-    position: absolute;
-
-    width: 250px;
-
-    height: 250px;
-
-    border-radius: 50%;
-
-    background:
-
-    rgba(255,255,255,.25);
-
-    top: -80px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-}
-
-
-
-#flowers-container {
-
-    position: absolute;
-
-    inset: 0;
-
-}
-
-
-
-#particles-container,
-
-#leaves-container {
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
-
-
-
-
-
-/* ==========================
-FLOWERS
-========================== */
-
-
-.flower {
-
-    position: absolute;
-
-    font-size: 34px;
-
-    user-select: none;
-
-    cursor: pointer;
+0%{
 
     transform:
 
-    scale(0);
-
-    opacity: 0;
-
-    animation:
-
-    flowerBirth .7s ease forwards;
-
-    filter:
-
-    drop-shadow(
-
-    0 5px 5px
-
-    rgba(0,0,0,.15)
-
-    );
-
-    transition:
-
-    transform .2s ease;
-
-}
-
-
-
-.flower:active {
-
-    transform:
-
-    scale(1.15);
-
-}
-
-
-
-
-.flower.special {
-
-    animation:
-
-    flowerBirth .7s ease forwards,
-
-    flowerFloat 4s ease-in-out infinite;
-
-}
-
-
-
-
-
-/* ==========================
-FLOWER ANIMATION
-========================== */
-
-
-@keyframes flowerBirth {
-
-
-0% {
-
-    transform:
-
-    scale(0);
-
-    opacity:0;
-
-}
-
-
-
-70% {
-
-    transform:
-
-    scale(1.2);
-
-    opacity:1;
-
-}
-
-
-
-100% {
-
-    transform:
-
-    scale(1);
-
-    opacity:1;
-
-}
-
-
-}
-
-
-
-
-@keyframes flowerFloat {
-
-
-0% {
-
-    translate:
-
-    0 0;
-
-}
-
-
-50% {
-
-    translate:
-
-    0 -6px;
-
-}
-
-
-100% {
-
-    translate:
-
-    0 0;
-
-}
-
-
-}
-
-
-
-
-
-
-/* ==========================
-PETAL ANIMATION
-========================== */
-
-
-@keyframes petalFall {
-
-
-0% {
-
-    transform:
-
-    translateY(-80px)
-
+    translateY(-200px)
     rotate(0deg);
 
-    opacity:0;
-
 }
 
 
-
-20% {
-
-    opacity:1;
-
-}
-
-
-
-100% {
+100%{
 
     transform:
 
-    translateY(120px)
-
+    translateY(500px)
     rotate(360deg);
 
     opacity:0;
@@ -566,37 +280,16 @@ PETAL ANIMATION
 
 
 
-@keyframes floatFlower {
+/* =================================
+   JARDIM
+================================= */
 
 
-0% {
+#gardenScreen{
 
-    transform:
+    flex-direction:column;
 
-    translateY(0);
-
-}
-
-
-
-50% {
-
-    transform:
-
-    translateY(-10px);
-
-}
-
-
-
-100% {
-
-    transform:
-
-    translateY(0);
-
-}
-
+    background:#dcefd4;
 
 }
 
@@ -604,131 +297,292 @@ PETAL ANIMATION
 
 
 
-
-/* ==========================
-GARDEN UI
-========================== */
+#garden{
 
 
-.garden-ui {
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
+position:relative;
 
 
-
-.counter-box {
-
-
-position:absolute;
-
-top:20px;
-
-left:50%;
-
-transform:translateX(-50%);
+width:92%;
 
 
-width:90%;
-
-max-width:360px;
+height:70%;
 
 
-padding:14px;
+max-width:450px;
+
+
+overflow:hidden;
+
+
+border-radius:45%;
 
 
 background:
 
-rgba(255,248,240,.85);
+
+radial-gradient(
+circle,
+#9acb88,
+#628d65
+);
 
 
-border-radius:25px;
+
+box-shadow:
+
+inset 0 0 40px rgba(0,0,0,.15),
+0 15px 30px rgba(0,0,0,.15);
+
+
+
+}
+
+
+
+
+
+/* =================================
+   FLORES
+================================= */
+
+
+.flower{
+
+
+position:absolute;
+
+
+font-size:32px;
+
+
+transform:
+
+scale(0);
+
+
+animation:
+
+flowerGrow .8s forwards;
+
+
+
+user-select:none;
+
+
+}
+
+
+
+@keyframes flowerGrow{
+
+
+0%{
+
+transform:
+
+scale(0)
+rotate(-40deg);
+
+}
+
+
+
+70%{
+
+transform:
+
+scale(1.15)
+rotate(15deg);
+
+}
+
+
+
+100%{
+
+transform:
+
+scale(1)
+rotate(0);
+
+}
+
+
+}
+
+
+
+
+
+.special-flower{
+
+
+filter:
+
+drop-shadow(
+0 0 10px #f3ca60
+);
+
+
+animation:
+
+pulseFlower 2s infinite;
+
+}
+
+
+
+@keyframes pulseFlower{
+
+
+50%{
+
+transform:
+
+scale(1.12);
+
+}
+
+
+}
+
+
+
+
+
+/* =================================
+   PARTÍCULAS
+================================= */
+
+
+.particle{
+
+
+position:absolute;
+
+
+width:5px;
+
+height:5px;
+
+
+background:#fffaf0;
+
+
+border-radius:50%;
+
+
+opacity:.8;
+
+
+animation:
+
+particleMove 5s infinite linear;
+
+
+}
+
+
+
+@keyframes particleMove{
+
+
+from{
+
+transform:
+
+translateY(100px);
+
+}
+
+
+
+to{
+
+transform:
+
+translateY(-500px);
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+
+
+.wind-leaves{
+
+
+position:absolute;
+
+
+font-size:40px;
+
+
+animation:
+
+wind 8s infinite linear;
+
+
+}
+
+
+
+@keyframes wind{
+
+
+from{
+
+left:-20%;
+
+}
+
+
+to{
+
+left:120%;
+
+}
+
+
+}
+
+
+
+
+
+/* =================================
+   CONTADOR
+================================= */
+
+
+.relationship-counter{
+
+
+margin-top:15px;
 
 
 text-align:center;
 
 
-box-shadow:
-
-0 8px 20px
-
-rgba(0,0,0,.12);
+background:#fffaf0;
 
 
-pointer-events:auto;
+padding:12px 20px;
 
 
-}
+border-radius:20px;
 
 
+width:90%;
 
 
-.counter-box span {
-
-
-font-size:14px;
-
-font-weight:600;
-
-color:#593B1F;
-
-
-}
-
-
-
-
-#loveCounter {
-
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
-margin-top:10px;
-
-
-}
-
-
-
-#loveCounter div {
-
-
-display:flex;
-
-flex-direction:column;
-
-
-}
-
-
-
-#loveCounter strong {
-
-
-font-size:24px;
-
-color:#9C2A22;
-
-
-}
-
-
-
-#loveCounter p {
-
-
-font-size:12px;
-
-color:#593B1F;
+max-width:400px;
 
 
 }
@@ -737,47 +591,29 @@ color:#593B1F;
 
 
 
+/* =================================
+   BOTÃO MÚSICA
+================================= */
 
-.music-button {
+
+#musicButton{
 
 
 position:absolute;
 
-bottom:25px;
 
 right:20px;
 
 
-border:none;
-
-border-radius:50px;
+top:20px;
 
 
-padding:
+width:50px;
 
-12px 18px;
-
-
-background:#FFF8F0;
+height:50px;
 
 
-color:#593B1F;
-
-
-font-weight:700;
-
-
-min-height:48px;
-
-
-pointer-events:auto;
-
-
-box-shadow:
-
-0 5px 15px
-
-rgba(0,0,0,.15);
+background:#f4afbd;
 
 
 }
@@ -786,28 +622,28 @@ rgba(0,0,0,.15);
 
 
 
-
-/* ==========================
-MODAL CARTA
-========================== */
-
-
-.modal {
-
-
-position:absolute;
-
-
-inset:0;
-
+.hidden{
 
 display:none;
 
+}
 
-justify-content:center;
 
 
-align-items:center;
+
+
+/* =================================
+   CARTA
+================================= */
+
+
+.modal{
+
+
+position:fixed;
+
+
+inset:0;
 
 
 background:
@@ -815,84 +651,89 @@ background:
 rgba(0,0,0,.35);
 
 
-padding:20px;
-
-
-z-index:20;
-
-
-}
-
-
-
-.modal.show {
-
-
 display:flex;
 
 
+align-items:center;
+
+
+justify-content:center;
+
+
+opacity:0;
+
+
+pointer-events:none;
+
+
+transition:.5s;
+
+
+}
+
+
+
+.modal.show{
+
+
+opacity:1;
+
+
+pointer-events:auto;
+
+
 }
 
 
 
 
-
-.letter-card {
-
-
-width:90%;
-
-max-width:380px;
+.letter{
 
 
-background:#FFF8F0;
+width:85%;
 
 
-border-radius:25px;
+max-width:350px;
 
 
-padding:30px 22px;
+background:#fffaf0;
+
+
+padding:30px;
+
+
+border-radius:10px;
 
 
 box-shadow:
 
-0 15px 40px
-
-rgba(0,0,0,.25);
+0 15px 35px rgba(0,0,0,.3);
 
 
 transform:
 
-scale(.5)
-
-rotate(-10deg);
+rotate(-2deg)
+scale(.7);
 
 
 animation:
 
-letterOpen .5s ease forwards;
-
-
-position:relative;
+openLetter .5s forwards;
 
 
 }
 
 
 
+@keyframes openLetter{
 
-@keyframes letterOpen {
 
-
-to {
-
+to{
 
 transform:
 
-scale(1)
-
-rotate(-2deg);
-
+rotate(0)
+scale(1);
 
 }
 
@@ -901,178 +742,25 @@ rotate(-2deg);
 
 
 
-
-.letter-content {
-
-
-text-align:center;
-
-
-}
-
-
-
-
-.letter-icon {
-
-
-font-size:50px;
-
-
-}
-
-
-
-.letter-content h3 {
-
-
-font-family:"Caveat";
-
-
-font-size:35px;
-
-
-color:#9C2A22;
-
-
-margin:15px 0;
-
-
-}
-
-
-
-.letter-content p {
-
-
-font-size:16px;
-
-
-line-height:1.6;
-
-
-}
-
-
-
-.close-button {
+#closeLetter{
 
 
 position:absolute;
 
 
-right:15px;
+right:25px;
 
 
-top:12px;
+top:20px;
 
 
-border:none;
+font-size:30px;
 
 
 background:none;
 
 
-font-size:30px;
-
-
-color:#593B1F;
-
-
-}
-
-
-
-.letter-button {
-
-
-margin-top:20px;
-
-
-padding:12px 25px;
-
-
-min-height:48px;
-
-
-border:none;
-
-
-border-radius:30px;
-
-
-background:#DDBB3E;
-
-
-color:#593B1F;
-
-
-font-weight:700;
-
-
-}
-
-
-
-/* ==========================
-GIRASSOL FINAL
-========================== */
-
-
-.sunflower-transition {
-
-    position:absolute;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:
-
-    rgba(0,0,0,.35);
-
-    z-index:30;
-
-}
-
-
-
-.sunflower-transition.active {
-
-    display:flex;
-
-    animation:
-
-    darkGarden 1s ease forwards;
-
-}
-
-
-
-@keyframes darkGarden {
-
-
-from {
-
-    background:
-
-    rgba(0,0,0,0);
-
-}
-
-
-
-to {
-
-    background:
-
-    rgba(0,0,0,.35);
-
-}
+color:#9c2a22;
 
 
 }
@@ -1081,487 +769,85 @@ to {
 
 
 
-#giantSunflower {
+/* =================================
+   FINAL GIRASSOL
+================================= */
 
 
-font-size:
-
-120px;
-
-
-transform:
-
-
-translateY(150px)
-
-scale(.2);
-
-
-opacity:0;
-
-
-}
-
-
-
-.sunflower-transition.active #giantSunflower {
-
-
-animation:
-
-
-sunflowerGrow 2s ease forwards;
-
-
-}
-
-
-
-@keyframes sunflowerGrow {
-
-
-0% {
-
-
-transform:
-
-translateY(150px)
-
-scale(.2)
-
-rotate(0deg);
-
-
-opacity:0;
-
-
-}
-
-
-
-50% {
-
-
-opacity:1;
-
-
-}
-
-
-
-80% {
-
-
-transform:
-
-translateY(0)
-
-scale(1.1)
-
-rotate(10deg);
-
-
-}
-
-
-
-100% {
-
-
-transform:
-
-translateY(0)
-
-scale(1)
-
-rotate(-5deg);
-
-
-opacity:1;
-
-
-}
-
-
-}
-
-
-
-
-
-
-/* ==========================
-FINAL SCREEN
-========================== */
-
-
-#final {
+#finalScreen{
 
 
 background:
 
-
-linear-gradient(
-
-180deg,
-
-#FFF8F0,
-
-#F7E6D4
-
+radial-gradient(
+circle,
+#fffaf0,
+#dcefd4
 );
-
-
-padding:20px;
-
-
-}
-
-
-
-.final-card {
-
-
-width:90%;
-
-
-max-width:430px;
-
-
-max-height:90vh;
-
-
-overflow-y:auto;
-
-
-background:#FFF8F0;
-
-
-border-radius:30px;
-
-
-padding:30px 22px;
 
 
 text-align:center;
 
 
-box-shadow:
+}
 
 
-0 15px 40px
 
-rgba(0,0,0,.15);
+.final-content{
+
+
+width:90%;
+
+
+max-width:420px;
 
 
 }
 
 
 
-.final-flower {
+#sunflower{
 
 
-font-size:70px;
+font-size:100px;
 
 
 animation:
 
-
-floatFlower 3s infinite ease-in-out;
-
-
-}
-
-
-
-
-.final-card h1 {
-
-
-font-family:"Caveat";
-
-
-font-size:
-
-42px;
-
-
-line-height:1.1;
-
-
-color:#9C2A22;
-
-
-margin-bottom:20px;
+sunGrow 2s ease;
 
 
 }
 
 
 
+@keyframes sunGrow{
 
 
-.final-message {
+from{
+
+transform:
+
+scale(0)
+rotate(-180deg);
 
 
-font-size:17px;
-
-
-line-height:1.7;
-
-
-color:#593B1F;
-
-
-}
-
-
-
-.final-message p {
-
-
-margin-bottom:16px;
+opacity:0;
 
 
 }
 
 
-
-
-
-/* ==========================
-LEAVES AND PARTICLES
-========================== */
-
-
-.leaf {
-
-
-position:absolute;
-
-
-font-size:25px;
-
-
-opacity:.8;
-
-
-animation:
-
-
-leafMove 6s infinite ease-in-out;
-
-
-}
-
-
-
-.particle {
-
-
-position:absolute;
-
-
-width:6px;
-
-
-height:6px;
-
-
-border-radius:50%;
-
-
-background:#FFF8F0;
-
-
-opacity:.7;
-
-
-animation:
-
-
-particleFloat 5s infinite ease-in-out;
-
-
-}
-
-
-
-@keyframes leafMove {
-
-
-0% {
+to{
 
 
 transform:
 
-translateY(0)
-
+scale(1)
 rotate(0);
 
 
-}
-
-
-
-50% {
-
-
-transform:
-
-translateY(20px)
-
-rotate(90deg);
-
-
-}
-
-
-
-100% {
-
-
-transform:
-
-translateY(0)
-
-rotate(180deg);
-
-
-}
-
-
-}
-
-
-
-
-@keyframes particleFloat {
-
-
-0% {
-
-
-transform:
-
-translateY(0);
-
-
-opacity:.3;
-
-
-}
-
-
-
-50% {
-
-
-transform:
-
-translateY(-30px);
-
-
-opacity:.8;
-
-
-}
-
-
-
-100% {
-
-
-transform:
-
-translateY(0);
-
-
-opacity:.3;
-
-
-}
-
-
-}
-
-
-
-
-
-/* ==========================
-MOBILE SMALL DEVICES
-========================== */
-
-
-@media(max-width:360px){
-
-
-
-.intro-content h1 {
-
-
-font-size:35px;
-
-
-}
-
-
-
-.intro-content p {
-
-
-font-size:15px;
-
-
-}
-
-
-
-.flower {
-
-
-font-size:30px;
-
-
-}
-
-
-
-.counter-box {
-
-
-top:12px;
-
-
-}
-
-
-
-#loveCounter {
-
-
-gap:12px;
-
-
-}
-
-
-
-.final-card {
-
-
-padding:25px 16px;
-
-
-}
-
-
-
-.final-card h1 {
-
-
-font-size:36px;
+opacity:1;
 
 
 }
@@ -1574,22 +860,59 @@ font-size:36px;
 
 
 
-/* ==========================
-PERFORMANCE
-========================== */
+#backGarden{
 
 
-@media(prefers-reduced-motion:reduce){
+margin-top:30px;
 
 
-* {
+padding:14px 30px;
 
 
-animation-duration:.01ms!important;
+background:#628d65;
 
 
-transition-duration:.01ms!important;
+color:white;
 
+
+}
+
+
+
+
+
+/* =================================
+   AJUSTES MOBILE
+================================= */
+
+
+@media(max-width:400px){
+
+
+h1{
+
+font-size:26px;
+
+}
+
+
+.magic-flower{
+
+font-size:55px;
+
+}
+
+
+.flower{
+
+font-size:27px;
+
+}
+
+
+#garden{
+
+height:65%;
 
 }
 
