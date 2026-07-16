@@ -306,7 +306,7 @@ function criarFloresNormaisComAnimacao(){
 
 
 
-    const quantidade = 130;
+    const quantidade = 80;
 
 
 
