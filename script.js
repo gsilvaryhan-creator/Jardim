@@ -48,7 +48,7 @@ let cartasEncontradas = [];
 
 let jardimIniciado = false;
 
-
+let bilheteRemovido = false;
 
 
 
@@ -965,7 +965,25 @@ function abrirCarta(numero){
     if(!carta)
     return;
 
+if(!bilheteRemovido){
 
+    bilheteRemovido = true;
+
+    const bilhete = document.getElementById("bilhete-jardim");
+
+    if(bilhete){
+
+        bilhete.classList.add("sumindo");
+
+        setTimeout(() => {
+
+            bilhete.remove();
+
+        }, 600);
+
+    }
+
+}
 
 
 
