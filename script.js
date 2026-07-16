@@ -1,24 +1,35 @@
 /* =====================================================
    O JARDIM ONDE VOCÊ FLORESCE
-   SCRIPT PRINCIPAL
+   SCRIPT COMPLETO
 ===================================================== */
 
 
 
-/* =====================================================
-   ELEMENTOS
-===================================================== */
+/* ===============================
+   PEGAR ELEMENTOS
+================================ */
 
 
-const introScreen = document.getElementById("introScreen");
-const enterButton = document.getElementById("enterButton");
+const intro = document.getElementById("intro");
 
-const transitionScreen = document.getElementById("transitionScreen");
+const enterGarden =
+document.getElementById("enterGarden");
 
-const gardenScreen = document.getElementById("gardenScreen");
+
+const transition =
+document.getElementById("transition");
+
+
+const garden =
+document.getElementById("garden");
+
 
 const flowersContainer =
 document.getElementById("flowersContainer");
+
+
+const counter =
+document.getElementById("counter");
 
 
 const letterModal =
@@ -29,35 +40,45 @@ const letterTitle =
 document.getElementById("letterTitle");
 
 
-const letterText =
-document.getElementById("letterText");
+const letterMessage =
+document.getElementById("letterMessage");
 
 
 const closeLetter =
 document.getElementById("closeLetter");
 
 
-const counter =
-document.getElementById("counter");
+const finalFlower =
+document.getElementById("finalFlower");
 
 
-const finalSunflower =
-document.getElementById("finalSunflower");
+const finalPage =
+document.getElementById("finalPage");
 
 
-const finalScreen =
-document.getElementById("finalScreen");
-
-
-const returnButton =
-document.getElementById("returnButton");
+const returnGarden =
+document.getElementById("returnGarden");
 
 
 
 
-/* =====================================================
+
+/* ===============================
+   VARIÁVEIS
+================================ */
+
+
+let gardenOpened = false;
+
+let openedLetters = [];
+
+
+
+
+
+/* ===============================
    CARTAS
-===================================================== */
+================================ */
 
 
 const letters = [
@@ -67,54 +88,64 @@ title:"Seu cabelo",
 text:"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
 },
 
+
 {
 title:"Seus olhos",
 text:"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
 },
+
 
 {
 title:"O seu sorriso",
 text:"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
 },
 
+
 {
 title:"Minha pitucha",
-text:"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida, não vejo minha rotina sem você."
+text:"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida."
 },
+
 
 {
 title:"Quando você ri de mim",
-text:"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
+text:"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é perfeita, sua risada faz valer a pena."
 },
+
 
 {
 title:"O jeito que você cuida",
-text:"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas para muita gente, mas eu vejo e admiro muito em você."
+text:"Eu percebo como você é prestativa. Você se importa, presta atenção e tenta ajudar. Eu admiro muito isso em você."
 },
+
 
 {
 title:"Baixo, não guitarra",
-text:"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso. Até hoje acho engraçado lembrar disso, porque foi uma das nossas primeiras brincadeiras."
+text:"No começo você sempre trocava baixo por guitarra e colocava a culpa no corretor. Até hoje acho engraçado lembrar disso."
 },
+
 
 {
 title:"A cartinha de girassol",
-text:"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda, mas o que eu mais amo nela é saber que você separou um tempo e carinho para fazer algo pensando em mim."
+text:"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. O mais bonito é saber que você dedicou tempo pensando em mim."
 },
+
 
 {
 title:"As nossas calls",
-text:"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
+text:"Eu gosto muito dos nossos momentos simples, como nossas calls enquanto eu cozinhava e você ia me ensinando coisas."
 },
+
 
 {
 title:"As minhas piadinhas",
-text:"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é o meu jeito de brincar com você e criar momentos bobos."
+text:"Eu sei que às vezes faço piadinhas e deixo você brava, mas é meu jeito de criar momentos bobos com você."
 },
+
 
 {
 title:"O nosso caminho",
-text:"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
+text:"A gente ainda tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
 }
 
 ];
@@ -123,53 +154,44 @@ text:"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar po
 
 
 
-/* =====================================================
-   ESTADO DO SITE
-===================================================== */
-
-
-let openedLetters = 0;
-
-let opened = [];
-
-let gardenStarted = false;
 
 
 
-
-/* =====================================================
-   ENTRAR NO JARDIM
-===================================================== */
-
-
-if(enterButton){
+/* ===============================
+   BOTÃO ENTRAR
+================================ */
 
 
-enterButton.addEventListener("click",()=>{
+if(enterGarden){
 
 
-if(gardenStarted) return;
+enterGarden.addEventListener(
+"click",
+()=>{
 
 
-gardenStarted = true;
+if(gardenOpened) return;
 
 
-
-introScreen.classList.add("hidden");
+gardenOpened=true;
 
 
 
-transitionScreen.classList.remove("hidden");
+intro.classList.add("hidden");
+
+
+
+transition.classList.remove("hidden");
 
 
 
 setTimeout(()=>{
 
 
-transitionScreen.classList.add("hidden");
+transition.classList.add("hidden");
 
 
-gardenScreen.classList.remove("hidden");
+garden.classList.remove("hidden");
 
 
 createFlowers();
@@ -180,7 +202,9 @@ createFlowers();
 
 
 
-});
+}
+
+);
 
 
 }
@@ -191,127 +215,77 @@ createFlowers();
 
 
 
-/* =====================================================
-   CRIAÇÃO DAS FLORES
-===================================================== */
+
+
+/* ===============================
+   CRIAR FLORES
+================================ */
 
 
 function createFlowers(){
 
 
-if(!flowersContainer) return;
+if(!flowersContainer)
+return;
 
 
 
-const normalFlowers=[
+// flores normais
 
-"🌷",
-"🌹",
-"🌼",
-"🌸",
-"💮",
-"🪻"
-
-];
+for(let i=0;i<29;i++){
 
 
-for(let i=0;i<40;i++){
+createFlower(false,i);
 
 
-let flower=document.createElement("div");
+}
+
+
+
+
+// flores das cartas
+
+letters.forEach(
+(letter,index)=>{
+
+
+createFlower(true,index);
+
+
+}
+
+);
+
+
+
+}
+
+
+
+
+
+
+function createFlower(special,index){
+
+
+
+const flower =
+document.createElement("div");
+
 
 
 flower.classList.add("flower");
 
 
-flower.innerHTML=
-normalFlowers[
-Math.floor(
-Math.random()*normalFlowers.length
-)
-];
 
-
-
-let x =
-Math.random()*75+10;
-
-
-let y =
-Math.random()*75+10;
-
-
-
-flower.style.left=x+"%";
-
-flower.style.top=y+"%";
-
-
-
-flower.style.animationDelay=
-(i*0.08)+"s";
-
-
-
-flowersContainer.appendChild(flower);
-
-
-
-}
-
-
-
-
-createSpecialFlowers();
-
-
-
-}
-
-
-
-
-
-
-/* =====================================================
-   FLORES DAS CARTAS
-===================================================== */
-
-
-function createSpecialFlowers(){
-
-
-letters.forEach((item,index)=>{
-
-
-let flower =
-document.createElement("div");
-
-
+if(special){
 
 flower.classList.add(
-"flower",
 "special-flower"
 );
 
 
-
-flower.innerHTML="🌹";
-
-
-
-flower.style.left =
-(10 + index*7)%80 + "%";
-
-
-flower.style.top =
-(15 + index*5)%75 + "%";
-
-
-
-flower.style.animationDelay=
-(index*0.2)+"s";
-
+flower.dataset.id=index;
 
 
 flower.addEventListener(
@@ -320,12 +294,39 @@ flower.addEventListener(
 );
 
 
-
-flowersContainer.appendChild(flower);
-
+}
 
 
-});
+
+
+// posição segura
+
+let left =
+Math.random()*75+10;
+
+
+let top =
+Math.random()*70+10;
+
+
+
+flower.style.left =
+left+"%";
+
+
+flower.style.top =
+top+"%";
+
+
+
+flower.style.animationDelay =
+(index*0.08)+"s";
+
+
+
+flowersContainer.appendChild(
+flower
+);
 
 
 
@@ -336,15 +337,20 @@ flowersContainer.appendChild(flower);
 
 
 
-/* =====================================================
+
+
+
+/* ===============================
    ABRIR CARTAS
-===================================================== */
+================================ */
 
 
 function openLetter(index){
 
 
-if(!letterModal) return;
+
+if(!letterModal)
+return;
 
 
 
@@ -352,7 +358,8 @@ letterTitle.innerText =
 letters[index].title;
 
 
-letterText.innerText =
+
+letterMessage.innerText =
 letters[index].text;
 
 
@@ -363,19 +370,19 @@ letterModal.classList.remove(
 
 
 
-if(!opened.includes(index)){
 
 
-opened.push(index);
+if(!openedLetters.includes(index)){
 
-openedLetters++;
 
+openedLetters.push(index);
 
 
 checkFinal();
 
 
 }
+
 
 
 }
@@ -399,7 +406,10 @@ letterModal.classList.add(
 );
 
 
-});
+
+}
+
+);
 
 
 }
@@ -409,57 +419,65 @@ letterModal.classList.add(
 
 
 
-/* =====================================================
+
+
+/* ===============================
    FINAL
-===================================================== */
+================================ */
 
 
 function checkFinal(){
 
 
-if(openedLetters===11){
+if(openedLetters.length===11){
+
 
 
 setTimeout(()=>{
 
 
-if(finalSunflower){
+if(finalFlower){
 
-finalSunflower.classList.remove(
+
+finalFlower.classList.remove(
 "hidden"
 );
 
-}
-
-
-},500);
-
-
-
-}
 
 }
 
 
 
+},700);
+
+
+
+}
+
+}
 
 
 
 
 
-/* =====================================================
+
+
+
+/* ===============================
    CONTADOR
-===================================================== */
+================================ */
 
 
 function updateCounter(){
 
 
-if(!counter)return;
+
+if(!counter)
+return;
 
 
 
-const start =
+const firstMessage =
 new Date(
 "2026-04-27T18:14:00"
 );
@@ -471,46 +489,55 @@ new Date();
 
 
 
-let diff =
-now-start;
+let difference =
+now-firstMessage;
 
 
 
-if(diff<0){
+if(difference<0){
+
 
 counter.innerText=
-"Em breve...";
+"Ainda não começou";
+
 
 return;
+
 
 }
 
 
 
-let minutes =
-Math.floor(diff/60000);
 
-
-
-let hours =
-Math.floor(minutes/60);
+let totalMinutes =
+Math.floor(
+difference/60000
+);
 
 
 
 let days =
-Math.floor(hours/24);
+Math.floor(
+totalMinutes/(60*24)
+);
 
 
 
-minutes%=60;
+let hours =
+Math.floor(
+(totalMinutes/60)%24
+);
 
-hours%=24;
+
+
+let minutes =
+totalMinutes%60;
 
 
 
 counter.innerText =
 
-`${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem`;
+`${days} dias, ${hours} horas e ${minutes} minutos`;
 
 
 
@@ -533,32 +560,33 @@ updateCounter();
 
 
 
-/* =====================================================
+
+/* ===============================
    VOLTAR AO JARDIM
-===================================================== */
+================================ */
 
 
-if(returnButton){
+if(returnGarden){
 
 
-returnButton.addEventListener(
+returnGarden.addEventListener(
 "click",
 ()=>{
 
 
-finalScreen.classList.add(
+finalPage.classList.add(
 "hidden"
 );
 
 
-
-gardenScreen.classList.remove(
+garden.classList.remove(
 "hidden"
 );
 
 
+}
 
-});
+);
 
 
 }
