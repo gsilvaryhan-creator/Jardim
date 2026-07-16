@@ -534,19 +534,14 @@ function verificarEspaco(
 
 
 
+if(
+    distanciaX < 55 &&
+    distanciaY < 55
+){
 
-        if(
-            distanciaX < 40 &&
-            distanciaY < 40
-        ){
+    return false;
 
-
-
-            return false;
-
-
-
-        }
+}
 
 
 
