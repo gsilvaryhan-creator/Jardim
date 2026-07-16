@@ -858,53 +858,41 @@ button {
 
 .flor.especial {
 
-
     cursor:pointer;
-
 
     z-index:10;
 
-
     visibility:hidden;
 
+    filter:
+    drop-shadow(0 0 2px rgba(255,255,255,.8))
+    drop-shadow(0 0 6px rgba(255,255,255,.35))
+    drop-shadow(0 0 10px rgba(221,187,62,.25));
 
 }
 
 
-
-
 .flor.especial::after {
-
 
     content:"";
 
-
     position:absolute;
 
+    width:65px;
 
-    width:75px;
-
-
-    height:75px;
-
+    height:65px;
 
     border-radius:50%;
 
 
-
     background:
 
-
     radial-gradient(
-
-    circle,
-
-    rgba(221,187,62,.5),
-
-    transparent 70%
-
+        circle,
+        rgba(255,255,255,.18),
+        rgba(221,187,62,.15),
+        transparent 70%
     );
-
 
 
     z-index:-1;
@@ -912,15 +900,9 @@ button {
 
     animation:
 
-    brilho 2.5s infinite;
-
+    brilho 4s infinite;
 
 }
-
-
-
-
-
 
 @keyframes pulsar-especial {
 
