@@ -1,5 +1,5 @@
 /* =====================================
-   RESET GERAL
+   CONFIGURAÇÕES GERAIS
 ===================================== */
 
 * {
@@ -11,7 +11,6 @@
 
 body {
 
-    width: 100%;
     min-height: 100vh;
 
     overflow: hidden;
@@ -26,25 +25,39 @@ body {
 
 
 
+button {
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    border: none;
+
+}
+
+
+
+
+
 /* =====================================
-   TELAS
+   SISTEMA DE TELAS
 ===================================== */
+
 
 .screen {
 
-    width: 100%;
-    height: 100vh;
+    position: fixed;
+
+    inset: 0;
 
     display: flex;
 
-    justify-content: center;
     align-items: center;
 
-    position: absolute;
+    justify-content: center;
 
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+    transition: opacity 1s ease,
+                transform 1s ease;
 
 }
 
@@ -52,27 +65,33 @@ body {
 
 .hidden {
 
-    display: none !important;
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+    visibility: hidden;
 
 }
 
 
 
 
+
 /* =====================================
-   INTRO
+   TELA INICIAL
 ===================================== */
 
 
 .intro-screen {
 
+
     background:
 
-    radial-gradient(
-        circle,
-        #fffaf0 0%,
-        #dcefd4 80%
-    );
+    radial-gradient(circle at top,
+    #fffaf0,
+    #dcefd4);
+
+
 
 }
 
@@ -80,13 +99,16 @@ body {
 
 .intro-content {
 
+
     text-align: center;
 
-    max-width: 500px;
+    max-width: 600px;
 
     padding: 30px;
 
+
     animation: introAppear 2s ease;
+
 
 }
 
@@ -94,9 +116,12 @@ body {
 
 .intro-flower {
 
+
     font-size: 90px;
 
+
     animation: floating 3s infinite ease-in-out;
+
 
 }
 
@@ -104,11 +129,13 @@ body {
 
 .intro-content h1 {
 
-    font-size: 42px;
+
+    font-size: clamp(2rem,5vw,3.5rem);
+
+    margin: 20px 0 10px;
 
     color: #628d65;
 
-    margin-bottom: 10px;
 
 }
 
@@ -116,11 +143,11 @@ body {
 
 .intro-content h2 {
 
+
     color: #e98c9e;
 
-    font-size: 24px;
-
     margin-bottom: 20px;
+
 
 }
 
@@ -128,62 +155,73 @@ body {
 
 .intro-content p {
 
-    font-size: 20px;
 
-    line-height: 1.5;
+    font-size: 1.2rem;
+
+    line-height: 1.6;
 
     margin-bottom: 35px;
 
-}
-
-
-
-
-
-button {
-
-    border: none;
-
-    cursor: pointer;
-
-    padding: 15px 30px;
-
-    border-radius: 30px;
-
-    font-size: 18px;
-
-    background: #f3ca60;
-
-    color: #593b1f;
-
-    transition: .3s;
-
-    box-shadow:
-
-    0 8px 20px rgba(0,0,0,.15);
 
 }
 
 
 
-button:hover {
 
-    transform: translateY(-5px);
+#enterGarden {
+
+
+    background:
+
+    #e98c9e;
+
+
+    color:white;
+
+
+    padding:15px 35px;
+
+
+    border-radius:40px;
+
+
+    font-size:1.1rem;
+
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+
+    transition:.4s;
+
 
 }
+
+
+
+#enterGarden:hover {
+
+
+    transform:translateY(-5px) scale(1.05);
+
+
+}
+
+
 
 
 
 
 
 /* =====================================
-   TRANSIÇÃO
+   TRANSIÇÃO DA PÉTALA
 ===================================== */
 
 
 .transition-screen {
 
-    background: #fffaf0;
+
+    background:#fffaf0;
+
 
 }
 
@@ -191,13 +229,57 @@ button:hover {
 
 .falling-petal {
 
-    font-size: 70px;
+
+    font-size:80px;
+
 
     animation:
 
     petalFall 3s ease forwards;
 
+
 }
+
+
+
+@keyframes petalFall {
+
+
+    0% {
+
+        transform:
+        translateY(-200px)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+
+
+    20% {
+
+        opacity:1;
+
+    }
+
+
+
+    100% {
+
+        transform:
+        translateY(500px)
+        rotate(360deg);
+
+
+        opacity:0;
+
+
+    }
+
+
+}
+
 
 
 
@@ -211,73 +293,90 @@ button:hover {
 
 .garden-screen {
 
-    flex-direction: column;
 
     background:
 
     linear-gradient(
-
-        #dcefd4,
-
-        #628d65
-
+    #dcefd4,
+    #b8d9a8
     );
 
-}
 
+    overflow:hidden;
 
-
-.garden-header {
-
-    position: absolute;
-
-    top: 25px;
-
-    text-align: center;
-
-    z-index: 5;
 
 }
 
 
 
-.garden-header h1 {
-
-    color: #fffaf0;
-
-    font-size: 38px;
-
-}
+.garden-container {
 
 
+    width:100%;
 
-.garden-header p {
+    height:100%;
 
-    color: #fffaf0;
+    display:flex;
 
-    font-size: 18px;
+    flex-direction:column;
+
+    align-items:center;
+
 
 }
 
 
 
 
+.counter-box {
 
-#counter {
 
-    margin-top: 15px;
+    margin-top:25px;
 
-    background:
+    background:#fffaf0;
 
-    rgba(255,255,255,.4);
 
-    padding: 10px 20px;
+    padding:15px 25px;
 
-    border-radius: 20px;
 
-    font-size: 17px;
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+
+    z-index:20;
+
 
 }
+
+
+
+.counter-box h3 {
+
+
+    color:#628d65;
+
+    font-size:1rem;
+
+
+}
+
+
+
+.counter-box p {
+
+
+    margin-top:5px;
+
+    font-size:.95rem;
+
+
+}
+
 
 
 
@@ -289,34 +388,46 @@ button:hover {
 ===================================== */
 
 
-#flowersContainer {
+#garden {
 
 
-    position: relative;
+    position:relative;
 
 
-    width: 85%;
-
-    height: 70%;
+    width:min(90vw,900px);
 
 
-    margin-top: 80px;
+    height:min(70vh,650px);
 
 
-    border-radius: 50%;
+
+    margin-top:20px;
+
 
 
     background:
 
-    rgba(255,250,240,.35);
+
+    radial-gradient(circle,
+    #a8d48d,
+    #628d65);
+
+
+
+    border-radius:
+
+    45% 55% 50% 50% / 
+    55% 45% 55% 45%;
+
+
+
+    overflow:hidden;
 
 
     box-shadow:
 
-    inset 0 0 40px rgba(255,255,255,.4);
-
-
-    overflow: hidden;
+    inset 0 0 40px rgba(0,0,0,.15),
+    0 20px 50px rgba(0,0,0,.15);
 
 
 }
@@ -334,21 +445,16 @@ button:hover {
 .flower {
 
 
-    position: absolute;
+    position:absolute;
 
 
-    font-size: 35px;
+    font-size:35px;
 
 
-    cursor: pointer;
+    cursor:pointer;
 
 
-    user-select: none;
-
-
-    transform:
-
-    scale(0);
+    transform:scale(0);
 
 
     animation:
@@ -356,64 +462,159 @@ button:hover {
     flowerGrow .8s forwards;
 
 
-}
-
-
-
-.flower:hover {
-
-
-    transform:
-
-    scale(1.2);
+    user-select:none;
 
 
 }
 
 
 
+
+@keyframes flowerGrow {
+
+
+    0% {
+
+        transform:
+        scale(0)
+        rotate(-40deg);
+
+    }
+
+
+    70% {
+
+        transform:
+        scale(1.2)
+        rotate(15deg);
+
+    }
+
+
+
+    100% {
+
+
+        transform:
+        scale(1)
+        rotate(0);
+
+
+    }
+
+
+}
+
+
+
+
+/* flores especiais */
 
 
 .special-flower {
 
 
+    filter:
+
+    drop-shadow(0 0 12px #fff)
+    drop-shadow(0 0 20px #f3ca60);
+
+
+
     animation:
 
     flowerGrow .8s forwards,
-
-    glowFlower 2s infinite alternate;
+    glow 2s infinite alternate;
 
 
 }
+
+
+
+
+@keyframes glow {
+
+
+    from {
+
+
+        filter:
+        drop-shadow(0 0 5px #fff)
+        drop-shadow(0 0 10px #f3ca60);
+
+
+    }
+
+
+
+    to {
+
+
+        filter:
+        drop-shadow(0 0 20px #fff)
+        drop-shadow(0 0 35px #f3ca60);
+
+
+    }
+
+
+}
+
+
 
 
 
 
 
 /* =====================================
-   PARTÍCULAS
+   PARTÍCULAS E VENTO
 ===================================== */
 
 
 .particle {
 
 
-    position: absolute;
+    position:absolute;
 
-    width: 8px;
+    width:8px;
 
-    height: 8px;
+    height:8px;
 
-    background:
+    background:#fff;
 
-    #fffaf0;
+    border-radius:50%;
 
-    border-radius: 50%;
+    opacity:.7;
 
 
     animation:
 
-    particleFloat 6s infinite;
+    particleMove linear infinite;
+
+
+}
+
+
+
+
+@keyframes particleMove {
+
+
+    from {
+
+        transform:
+        translateY(100vh);
+
+    }
+
+
+    to {
+
+        transform:
+        translateY(-100vh);
+
+    }
+
 
 }
 
@@ -423,69 +624,45 @@ button:hover {
 
 
 
-/* =====================================
-   INSETOS
-===================================== */
+.leaf {
 
 
-#bugs span {
+    position:absolute;
 
+    font-size:25px;
 
-    position: absolute;
-
-    font-size: 30px;
-
-
-}
-
-
-
-.butterfly {
-
-
-    top: 30%;
-
-    left: 10%;
 
     animation:
 
-    flying 8s infinite;
+    leafWind 8s linear infinite;
+
 
 }
 
 
 
-.ladybug {
+@keyframes leafWind {
 
 
-    bottom: 20%;
+    from {
 
-    right: 15%;
+        transform:
+        translateX(-100px)
+        rotate(0);
 
-}
-
-
-
-
-
-/* =====================================
-   BOTÃO MÚSICA
-===================================== */
+    }
 
 
-#musicButton {
+
+    to {
 
 
-    position: absolute;
-
-    bottom: 25px;
-
-    right: 25px;
+        transform:
+        translateX(110vw)
+        rotate(360deg);
 
 
-    background:
-
-    #fffaf0;
+    }
 
 
 }
@@ -504,9 +681,16 @@ button:hover {
 .modal {
 
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
 
     background:
@@ -514,34 +698,28 @@ button:hover {
     rgba(0,0,0,.35);
 
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    z-index:20;
+    z-index:100;
 
 
 }
 
 
 
+
+
 .letter {
 
 
-    background:
-
-    #fffaf0;
+    position:relative;
 
 
-    width:90%;
-
-    max-width:450px;
+    width:min(90%,500px);
 
 
-    padding:35px;
+    background:#fffaf0;
+
+
+    padding:40px;
 
 
     border-radius:10px;
@@ -552,23 +730,87 @@ button:hover {
     0 20px 50px rgba(0,0,0,.3);
 
 
+
+    transform:
+
+    rotate(-2deg);
+
+
     animation:
 
-    letterOpen .6s;
+    letterOpen .5s ease;
 
-
-    transform:rotate(-2deg);
 
 }
+
+
+
+
+@keyframes letterOpen {
+
+
+    from {
+
+        transform:
+        scale(.5)
+        rotate(-15deg);
+
+
+        opacity:0;
+
+    }
+
+
+    to {
+
+        transform:
+        scale(1)
+        rotate(-2deg);
+
+
+        opacity:1;
+
+
+    }
+
+
+}
+
+
+
+.close {
+
+
+    position:absolute;
+
+
+    top:10px;
+
+
+    right:15px;
+
+
+    background:none;
+
+
+    font-size:30px;
+
+
+    color:#9c2a22;
+
+
+}
+
 
 
 
 .letter h2 {
 
 
-    color:#e98c9e;
+    color:#9c2a22;
 
     margin-bottom:20px;
+
 
 }
 
@@ -579,112 +821,112 @@ button:hover {
 
     line-height:1.7;
 
-    font-size:18px;
-
 
 }
 
 
 
-#closeLetter {
+
+
+
+/* =====================================
+   GIRASSOL FINAL
+===================================== */
+
+
+.sunflower {
 
 
     position:absolute;
 
+    left:50%;
 
-    right:20px;
+    top:50%;
 
-    top:15px;
+    transform:
 
-
-    background:none;
-
-    box-shadow:none;
-
-    font-size:35px;
-
-
-}
+    translate(-50%,-50%)
+    scale(0);
 
 
 
-
-
-
-
-/* =====================================
-   FINAL
-===================================== */
-
-
-.final-screen {
-
-
-    background:
-
-    radial-gradient(
-
-        circle,
-
-        #fffaf0,
-
-        #dcefd4
-
-    );
-
-}
-
-
-
-.final-content {
-
-
-    text-align:center;
-
-    max-width:600px;
-
-    padding:30px;
-
-
-}
-
-
-
-#finalFlower {
-
-
-    font-size:130px;
+    font-size:120px;
 
 
     animation:
 
-    finalBloom 2s infinite alternate;
+    sunflowerGrow 2s forwards,
+    glow 2s infinite alternate;
 
 
 }
 
 
 
-.final-content h1 {
+@keyframes sunflowerGrow {
 
 
-    color:#628d65;
+    to {
 
-    margin-bottom:20px;
+
+        transform:
+
+        translate(-50%,-50%)
+        scale(1);
+
+
+    }
 
 
 }
 
 
 
-.final-content p {
 
 
-    font-size:20px;
+.final-message {
 
-    line-height:1.6;
 
-    margin-bottom:20px;
+    position:absolute;
+
+    bottom:20px;
+
+    background:#fffaf0;
+
+
+    max-width:500px;
+
+    padding:25px;
+
+
+    border-radius:25px;
+
+
+    text-align:center;
+
+
+    z-index:30;
+
+
+}
+
+
+
+
+
+
+#backGarden {
+
+
+    margin-top:20px;
+
+    padding:12px 30px;
+
+    border-radius:30px;
+
+    background:#628d65;
+
+    color:white;
 
 
 }
@@ -696,213 +938,36 @@ button:hover {
 
 
 /* =====================================
-   ANIMAÇÕES
+   MÚSICA
 ===================================== */
 
 
-@keyframes introAppear {
-
-    from {
-
-        opacity:0;
-
-        transform:translateY(30px);
-
-    }
+.music-button {
 
 
-    to {
-
-        opacity:1;
-
-        transform:none;
-
-    }
-
-}
+    position:fixed;
 
 
+    bottom:20px;
 
-@keyframes floating {
+
+    right:20px;
 
 
-    50% {
+    padding:12px 20px;
 
-        transform:translateY(-15px);
 
-    }
+    border-radius:30px;
+
+
+    background:#f3ca60;
+
+
+    z-index:200;
 
 
 }
 
-
-
-@keyframes petalFall {
-
-
-    from {
-
-        transform:
-
-        translateY(-300px)
-        rotate(0);
-
-    }
-
-
-    to {
-
-        transform:
-
-        translateY(300px)
-        rotate(360deg);
-
-        opacity:0;
-
-    }
-
-
-}
-
-
-
-@keyframes flowerGrow {
-
-
-    from {
-
-        transform:scale(0);
-
-    }
-
-
-    80% {
-
-        transform:scale(1.2);
-
-    }
-
-
-    to {
-
-        transform:scale(1);
-
-    }
-
-}
-
-
-
-@keyframes glowFlower {
-
-
-    from {
-
-        filter:
-
-        drop-shadow(0 0 5px #f3ca60);
-
-    }
-
-
-    to {
-
-        filter:
-
-        drop-shadow(0 0 20px #f3ca60);
-
-    }
-
-}
-
-
-
-@keyframes particleFloat {
-
-
-    from {
-
-        transform:translateY(100vh);
-
-    }
-
-
-    to {
-
-        transform:translateY(-100vh);
-
-    }
-
-}
-
-
-
-@keyframes flying {
-
-
-    50% {
-
-        transform:
-
-        translate(100px,-50px);
-
-    }
-
-}
-
-
-
-@keyframes letterOpen {
-
-
-    from {
-
-        opacity:0;
-
-        transform:
-
-        scale(.5)
-
-        rotate(10deg);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform:
-
-        scale(1)
-
-        rotate(-2deg);
-
-    }
-
-
-}
-
-
-
-@keyframes finalBloom {
-
-
-    from {
-
-        transform:scale(.9);
-
-    }
-
-
-    to {
-
-        transform:scale(1.1);
-
-    }
-
-
-}
 
 
 
@@ -910,42 +975,21 @@ button:hover {
 
 
 /* =====================================
-   MOBILE
+   CELULAR
 ===================================== */
 
 
 @media(max-width:600px){
 
 
-    .intro-content h1 {
 
-        font-size:32px;
-
-    }
+    #garden {
 
 
+        width:95vw;
 
-    .intro-content p {
+        height:65vh;
 
-        font-size:17px;
-
-    }
-
-
-
-    .garden-header h1 {
-
-        font-size:30px;
-
-    }
-
-
-
-    #flowersContainer {
-
-        width:95%;
-
-        height:65%;
 
     }
 
@@ -953,15 +997,39 @@ button:hover {
 
     .flower {
 
+
         font-size:28px;
+
 
     }
 
 
 
-    #counter {
+    .intro-flower {
 
-        font-size:14px;
+
+        font-size:70px;
+
+
+    }
+
+
+
+    .letter {
+
+
+        padding:30px 25px;
+
+
+    }
+
+
+
+    .counter-box {
+
+
+        margin-top:15px;
+
 
     }
 
