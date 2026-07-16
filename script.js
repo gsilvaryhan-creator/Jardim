@@ -50,7 +50,7 @@ let jardimIniciado = false;
 
 let bilheteRemovido = false;
 
-
+let posicoesFlores = [];
 
 /* =====================================
    DATA DO CONTADOR
@@ -449,9 +449,10 @@ function colocarFlorNoJardim(
 
 
         conseguiu =
-        verificarEspaco(
-            flor
-        );
+verificarEspaco(
+    x,
+    y
+);
 
 
 
@@ -477,87 +478,44 @@ function colocarFlorNoJardim(
 ===================================== */
 
 
-function verificarEspaco(
-    novaFlor
-){
+function verificarEspaco(x, y){
 
 
-
-    const flores =
-    jardim.querySelectorAll(
-        ".flor"
-    );
+    for(let flor of posicoesFlores){
 
 
-
-    const nova =
-    novaFlor.getBoundingClientRect();
-
+        const distanciaX =
+        Math.abs(x - flor.x);
 
 
-
-
-    for(
-        let flor of flores
-    ){
+        const distanciaY =
+        Math.abs(y - flor.y);
 
 
 
         if(
-            flor === novaFlor
-        )
-        continue;
+            distanciaX < 55 &&
+            distanciaY < 55
+        ){
 
+            return false;
 
-
-        const outra =
-        flor.getBoundingClientRect();
-
-
-
-
-
-        const distanciaX =
-        Math.abs(
-            nova.left -
-            outra.left
-        );
-
-
-
-        const distanciaY =
-        Math.abs(
-            nova.top -
-            outra.top
-        );
-
-
-
-
-if(
-    distanciaX < 55 &&
-    distanciaY < 55
-){
-
-    return false;
-
-}
-
+        }
 
 
     }
 
 
+    posicoesFlores.push({
+        x:x,
+        y:y
+    });
 
 
     return true;
 
 
-
 }
-
-
-
 
 
 
