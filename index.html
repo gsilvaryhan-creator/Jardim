@@ -2,32 +2,41 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>O Jardim Onde Você Floresce</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>O Jardim Onde Você Floresce</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
 
 <!-- =========================
-     TELA INICIAL
+     INTRODUÇÃO
 ========================= -->
 
-<section id="introScreen" class="screen intro">
 
-    <div class="intro-content">
+<section id="intro" class="page active">
 
-        <div class="magic-flower">
+
+    <div class="intro-box">
+
+
+        <div class="main-flower">
             🌻
         </div>
+
 
         <h1>
             O Jardim Onde Você Floresce
         </h1>
+
 
         <h2>
             feito para Tainá
@@ -40,14 +49,15 @@
         </p>
 
 
-        <button id="enterButton">
+
+        <button id="enterGarden">
             Entrar no jardim →
         </button>
 
+
+
     </div>
 
-
-    <div class="particles"></div>
 
 </section>
 
@@ -59,13 +69,17 @@
      TRANSIÇÃO
 ========================= -->
 
-<section id="transitionScreen" class="screen transition hidden">
 
-    <div class="petal">
+<section id="transition" class="page hidden">
+
+
+    <div class="falling-petal">
         🌸
     </div>
 
+
 </section>
+
 
 
 
@@ -75,27 +89,39 @@
      JARDIM
 ========================= -->
 
-<section id="gardenScreen" class="screen garden hidden">
+
+<section id="garden" class="page hidden">
 
 
-    <div class="garden-header">
+    <div class="garden-top">
+
 
         <h1>
             Nosso Jardim
         </h1>
 
 
-        <div id="relationshipCounter">
 
-            Tempo desde a primeira mensagem:
+        <div id="counterBox">
 
-            <span id="counter">
-                carregando...
-            </span>
+
+            <h3>
+                Tempo desde a primeira mensagem
+            </h3>
+
+
+            <p id="counter">
+
+                Calculando...
+
+            </p>
+
 
         </div>
 
+
     </div>
+
 
 
 
@@ -103,18 +129,21 @@
     <div id="gardenArea">
 
 
-        <!--
-            As flores serão criadas pelo JavaScript aqui
-        -->
+        <div id="flowersContainer">
 
-        <div id="flowersContainer"></div>
+        </div>
 
 
-        <!-- Girassol final -->
 
-        <div id="finalSunflower" class="hidden">
+        <div id="finalFlower" class="hidden">
 
-            🌻
+
+            <div class="big-sunflower">
+
+                🌻
+
+            </div>
+
 
         </div>
 
@@ -122,19 +151,6 @@
 
     </div>
 
-
-
-
-
-    <div class="garden-effects">
-
-        <span class="leaf">🍃</span>
-
-        <span class="butterfly">
-            🦋
-        </span>
-
-    </div>
 
 
 </section>
@@ -161,14 +177,17 @@
         </button>
 
 
+
         <h2 id="letterTitle">
             Título
         </h2>
 
 
-        <p id="letterText">
-            Texto
+
+        <p id="letterMessage">
+            Mensagem
         </p>
+
 
 
     </div>
@@ -187,15 +206,20 @@
 ========================= -->
 
 
-<section id="finalScreen" class="screen final hidden">
+<section id="finalPage" class="page hidden">
 
 
-    <div class="final-content">
+    <div class="final-box">
 
 
-        <div id="bigSunflower">
+
+        <div class="final-sunflower">
+
             🌻
+
         </div>
+
+
 
 
         <h1>
@@ -203,11 +227,15 @@
         </h1>
 
 
+
+
         <p>
             Amor, fiz este jardim com coisas
             que são importantes para mim
             e que guardo comigo.
         </p>
+
+
 
 
         <p>
@@ -219,9 +247,13 @@
 
 
 
-        <button id="returnButton">
+
+        <button id="returnGarden">
+
             Voltar ao jardim
+
         </button>
+
 
 
     </div>
