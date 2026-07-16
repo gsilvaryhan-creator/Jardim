@@ -412,3 +412,763 @@ gardenStarted=true;
 
 
 }
+
+
+/* ==========================
+CRIAR JARDIM
+========================== */
+
+
+function createGarden(){
+
+
+const flowers = [
+
+"🌷",
+"🌹",
+"🌼",
+"🌸",
+"🪻"
+
+];
+
+
+
+let positions=[];
+
+
+
+for(let i = 0; i < 24; i++){
+
+
+
+let position = getSafePosition(
+positions
+);
+
+
+
+positions.push(position);
+
+
+
+let flower =
+document.createElement(
+"div"
+);
+
+
+
+flower.className =
+"flower";
+
+
+
+if(i >= 13){
+
+flower.classList.add(
+"special"
+);
+
+flower.dataset.letter =
+i - 13;
+
+}
+
+
+
+flower.innerHTML =
+flowers[
+Math.floor(
+Math.random() *
+flowers.length
+)
+];
+
+
+
+flower.style.left =
+position.x + "%";
+
+
+
+flower.style.top =
+position.y + "%";
+
+
+
+flower.style.animationDelay =
+(i * 120) + "ms";
+
+
+
+
+
+if(i >= 13){
+
+
+flower.addEventListener(
+"click",
+()=>{
+
+openLetter(
+Number(
+flower.dataset.letter
+)
+);
+
+}
+
+);
+
+
+flower.addEventListener(
+"touchstart",
+()=>{
+
+openLetter(
+Number(
+flower.dataset.letter
+)
+);
+
+}
+
+);
+
+
+}
+
+
+
+flowersContainer.appendChild(
+flower
+);
+
+
+
+}
+
+
+
+createParticles();
+
+
+createLeaves();
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+POSIÇÃO SEGURA
+========================== */
+
+
+function getSafePosition(existing){
+
+
+
+let tries = 0;
+
+
+
+while(tries < 100){
+
+
+
+let x =
+Math.random()*80 + 10;
+
+
+
+let y =
+Math.random()*76 + 12;
+
+
+
+let valid = true;
+
+
+
+for(let pos of existing){
+
+
+
+let distance =
+Math.sqrt(
+
+Math.pow(
+x-pos.x,
+2
+)
+
++
+
+Math.pow(
+y-pos.y,
+2
+)
+
+);
+
+
+
+if(distance < 8){
+
+
+valid=false;
+
+
+break;
+
+
+}
+
+
+}
+
+
+
+if(valid){
+
+
+return {
+x,
+y
+};
+
+
+}
+
+
+
+tries++;
+
+
+
+}
+
+
+
+return {
+
+
+x:50,
+
+y:50
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+CARTAS
+========================== */
+
+
+function openLetter(index){
+
+
+
+if(!letters[index]){
+
+return;
+
+}
+
+
+
+letterTitle.innerText =
+letters[index].title;
+
+
+
+letterText.innerText =
+letters[index].text;
+
+
+
+letterModal.classList.add(
+"show"
+);
+
+
+
+openedLetters++;
+
+
+
+if(openedLetters >= 11){
+
+
+setTimeout(()=>{
+
+
+activateFinal();
+
+
+},800);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+function closeLetter(){
+
+
+letterModal.classList.remove(
+"show"
+);
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+PARTÍCULAS LEVES
+========================== */
+
+
+function createParticles(){
+
+
+
+let container =
+document.getElementById(
+"particles-container"
+);
+
+
+
+for(let i=0;i<20;i++){
+
+
+
+let particle =
+document.createElement(
+"span"
+);
+
+
+
+particle.className =
+"particle";
+
+
+
+particle.style.left =
+Math.random()*100 + "%";
+
+
+
+particle.style.top =
+Math.random()*100 + "%";
+
+
+
+particle.style.animationDelay =
+Math.random()*5+"s";
+
+
+
+container.appendChild(
+particle
+);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+FOLHAS
+========================== */
+
+
+function createLeaves(){
+
+
+
+let container =
+document.getElementById(
+"leaves-container"
+);
+
+
+
+let leaves=[
+
+"🍃",
+"🍂"
+
+];
+
+
+
+for(let i=0;i<8;i++){
+
+
+
+let leaf =
+document.createElement(
+"span"
+);
+
+
+
+leaf.className =
+"leaf";
+
+
+
+leaf.innerHTML =
+leaves[
+Math.floor(
+Math.random()*
+leaves.length
+)
+];
+
+
+
+leaf.style.left =
+Math.random()*100+"%";
+
+
+
+leaf.style.top =
+Math.random()*100+"%";
+
+
+
+leaf.style.animationDelay =
+Math.random()*4+"s";
+
+
+
+container.appendChild(
+leaf
+);
+
+
+
+}
+
+
+
+}
+
+
+/* ==========================
+CONTADOR
+DESDE 27/04/2026 18:14
+========================== */
+
+
+function startCounter(){
+
+
+const startDate =
+new Date(
+"2026-04-27T18:14:00"
+);
+
+
+
+function updateCounter(){
+
+
+
+const now =
+new Date();
+
+
+
+const difference =
+now - startDate;
+
+
+
+if(difference < 0){
+
+return;
+
+}
+
+
+
+const totalSeconds =
+Math.floor(
+difference / 1000
+);
+
+
+
+const days =
+Math.floor(
+totalSeconds / 86400
+);
+
+
+
+const hours =
+Math.floor(
+(totalSeconds % 86400)
+/3600
+);
+
+
+
+const minutes =
+Math.floor(
+(totalSeconds %3600)
+/60
+);
+
+
+
+document.getElementById(
+"days"
+).innerText =
+days;
+
+
+
+document.getElementById(
+"hours"
+).innerText =
+hours;
+
+
+
+document.getElementById(
+"minutes"
+).innerText =
+minutes;
+
+
+
+}
+
+
+
+updateCounter();
+
+
+
+setInterval(
+updateCounter,
+1000
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+MÚSICA
+========================== */
+
+
+function toggleMusic(){
+
+
+
+if(!backgroundMusic){
+
+return;
+
+}
+
+
+
+if(
+!musicPlaying
+){
+
+
+backgroundMusic.play()
+.then(()=>{
+
+
+musicPlaying=true;
+
+
+
+document.getElementById(
+"musicButton"
+).innerText =
+"🔇 Pausar Música";
+
+
+
+})
+.catch(()=>{});
+
+
+
+}
+
+else{
+
+
+backgroundMusic.pause();
+
+
+
+musicPlaying=false;
+
+
+
+document.getElementById(
+"musicButton"
+).innerText =
+"🔊 Música";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+FINAL
+APÓS 11 CARTAS
+========================== */
+
+
+function activateFinal(){
+
+
+
+if(finalActivated){
+
+return;
+
+}
+
+
+
+finalActivated=true;
+
+
+
+const sunflower =
+document.getElementById(
+"sunflowerTransition"
+);
+
+
+
+sunflower.classList.add(
+"active"
+);
+
+
+
+setTimeout(()=>{
+
+
+changeScreen(
+finalScreen
+);
+
+
+
+sunflower.classList.remove(
+"active"
+);
+
+
+
+},3000);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+VOLTAR AO JARDIM
+========================== */
+
+
+function returnGarden(){
+
+
+
+changeScreen(
+garden
+);
+
+
+
+currentScreen =
+"GARDEN";
+
+
+
+}
