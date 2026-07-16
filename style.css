@@ -1,110 +1,294 @@
-/* =====================================
-   O JARDIM ONDE VOCÊ FLORESCE
-   STYLE.CSS COMPLETO
-===================================== */
+/* ==========================
+   CONFIGURAÇÃO GERAL
+========================== */
 
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
+body {
 
-html,
-body{
+    min-height: 100vh;
 
-    width:100%;
-    height:100%;
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
-    overflow:hidden;
+    overflow-x: hidden;
 
-    font-family:Georgia, serif;
+    background: #dcefd4;
 
-}
-
-
-
-body{
-
-    background:#dcefd4;
+    color: #593b1f;
 
 }
 
 
 
-:root{
-
-    --green-light:#dcefd4;
-
-    --green:#628d65;
-
-    --green-dark:#40632b;
-
-    --cream:#fffaf0;
-
-    --pink:#f4afbd;
-
-    --flower:#e98c9e;
-
-    --yellow:#f3ca60;
-
-}
+/* ==========================
+   CONTROLE DE TELAS
+========================== */
 
 
+.screen {
 
+    min-height: 100vh;
 
+    width: 100%;
 
+    display: flex;
 
-/* =========================
-   TELAS
-========================= */
+    justify-content: center;
 
-
-#app{
-
-    width:100%;
-    height:100%;
+    align-items: center;
 
 }
 
 
+.hidden {
 
-.screen{
-
-    position:absolute;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-
-.screen.active{
-
-    display:flex;
+    display: none !important;
 
 }
 
 
 
 
+/* ==========================
+   TELA INICIAL
+========================== */
+
+
+.intro {
+
+    background:
+    linear-gradient(
+        180deg,
+        #fffaf0,
+        #dcefd4
+    );
+
+    position: relative;
+
+    overflow: hidden;
+
+}
 
 
 
-/* =========================
-   INTRO
-========================= */
+.intro-content {
+
+    text-align: center;
+
+    max-width: 600px;
+
+    padding: 30px;
+
+    animation:
+    aparecer 1.5s ease;
+
+}
 
 
-#introScreen{
+
+.magic-flower {
+
+    font-size: 90px;
+
+    animation:
+
+    flutuar 3s infinite ease-in-out;
+
+}
+
+
+
+
+.intro h1 {
+
+    margin-top: 20px;
+
+    font-size: clamp(32px,5vw,55px);
+
+    color:#628d65;
+
+}
+
+
+
+.intro h2 {
+
+    margin-top: 10px;
+
+    color:#e98c9e;
+
+    font-weight:400;
+
+}
+
+
+
+.intro p {
+
+    margin:30px auto;
+
+    line-height:1.6;
+
+    font-size:18px;
+
+}
+
+
+
+
+button {
+
+
+    border:none;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    background:#f3ca60;
+
+    color:#593b1f;
+
+    font-size:18px;
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover {
+
+
+    transform:scale(1.05);
+
+    background:#e98c9e;
+
+
+}
+
+
+
+/* ==========================
+   TRANSIÇÃO
+========================== */
+
+
+.transition {
+
+    background:#fffaf0;
+
+    position:relative;
+
+}
+
+
+
+.petal {
+
+
+    font-size:70px;
+
+    animation:
+
+    cairPetala 3s ease forwards;
+
+
+}
+
+
+
+
+/* ==========================
+   JARDIM
+========================== */
+
+
+.garden {
+
+
+    flex-direction:column;
+
+    padding:20px;
+
+    background:
+
+    linear-gradient(
+
+        #dcefd4,
+
+        #b7dcae
+
+    );
+
+
+}
+
+
+
+.garden-header {
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.garden-header h1 {
+
+    color:#628d65;
+
+    font-size:38px;
+
+}
+
+
+
+#relationshipCounter {
+
+
+    margin-top:10px;
+
+    background:#fffaf0;
+
+    padding:12px 20px;
+
+    border-radius:20px;
+
+    box-shadow:
+
+    0 5px 15px rgba(0,0,0,.1);
+
+
+}
+
+
+
+
+
+#gardenArea {
+
+
+    position:relative;
+
+
+    width:min(95vw,900px);
+
+
+    height:min(70vh,600px);
 
 
     background:
@@ -113,178 +297,11 @@ body{
 
     circle,
 
-    white,
+    #9fcf91,
 
-    #dcefd4
+    #628d65
 
     );
-
-
-}
-
-
-
-
-.introContent{
-
-    width:90%;
-
-    max-width:600px;
-
-    text-align:center;
-
-    animation:appear 1.5s ease;
-
-}
-
-
-
-.introFlower{
-
-    font-size:100px;
-
-    animation:float 4s infinite ease;
-
-}
-
-
-
-
-.introContent h1{
-
-    margin-top:20px;
-
-    font-size:42px;
-
-    color:#628d65;
-
-}
-
-
-
-.introContent h2{
-
-    margin-top:10px;
-
-    color:#a46b77;
-
-}
-
-
-
-.introContent p{
-
-    margin-top:25px;
-
-    line-height:1.6;
-
-    color:#555;
-
-}
-
-
-
-
-
-button{
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:40px;
-
-    background:#e98c9e;
-
-    color:white;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-
-button:hover{
-
-    transform:scale(1.08);
-
-}
-
-
-
-
-
-
-
-/* =========================
-   TRANSIÇÃO
-========================= */
-
-
-#transitionScreen{
-
-    background:#fffaf0;
-
-}
-
-
-
-#petal{
-
-    font-size:90px;
-
-    animation:petalFall 3s forwards;
-
-}
-
-
-
-
-
-
-
-
-/* =========================
-   JARDIM
-========================= */
-
-
-#gardenScreen{
-
-    flex-direction:column;
-
-    background:
-
-    linear-gradient(
-
-    #dcefd4,
-
-    #b7d9a8
-
-    );
-
-}
-
-
-
-
-#garden{
-
-    position:relative;
-
-    width:90%;
-
-    height:75%;
-
-    max-width:1200px;
-
-    overflow:hidden;
 
 
     border-radius:
@@ -292,33 +309,20 @@ button:hover{
     45% 55% 50% 50%;
 
 
-    background:
-
-    linear-gradient(
-
-    150deg,
-
-    #7eaf72,
-
-    #628d65
-
-    );
+    overflow:hidden;
 
 
     box-shadow:
 
-    0 20px 50px rgba(0,0,0,.2);
+    inset 0 0 40px rgba(0,0,0,.15);
+
 
 }
 
 
 
 
-
-#flowersContainer,
-#particlesContainer,
-#windContainer,
-#insectsContainer{
+#flowersContainer {
 
 
     position:absolute;
@@ -329,57 +333,54 @@ button:hover{
 
 
 
+/* ==========================
+   FLORES CRIADAS PELO JS
+========================== */
 
 
-
-
-
-/* =========================
-   FLORES
-========================= */
-
-
-.flower{
+.flower {
 
 
     position:absolute;
-
-
-    font-size:35px;
 
 
     cursor:pointer;
 
 
-    user-select:none;
+    font-size:35px;
 
 
-    transform:scale(0);
+    transform:
+
+    scale(0);
 
 
     animation:
 
-    flowerBorn .8s forwards;
+    nascerFlor .8s forwards;
 
 
 }
 
 
 
-.specialFlower{
+.special-flower {
 
 
-    position:absolute;
+    filter:
+
+    drop-shadow(
+
+    0 0 12px #f3ca60
+
+    );
 
 
     animation:
 
-    flowerBorn .8s forwards,
+    nascerFlor .8s forwards,
 
-    specialPulse 2s infinite alternate;
-
-
-    z-index:5;
+    brilho 2s infinite alternate;
 
 
 }
@@ -388,48 +389,26 @@ button:hover{
 
 
 
-.specialFlower::before{
+/* ==========================
+   FINAL GIRASSOL
+========================== */
 
 
-    content:"";
+#finalSunflower {
 
 
     position:absolute;
-
-
-    width:60px;
-
-    height:60px;
-
 
     left:50%;
 
     top:50%;
-
 
     transform:
 
     translate(-50%,-50%);
 
 
-
-    background:
-
-    rgba(255,255,255,.45);
-
-
-    border-radius:50%;
-
-
-    filter:blur(12px);
-
-
-    z-index:-1;
-
-
-    animation:
-
-    aura 1.8s infinite alternate;
+    font-size:120px;
 
 
 }
@@ -438,108 +417,12 @@ button:hover{
 
 
 
+/* ==========================
+   MODAL CARTA
+========================== */
 
 
-/* =========================
-   PARTICULAS
-========================= */
-
-
-#particlesContainer span{
-
-
-    position:absolute;
-
-    color:white;
-
-    animation:
-
-    sparkle 3s infinite;
-
-}
-
-
-
-
-
-
-
-/* =========================
-   CONTADOR
-========================= */
-
-
-#counterBox{
-
-
-    margin-top:15px;
-
-
-    background:
-
-    rgba(255,250,240,.85);
-
-
-    padding:15px 25px;
-
-
-    border-radius:30px;
-
-
-    text-align:center;
-
-
-    box-shadow:
-
-    0 5px 20px rgba(0,0,0,.15);
-
-
-}
-
-
-
-#counterBox h3{
-
-
-    color:#40632b;
-
-    font-size:16px;
-
-}
-
-
-
-#relationshipCounter{
-
-
-    margin-top:8px;
-
-    color:#628d65;
-
-    font-size:17px;
-
-}
-
-
-
-
-
-
-
-/* =========================
-   CARTA
-========================= */
-
-
-.hidden{
-
-    display:none!important;
-
-}
-
-
-
-#letterModal{
+.modal {
 
 
     position:fixed;
@@ -549,14 +432,14 @@ button:hover{
 
     background:
 
-    rgba(0,0,0,.4);
+    rgba(0,0,0,.35);
 
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
 
     z-index:100;
@@ -566,14 +449,10 @@ button:hover{
 
 
 
+.letter {
 
 
-#letter{
-
-
-    width:90%;
-
-    max-width:450px;
+    width:min(90%,450px);
 
 
     background:#fffaf0;
@@ -582,48 +461,53 @@ button:hover{
     padding:35px;
 
 
-    border-radius:15px;
+    border-radius:20px;
 
 
     box-shadow:
 
-    0 20px 60px rgba(0,0,0,.3);
+    0 15px 40px rgba(0,0,0,.3);
+
+
+    position:relative;
 
 
     animation:
 
-    openLetter .5s ease;
+    abrirCarta .5s ease;
 
 
 }
 
 
 
+.letter button {
 
-#closeLetter{
+
+    position:absolute;
 
 
-    float:right;
+    right:15px;
 
-    margin:0;
+    top:15px;
 
-    padding:0;
 
-    background:none;
+    padding:5px 12px;
 
-    color:#555;
 
-    font-size:35px;
+    background:#e98c9e;
+
+    color:white;
 
 
 }
 
 
 
-#letter h2{
+.letter h2 {
 
 
-    color:#40632b;
+    color:#9c2a22;
 
     margin-bottom:20px;
 
@@ -632,12 +516,11 @@ button:hover{
 
 
 
-#letter p{
+.letter p {
 
-
-    color:#555;
 
     line-height:1.7;
+
 
 }
 
@@ -645,57 +528,111 @@ button:hover{
 
 
 
-
-
-/* =========================
+/* ==========================
    FINAL
-========================= */
+========================== */
 
 
-#finalMessage{
-
-
-    position:absolute;
-
-    inset:0;
+.final {
 
 
     background:
 
-    rgba(255,250,240,.95);
+    linear-gradient(
 
+    #fffaf0,
 
-    display:flex;
+    #dcefd4
 
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
+    );
 
 
     text-align:center;
 
 
+}
+
+
+
+.final-content {
+
+
+    max-width:600px;
+
     padding:30px;
-
-
-    z-index:50;
 
 
 }
 
 
 
-.finalFlower{
+#bigSunflower {
 
 
-    font-size:130px;
+    font-size:150px;
 
 
     animation:
 
-    growFlower 2s ease;
+    crescerGirassol 2s ease;
+
+
+}
+
+
+
+
+.final p {
+
+
+    margin:20px 0;
+
+    line-height:1.7;
+
+
+}
+
+
+
+/* ==========================
+   EFEITOS
+========================== */
+
+
+.garden-effects {
+
+
+    position:absolute;
+
+    pointer-events:none;
+
+}
+
+
+
+.leaf {
+
+
+    position:fixed;
+
+    animation:
+
+    vento 8s infinite linear;
+
+
+}
+
+
+
+
+.butterfly {
+
+
+    position:fixed;
+
+    animation:
+
+    voar 10s infinite linear;
 
 
 }
@@ -705,27 +642,24 @@ button:hover{
 
 
 
-
-
-/* =========================
+/* ==========================
    ANIMAÇÕES
-========================= */
+========================== */
 
 
+@keyframes aparecer {
 
-@keyframes appear{
 
-
-from{
+from {
 
 opacity:0;
 
-transform:scale(.8);
+transform:scale(.9);
 
 }
 
 
-to{
+to {
 
 opacity:1;
 
@@ -738,167 +672,81 @@ transform:scale(1);
 
 
 
+@keyframes flutuar {
 
-@keyframes float{
 
-
-50%{
+50% {
 
 transform:translateY(-15px);
 
 }
 
+
 }
 
 
 
+@keyframes nascerFlor {
 
 
-@keyframes flowerBorn{
+to {
+
+transform:scale(1);
+
+}
 
 
-0%{
+}
+
+
+
+@keyframes brilho {
+
+
+from {
+
+filter:drop-shadow(0 0 5px #f3ca60);
+
+}
+
+
+to {
+
+filter:drop-shadow(0 0 20px #f3ca60);
+
+}
+
+
+}
+
+
+
+@keyframes cairPetala {
+
+
+from {
+
 
 transform:
 
-scale(0)
-rotate(-30deg);
+translateY(-100vh)
 
+rotate(0deg);
 
-}
-
-
-80%{
-
-transform:
-
-scale(1.2)
-rotate(10deg);
-
-
-}
-
-
-100%{
-
-transform:
-
-scale(1)
-rotate(0);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-@keyframes specialPulse{
-
-
-from{
-
-filter:
-
-drop-shadow(0 0 5px #fff);
-
-}
-
-
-to{
-
-filter:
-
-drop-shadow(0 0 25px #f3ca60);
-
-}
-
-
-}
-
-
-
-
-
-
-
-@keyframes aura{
-
-
-from{
-
-opacity:.3;
-
-transform:
-
-translate(-50%,-50%)
-scale(.8);
-
-}
-
-
-to{
 
 opacity:1;
 
-transform:
-
-translate(-50%,-50%)
-scale(1.5);
 
 }
 
 
-}
+to {
 
-
-
-
-
-
-
-@keyframes sparkle{
-
-
-50%{
-
-opacity:.2;
-
-transform:scale(1.5);
-
-}
-
-}
-
-
-
-
-@keyframes petalFall{
-
-
-from{
 
 transform:
 
-translateY(-200px)
-rotate(0);
+translateY(100vh)
 
-opacity:1;
-
-}
-
-
-
-to{
-
-transform:
-
-translateY(700px)
 rotate(360deg);
 
 
@@ -912,59 +760,114 @@ opacity:0;
 
 
 
+@keyframes abrirCarta {
 
 
+from {
 
-
-@keyframes openLetter{
-
-
-from{
-
-opacity:0;
 
 transform:
 
 scale(.7)
+
 rotate(-5deg);
+
+
+opacity:0;
 
 
 }
 
 
-to{
+to {
 
-opacity:1;
 
 transform:
 
 scale(1)
+
 rotate(0);
 
 
-}
+opacity:1;
 
 
 }
 
 
+}
 
 
 
-@keyframes growFlower{
+
+@keyframes crescerGirassol {
 
 
-from{
+from {
 
 transform:scale(0);
 
+opacity:0;
+
 }
 
 
-to{
+to {
 
 transform:scale(1);
 
+opacity:1;
+
+}
+
+
+}
+
+
+
+@keyframes vento {
+
+
+from {
+
+left:-10%;
+
+top:20%;
+
+}
+
+
+to {
+
+left:110%;
+
+top:80%;
+
+}
+
+
+}
+
+
+
+@keyframes voar {
+
+
+from {
+
+left:-10%;
+
+top:40%;
+
+}
+
+
+to {
+
+left:110%;
+
+top:20%;
+
 }
 
 
@@ -973,49 +876,49 @@ transform:scale(1);
 
 
 
-
-
-
-/* =========================
-   MOBILE
-========================= */
+/* ==========================
+   CELULAR
+========================== */
 
 
 @media(max-width:600px){
 
 
-.introContent h1{
+.intro h1{
 
-font-size:30px;
+font-size:32px;
 
 }
 
 
 
-.introFlower{
+#gardenArea {
+
+
+height:60vh;
+
+
+}
+
+
+
+.magic-flower {
+
 
 font-size:70px;
 
-}
-
-
-
-#garden{
-
-width:95%;
-
-height:70%;
 
 }
 
 
 
-.finalFlower{
+button {
 
-font-size:90px;
+
+font-size:16px;
+
 
 }
-
 
 
 }
