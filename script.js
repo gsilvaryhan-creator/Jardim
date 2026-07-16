@@ -3,13 +3,15 @@
 ===================================== */
 
 
-const startDate = new Date("2026-04-27T18:14:00");
+const CONFIG = {
 
+    startDate: new Date("2026-04-27T18:14:00"),
 
-let openedLetters = new Set();
+    normalFlowers: 40,
 
-let gardenStarted = false;
+    specialFlowers: 11
 
+};
 
 
 
@@ -24,110 +26,142 @@ const intro = document.getElementById("intro");
 
 const transition = document.getElementById("transition");
 
-const gardenScreen = document.getElementById("gardenScreen");
+const garden = document.getElementById("garden");
 
 
 const enterButton = document.getElementById("enterGarden");
 
 
-const garden = document.getElementById("garden");
+const gardenArea = document.getElementById("gardenArea");
 
 
-const modal = document.getElementById("letterModal");
-
-const letterTitle = document.getElementById("letterTitle");
-
-const letterText = document.getElementById("letterText");
-
-const closeLetter = document.getElementById("closeLetter");
+const specialContainer = document.getElementById("specialFlowers");
 
 
-const counter = document.getElementById("counter");
+const particles = document.getElementById("particles");
+
+const leaves = document.getElementById("leaves");
 
 
-const finalSunflower = document.getElementById("finalSunflower");
 
-const finalMessage = document.getElementById("finalMessage");
+const letterOverlay =
+document.getElementById("letterOverlay");
 
 
-const backGarden = document.getElementById("backGarden");
+const letterTitle =
+document.getElementById("letterTitle");
 
+
+const letterMessage =
+document.getElementById("letterMessage");
+
+
+const closeLetter =
+document.getElementById("closeLetter");
+
+
+
+const musicButton =
+document.getElementById("musicButton");
+
+
+const music =
+document.getElementById("backgroundMusic");
+
+
+
+const finalMessage =
+document.getElementById("finalMessage");
+
+
+const backGarden =
+document.getElementById("backGarden");
 
 
 
 
 
 /* =====================================
-   CARTAS
+   DADOS DAS CARTAS
 ===================================== */
 
 
 const letters = [
 
-
 {
-title:"Seu cabelo",
-text:"Eu reparo no seu cabelo cacheado e acho ele lindo. Tem uma beleza tão sua, daquelas que deixam você ainda mais especial sem nem precisar fazer esforço."
+title:"O seu sorriso 🌻",
+message:
+"Uma das coisas que mais gosto em você é o seu sorriso. Ele consegue deixar meus dias mais leves."
 },
 
 
 {
-title:"Seus olhos",
-text:"Os seus olhos são grandes e brilhantes. Às vezes eu só paro para olhar e penso em como eles conseguem mostrar tanta coisa sem você dizer uma palavra."
+title:"Seu jeitinho 💛",
+message:
+"Eu gosto de cada detalhe seu, até aqueles pequenos que talvez você nem perceba."
 },
 
 
 {
-title:"O seu sorriso",
-text:"O seu sorriso enorme é uma das coisas mais bonitas em você. Quando você sorri de verdade, parece que o resto do dia fica melhor junto."
+title:"Nossa primeira mensagem 💌",
+message:
+"Foi ali que começou uma história que eu nunca imaginei que seria tão especial."
 },
 
 
 {
-title:"Minha pitucha",
-text:"Eu acho muito engraçado e fofo você ser tão pitucha. Você é pequenininha, mas ocupa um espaço gigantesco na minha vida."
+title:"Minha pequena 🌹",
+message:
+"Mesmo de longe, você consegue ser uma das pessoas mais importantes para mim."
 },
 
 
 {
-title:"Quando você ri de mim",
-text:"Eu sempre reparo quando você ri das coisas que eu falo. Mesmo quando a piada não é lá essas coisas, sua risada faz eu achar que valeu a pena tentar."
+title:"Seu carinho 🌷",
+message:
+"Seu jeito de cuidar, conversar e estar comigo significa muito."
 },
 
 
 {
-title:"O jeito que você cuida",
-text:"Eu percebo como você é prestativa: você se importa, presta atenção e tenta ajudar. São coisas pequenas, mas eu vejo e admiro muito em você."
+title:"Momentos simples ✨",
+message:
+"Às vezes são as pequenas conversas que se tornam as maiores lembranças."
 },
 
 
 {
-title:"Baixo, não guitarra",
-text:"No começo, você sempre trocava baixo por guitarra e colocava a culpa no corretor. Eu fingia que ficava bravo e explicava que guitarra era som fino e baixo era som grosso."
+title:"Você é especial 🌻",
+message:
+"Entre tantas pessoas no mundo, eu fico feliz por ter encontrado você."
 },
 
 
 {
-title:"A cartinha de girassol",
-text:"Eu nunca vou esquecer da cartinha de girassol que você fez para mim. Ela é linda porque você separou tempo e carinho pensando em mim."
+title:"Minha felicidade 💕",
+message:
+"Você consegue trazer alegria até nos dias mais comuns."
 },
 
 
 {
-title:"As nossas calls",
-text:"Eu gosto muito dos nossos momentos simples, como as calls de vídeo enquanto eu cozinhava e você ia me ensinando tudo o que sabia."
+title:"Nosso jardim 🌱",
+message:
+"Esse jardim representa cada momento que estamos construindo juntos."
 },
 
 
 {
-title:"As minhas piadinhas",
-text:"Eu sei que às vezes faço uma piadinha e deixo você meio brava. Mas é meu jeito de brincar com você e criar momentos bobos."
+title:"Meu carinho por você ❤️",
+message:
+"Cada flor aqui representa um pedacinho do carinho que tenho por você."
 },
 
 
 {
-title:"O nosso caminho",
-text:"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar por tudo isso com você."
+title:"Obrigado por existir 🌹",
+message:
+"Obrigado por ser você e por fazer parte da minha vida."
 }
 
 
@@ -137,22 +171,25 @@ text:"A gente ainda é novo e tem muita coisa para viver. Mas eu quero passar po
 
 
 
+/* =====================================
+   ESTADO DO SITE
+===================================== */
+
+
+let openedLetters = 0;
+
+let openedIndexes = [];
+
+
 
 
 
 /* =====================================
-   BOTÃO ENTRAR
+   BOTÃO DE ENTRADA
 ===================================== */
 
 
 enterButton.addEventListener("click",()=>{
-
-
-    if(gardenStarted) return;
-
-
-    gardenStarted=true;
-
 
 
     intro.style.opacity="0";
@@ -173,24 +210,21 @@ enterButton.addEventListener("click",()=>{
             transition.classList.add("hidden");
 
 
-            gardenScreen.classList.remove("hidden");
+            garden.classList.remove("hidden");
 
 
             createGarden();
-
 
 
         },3000);
 
 
 
-    },1000);
+    },800);
 
 
 
 });
-
-
 
 
 
@@ -205,7 +239,10 @@ enterButton.addEventListener("click",()=>{
 function createGarden(){
 
 
-    createFlowers();
+    createNormalFlowers();
+
+
+    createSpecialFlowers();
 
 
     createParticles();
@@ -214,10 +251,73 @@ function createGarden(){
     createLeaves();
 
 
-    updateCounter();
+}
 
 
-    setInterval(updateCounter,1000);
+
+
+
+/* =====================================
+   FLORES NORMAIS
+===================================== */
+
+
+function createNormalFlowers(){
+
+
+    const flowers = [
+
+        "🌹",
+        "🌷",
+        "🌼",
+        "💐",
+        "🌿"
+
+    ];
+
+
+
+    for(let i=0;i<CONFIG.normalFlowers;i++){
+
+
+        const flower =
+        document.createElement("div");
+
+
+        flower.className="flower";
+
+
+        flower.innerHTML =
+        flowers[
+        Math.floor(Math.random()*flowers.length)
+        ];
+
+
+
+        const pos =
+        safePosition();
+
+
+
+        flower.style.left =
+        pos.x+"%";
+
+
+        flower.style.top =
+        pos.y+"%";
+
+
+
+        flower.style.animationDelay =
+        (i*0.08)+"s";
+
+
+
+        gardenArea.appendChild(flower);
+
+
+
+    }
 
 
 }
@@ -226,111 +326,68 @@ function createGarden(){
 
 
 
-
-
 /* =====================================
-   FLORES
+   FLORES ESPECIAIS
 ===================================== */
 
 
-function createFlowers(){
+function createSpecialFlowers(){
 
 
-
-    const normalFlowers=[
-
-        "🌷",
-        "🌹",
-        "🌼",
-        "🌸",
-        "💐",
-        "🪻"
-
-    ];
+    for(let i=0;i<CONFIG.specialFlowers;i++){
 
 
-
-    for(let i=0;i<40;i++){
-
-
-        let flower=document.createElement("div");
-
-
-        flower.className="flower";
-
-
-        flower.innerHTML=
-        normalFlowers[
-        Math.floor(Math.random()*normalFlowers.length)
-        ];
-
-
-
-        placeFlower(flower);
-
-
-
-        flower.style.animationDelay=
-        `${i*0.08}s`;
-
-
-
-        garden.appendChild(flower);
-
-
-    }
-
-
-
-
-
-    letters.forEach((letter,index)=>{
-
-
-        let flower=document.createElement("div");
+        const flower =
+        document.createElement("div");
 
 
         flower.className=
         "flower special-flower";
 
 
-        flower.dataset.id=index;
+        flower.innerHTML="🌻";
 
 
 
-        flower.innerHTML="🌹";
+        const pos =
+        safePosition();
 
 
 
-        placeFlower(flower);
+        flower.style.left =
+        pos.x+"%";
+
+
+        flower.style.top =
+        pos.y+"%";
 
 
 
-        flower.style.animationDelay=
-        `${index*0.15}s`;
+        flower.style.animationDelay =
+        (i*0.2)+"s";
 
 
 
-        flower.addEventListener("click",()=>{
-
-            openLetter(index);
-
-        });
+        flower.dataset.index=i;
 
 
 
-        garden.appendChild(flower);
+        flower.addEventListener(
+        "click",
+        ()=>openLetter(i)
+        );
 
 
 
-    });
+        specialContainer.appendChild(flower);
+
+
+
+    }
 
 
 
 }
-
-
-
 
 
 
@@ -338,28 +395,33 @@ function createFlowers(){
 
 
 /* =====================================
-   POSIÇÃO SEGURA DAS FLORES
+   POSIÇÃO SEGURA
 ===================================== */
 
 
-function placeFlower(element){
+function safePosition(){
 
 
-    let x=Math.random()*75+10;
-
-    let y=Math.random()*75+10;
+    return {
 
 
+        x:
+        Math.floor(
+        Math.random()*75+10
+        ),
 
-    element.style.left=x+"%";
 
-    element.style.top=y+"%";
+
+        y:
+        Math.floor(
+        Math.random()*75+10
+        )
+
+
+    };
 
 
 }
-
-
-
 
 
 
@@ -374,91 +436,59 @@ function placeFlower(element){
 function openLetter(index){
 
 
-    openedLetters.add(index);
+
+    if(openedIndexes.includes(index))
+    return;
 
 
 
-    letterTitle.textContent=
+    openedIndexes.push(index);
+
+
+
+    letterTitle.innerText =
     letters[index].title;
 
 
-    letterText.textContent=
-    letters[index].text;
+
+    letterMessage.innerText =
+    letters[index].message;
 
 
 
-    modal.classList.remove("hidden");
+    letterOverlay.classList.remove("hidden");
 
 
 
-    if(openedLetters.size===letters.length){
+}
 
 
-        setTimeout(showFinal,1000);
+
+
+
+closeLetter.addEventListener(
+"click",
+()=>{
+
+
+    letterOverlay.classList.add("hidden");
+
+
+    openedLetters++;
+
+
+
+    if(openedLetters===CONFIG.specialFlowers){
+
+
+        showFinal();
 
 
     }
 
 
-}
-
-
-
-
-
-
-closeLetter.addEventListener("click",()=>{
-
-
-    modal.classList.add("hidden");
-
 
 });
-
-
-
-
-
-
-
-/* =====================================
-   GIRASSOL FINAL
-===================================== */
-
-
-function showFinal(){
-
-
-    finalSunflower.classList.remove("hidden");
-
-
-    setTimeout(()=>{
-
-
-        finalMessage.classList.remove("hidden");
-
-
-    },2000);
-
-
-
-}
-
-
-
-
-
-
-
-
-backGarden.addEventListener("click",()=>{
-
-
-    finalMessage.classList.add("hidden");
-
-
-});
-
 
 
 
@@ -474,49 +504,59 @@ backGarden.addEventListener("click",()=>{
 function updateCounter(){
 
 
-    let now=new Date();
 
-
-    let diff=
-    now-startDate;
-
-
-
-    let seconds=
-    Math.floor(diff/1000);
+    const now =
+    new Date();
 
 
 
-    let days=
-    Math.floor(seconds/86400);
+    const difference =
+    now-CONFIG.startDate;
 
 
 
-    seconds%=86400;
+    const days =
+    Math.floor(
+    difference/
+    (1000*60*60*24)
+    );
+
+
+    const hours =
+    Math.floor(
+    difference/
+    (1000*60*60)
+    )%24;
 
 
 
-    let hours=
-    Math.floor(seconds/3600);
+    const minutes =
+    Math.floor(
+    difference/
+    (1000*60)
+    )%60;
 
 
 
-    seconds%=3600;
+    document.getElementById("days")
+    .innerText=days;
 
 
-
-    let minutes=
-    Math.floor(seconds/60);
-
+    document.getElementById("hours")
+    .innerText=hours;
 
 
-    counter.textContent=
-    `${days} dias, ${hours} horas e ${minutes} minutos desde a primeira mensagem`;
-
+    document.getElementById("minutes")
+    .innerText=minutes;
 
 
 }
 
+
+
+setInterval(updateCounter,1000);
+
+updateCounter();
 
 
 
@@ -531,37 +571,43 @@ function updateCounter(){
 function createParticles(){
 
 
-    const area=
-    document.getElementById("particles");
+    for(let i=0;i<15;i++){
 
 
-    for(let i=0;i<20;i++){
+        const p =
+        document.createElement("span");
 
 
-        let p=document.createElement("div");
+        p.innerHTML="✨";
 
 
-        p.className="particle";
+        p.style.position="absolute";
 
 
         p.style.left=
-        Math.random()*100+"%";
+        Math.random()*90+"%";
 
 
-        p.style.animationDuration=
-        (5+Math.random()*10)+"s";
+        p.style.top=
+        Math.random()*90+"%";
 
 
-        area.appendChild(p);
+        p.style.animation=
+        "sparkle 3s infinite";
+
+
+        p.style.animationDelay=
+        Math.random()*3+"s";
+
+
+
+        particles.appendChild(p);
 
 
     }
 
 
 }
-
-
-
 
 
 
@@ -575,37 +621,111 @@ function createParticles(){
 function createLeaves(){
 
 
-    const area=
-    document.getElementById("windLeaves");
+    for(let i=0;i<8;i++){
 
 
-
-    for(let i=0;i<5;i++){
-
-
-        let leaf=document.createElement("div");
-
-
-        leaf.className="leaf";
+        const leaf =
+        document.createElement("span");
 
 
         leaf.innerHTML="🍃";
 
 
+        leaf.style.position="absolute";
+
+
+        leaf.style.left=
+        Math.random()*100+"%";
+
+
         leaf.style.top=
-        Math.random()*80+"%";
+        Math.random()*100+"%";
 
 
-        leaf.style.animationDelay=
-        i+"s";
+        leaf.style.animation=
+        "floatingFlower 5s infinite";
 
 
-
-        area.appendChild(leaf);
-
+        leaves.appendChild(leaf);
 
 
     }
 
 
 }
+
+
+
+
+
+
+/* =====================================
+   MÚSICA
+===================================== */
+
+
+let playing=false;
+
+
+
+musicButton.addEventListener("click",()=>{
+
+
+    if(!playing){
+
+
+        music.play();
+
+
+        musicButton.innerHTML=
+        "🔇 Pausar música";
+
+
+    }else{
+
+
+        music.pause();
+
+
+        musicButton.innerHTML=
+        "🔊 Música";
+
+
+    }
+
+
+
+    playing=!playing;
+
+
+});
+
+
+
+
+
+
+/* =====================================
+   FINAL DO JARDIM
+===================================== */
+
+
+function showFinal(){
+
+
+    finalMessage.classList.remove("hidden");
+
+
+}
+
+
+
+
+
+backGarden.addEventListener("click",()=>{
+
+
+    finalMessage.classList.add("hidden");
+
+
+});
