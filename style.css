@@ -1,75 +1,60 @@
 /* =====================================
-   O JARDIM ONDE VOCÊ FLORESCE
-   STYLE COMPLETO
+   RESET GERAL
 ===================================== */
 
-
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
+body {
 
-body{
+    width: 100%;
+    min-height: 100vh;
 
-    font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
+    overflow: hidden;
 
-    overflow:hidden;
+    font-family: "Georgia", serif;
 
-    background:#dcefd4;
+    background: #dcefd4;
 
-    color:#593b1f;
+    color: #593b1f;
 
 }
-
-
-
-
 
 
 
 /* =====================================
-   GERAL
+   TELAS
 ===================================== */
 
+.screen {
 
-.screen{
+    width: 100%;
+    height: 100vh;
 
-    width:100%;
-    height:100vh;
+    display: flex;
 
-    display:flex;
+    justify-content: center;
+    align-items: center;
 
-    justify-content:center;
-
-    align-items:center;
-
-    position:absolute;
+    position: absolute;
 
     transition:
-    opacity 1s ease,
-    transform 1s ease;
+        opacity 1s ease,
+        transform 1s ease;
 
 }
 
 
 
-.hidden{
+.hidden {
 
-    display:none !important;
+    display: none !important;
 
 }
-
-
-
-
-
 
 
 
@@ -79,91 +64,75 @@ body{
 ===================================== */
 
 
-#intro{
+.intro-screen {
 
     background:
-    linear-gradient(
-    180deg,
-    #fffaf0,
-    #dcefd4
+
+    radial-gradient(
+        circle,
+        #fffaf0 0%,
+        #dcefd4 80%
     );
 
 }
 
 
 
-.intro-content{
+.intro-content {
 
-    text-align:center;
+    text-align: center;
 
-    padding:30px;
+    max-width: 500px;
 
-}
+    padding: 30px;
 
-
-
-.main-flower{
-
-    font-size:90px;
-
-    animation:
-    flowerIntro 2s infinite alternate;
+    animation: introAppear 2s ease;
 
 }
 
 
 
-@keyframes flowerIntro{
+.intro-flower {
 
+    font-size: 90px;
 
-from{
-
-transform:translateY(0);
-
-}
-
-
-to{
-
-transform:translateY(-15px);
-
-}
-
+    animation: floating 3s infinite ease-in-out;
 
 }
 
 
 
+.intro-content h1 {
 
-h1{
+    font-size: 42px;
 
-    font-size:42px;
+    color: #628d65;
 
-    color:#628d65;
-
-    margin-bottom:10px;
-
-}
-
-
-
-h2{
-
-    color:#e98c9e;
-
-    margin-bottom:20px;
+    margin-bottom: 10px;
 
 }
 
 
 
-p{
+.intro-content h2 {
 
-    max-width:500px;
+    color: #e98c9e;
 
-    line-height:1.6;
+    font-size: 24px;
 
-    font-size:18px;
+    margin-bottom: 20px;
+
+}
+
+
+
+.intro-content p {
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 35px;
 
 }
 
@@ -171,44 +140,37 @@ p{
 
 
 
-button{
+button {
 
+    border: none;
 
-    margin-top:25px;
+    cursor: pointer;
 
-    padding:14px 30px;
+    padding: 15px 30px;
 
-    border:none;
+    border-radius: 30px;
 
-    border-radius:30px;
+    font-size: 18px;
 
-    background:#f3ca60;
+    background: #f3ca60;
 
-    color:#593b1f;
+    color: #593b1f;
 
-    font-size:18px;
+    transition: .3s;
 
-    cursor:pointer;
+    box-shadow:
 
-    transition:.3s;
-
-
-}
-
-
-
-
-button:hover{
-
-    transform:scale(1.05);
-
-    background:#e98c9e;
+    0 8px 20px rgba(0,0,0,.15);
 
 }
 
 
 
+button:hover {
 
+    transform: translateY(-5px);
+
+}
 
 
 
@@ -219,55 +181,23 @@ button:hover{
 ===================================== */
 
 
-#transition{
+.transition-screen {
 
-    background:#fffaf0;
+    background: #fffaf0;
 
 }
 
 
 
-.petal{
+.falling-petal {
 
-    font-size:80px;
+    font-size: 70px;
 
     animation:
 
-    fallingPetal 3s linear forwards;
+    petalFall 3s ease forwards;
 
 }
-
-
-
-@keyframes fallingPetal{
-
-
-0%{
-
-transform:
-translateY(-200px)
-rotate(0deg);
-
-opacity:1;
-
-}
-
-
-100%{
-
-transform:
-translateY(600px)
-rotate(360deg);
-
-opacity:0;
-
-}
-
-
-}
-
-
-
 
 
 
@@ -279,59 +209,53 @@ opacity:0;
 ===================================== */
 
 
-#garden{
+.garden-screen {
 
+    flex-direction: column;
 
-background:
+    background:
 
-linear-gradient(
-180deg,
-#dcefd4,
-#c7e5bd
-);
+    linear-gradient(
 
+        #dcefd4,
 
-flex-direction:column;
+        #628d65
 
-}
-
-
-
-
-.garden-header{
-
-    text-align:center;
-
-    padding-top:20px;
-
-    z-index:10;
+    );
 
 }
 
 
 
-.garden-header h1{
+.garden-header {
 
-    font-size:32px;
+    position: absolute;
+
+    top: 25px;
+
+    text-align: center;
+
+    z-index: 5;
 
 }
 
 
 
-#counter{
+.garden-header h1 {
+
+    color: #fffaf0;
+
+    font-size: 38px;
+
+}
 
 
-margin-top:10px;
 
-font-size:18px;
+.garden-header p {
 
-background:#fffaf0;
+    color: #fffaf0;
 
-padding:10px 20px;
-
-border-radius:20px;
-
-display:inline-block;
+    font-size: 18px;
 
 }
 
@@ -339,45 +263,63 @@ display:inline-block;
 
 
 
+#counter {
 
+    margin-top: 15px;
 
-#gardenArea{
+    background:
 
+    rgba(255,255,255,.4);
 
-position:relative;
+    padding: 10px 20px;
 
-width:90%;
+    border-radius: 20px;
 
-height:65%;
-
-
-margin-top:20px;
-
-
-background:
-
-radial-gradient(
-circle,
-#b8dca9,
-#8fc58a
-);
-
-
-border-radius:50%;
-
-
-overflow:hidden;
-
-
-box-shadow:
-
-0 0 40px rgba(0,0,0,.15);
-
+    font-size: 17px;
 
 }
 
 
 
+
+
+
+/* =====================================
+   ÁREA DO JARDIM
+===================================== */
+
+
+#flowersContainer {
+
+
+    position: relative;
+
+
+    width: 85%;
+
+    height: 70%;
+
+
+    margin-top: 80px;
+
+
+    border-radius: 50%;
+
+
+    background:
+
+    rgba(255,250,240,.35);
+
+
+    box-shadow:
+
+    inset 0 0 40px rgba(255,255,255,.4);
+
+
+    overflow: hidden;
+
+
+}
 
 
 
@@ -389,75 +331,41 @@ box-shadow:
 ===================================== */
 
 
-#flowersContainer{
+.flower {
 
 
-position:absolute;
-
-width:100%;
-
-height:100%;
+    position: absolute;
 
 
-}
+    font-size: 35px;
 
 
-
-.flower{
-
-
-position:absolute;
+    cursor: pointer;
 
 
-width:35px;
-
-height:35px;
+    user-select: none;
 
 
-background:#e98c9e;
+    transform:
+
+    scale(0);
 
 
-border-radius:
+    animation:
 
-50% 50% 50% 0;
-
-
-transform:
-
-rotate(-45deg)
-scale(0);
-
-
-animation:
-
-growFlower .8s forwards;
-
-
-cursor:pointer;
+    flowerGrow .8s forwards;
 
 
 }
 
 
 
-.flower::after{
+.flower:hover {
 
 
-content:"";
+    transform:
 
-position:absolute;
-
-width:15px;
-
-height:15px;
-
-background:#f3ca60;
-
-border-radius:50%;
-
-top:10px;
-
-left:10px;
+    scale(1.2);
 
 
 }
@@ -466,41 +374,46 @@ left:10px;
 
 
 
+.special-flower {
 
 
-@keyframes growFlower{
+    animation:
 
+    flowerGrow .8s forwards,
 
-0%{
+    glowFlower 2s infinite alternate;
 
-transform:
-
-rotate(-45deg)
-scale(0);
 
 }
 
 
-80%{
-
-transform:
-
-rotate(-45deg)
-scale(1.2);
-
-}
 
 
-100%{
 
-transform:
-
-rotate(-45deg)
-scale(1);
-
-}
+/* =====================================
+   PARTÍCULAS
+===================================== */
 
 
+.particle {
+
+
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    background:
+
+    #fffaf0;
+
+    border-radius: 50%;
+
+
+    animation:
+
+    particleFloat 6s infinite;
 
 }
 
@@ -510,58 +423,72 @@ scale(1);
 
 
 
-
-/* FLORES ESPECIAIS */
-
-
-.special-flower{
+/* =====================================
+   INSETOS
+===================================== */
 
 
-animation:
-
-growFlower .8s forwards,
-glowFlower 2s infinite;
+#bugs span {
 
 
-}
+    position: absolute;
 
-
-
-@keyframes glowFlower{
-
-
-0%{
-
-filter:
-drop-shadow(0 0 0px #fff);
-
-}
-
-
-50%{
-
-filter:
-
-drop-shadow(
-0 0 18px #fff
-);
+    font-size: 30px;
 
 
 }
 
 
-100%{
 
-filter:
-drop-shadow(0 0 0px #fff);
+.butterfly {
+
+
+    top: 30%;
+
+    left: 10%;
+
+    animation:
+
+    flying 8s infinite;
 
 }
 
 
 
+.ladybug {
+
+
+    bottom: 20%;
+
+    right: 15%;
+
 }
 
 
+
+
+
+/* =====================================
+   BOTÃO MÚSICA
+===================================== */
+
+
+#musicButton {
+
+
+    position: absolute;
+
+    bottom: 25px;
+
+    right: 25px;
+
+
+    background:
+
+    #fffaf0;
+
+
+}
 
 
 
@@ -574,119 +501,110 @@ drop-shadow(0 0 0px #fff);
 ===================================== */
 
 
-#letterModal{
+.modal {
 
 
-position:absolute;
+    position: fixed;
 
-inset:0;
-
-
-background:
-
-rgba(0,0,0,.35);
+    inset: 0;
 
 
-display:flex;
+    background:
 
-justify-content:center;
-
-align-items:center;
-
-z-index:50;
+    rgba(0,0,0,.35);
 
 
-}
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
 
-
-
-.letter{
-
-
-background:#fffaf0;
-
-width:85%;
-
-max-width:500px;
-
-
-padding:35px;
-
-
-border-radius:10px;
-
-
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.3);
-
-
-animation:
-
-openLetter .5s;
-
-
-position:relative;
+    z-index:20;
 
 
 }
 
 
 
-@keyframes openLetter{
+.letter {
 
 
-from{
+    background:
 
-transform:
-
-scale(.5)
-rotate(-10deg);
-
-opacity:0;
-
-}
+    #fffaf0;
 
 
-to{
+    width:90%;
 
-transform:
-
-scale(1)
-rotate(0);
-
-opacity:1;
-
-}
+    max-width:450px;
 
 
-}
+    padding:35px;
 
 
+    border-radius:10px;
 
 
+    box-shadow:
 
-#closeLetter{
-
-
-position:absolute;
+    0 20px 50px rgba(0,0,0,.3);
 
 
-right:15px;
+    animation:
 
-top:10px;
+    letterOpen .6s;
 
 
-background:none;
-
-font-size:30px;
-
-padding:0;
+    transform:rotate(-2deg);
 
 }
 
 
+
+.letter h2 {
+
+
+    color:#e98c9e;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.letter p {
+
+
+    line-height:1.7;
+
+    font-size:18px;
+
+
+}
+
+
+
+#closeLetter {
+
+
+    position:absolute;
+
+
+    right:20px;
+
+    top:15px;
+
+
+    background:none;
+
+    box-shadow:none;
+
+    font-size:35px;
+
+
+}
 
 
 
@@ -699,64 +617,292 @@ padding:0;
 ===================================== */
 
 
-#finalPage{
+.final-screen {
 
 
-background:
+    background:
 
-linear-gradient(
-#fffaf0,
-#dcefd4
-);
+    radial-gradient(
+
+        circle,
+
+        #fffaf0,
+
+        #dcefd4
+
+    );
+
+}
 
 
-flex-direction:column;
 
-text-align:center;
+.final-content {
 
-padding:30px;
+
+    text-align:center;
+
+    max-width:600px;
+
+    padding:30px;
 
 
 }
 
 
 
-#finalFlower{
+#finalFlower {
 
 
-font-size:130px;
+    font-size:130px;
 
 
-animation:
+    animation:
 
-finalGrow 2s;
-
-
-}
-
-
-
-@keyframes finalGrow{
-
-
-from{
-
-transform:scale(0);
-
-}
-
-
-to{
-
-transform:scale(1);
-
-}
+    finalBloom 2s infinite alternate;
 
 
 }
 
 
 
+.final-content h1 {
+
+
+    color:#628d65;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.final-content p {
+
+
+    font-size:20px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   ANIMAÇÕES
+===================================== */
+
+
+@keyframes introAppear {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+
+@keyframes floating {
+
+
+    50% {
+
+        transform:translateY(-15px);
+
+    }
+
+
+}
+
+
+
+@keyframes petalFall {
+
+
+    from {
+
+        transform:
+
+        translateY(-300px)
+        rotate(0);
+
+    }
+
+
+    to {
+
+        transform:
+
+        translateY(300px)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+
+@keyframes flowerGrow {
+
+
+    from {
+
+        transform:scale(0);
+
+    }
+
+
+    80% {
+
+        transform:scale(1.2);
+
+    }
+
+
+    to {
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+@keyframes glowFlower {
+
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 5px #f3ca60);
+
+    }
+
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 20px #f3ca60);
+
+    }
+
+}
+
+
+
+@keyframes particleFloat {
+
+
+    from {
+
+        transform:translateY(100vh);
+
+    }
+
+
+    to {
+
+        transform:translateY(-100vh);
+
+    }
+
+}
+
+
+
+@keyframes flying {
+
+
+    50% {
+
+        transform:
+
+        translate(100px,-50px);
+
+    }
+
+}
+
+
+
+@keyframes letterOpen {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+
+        scale(.5)
+
+        rotate(10deg);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+
+        scale(1)
+
+        rotate(-2deg);
+
+    }
+
+
+}
+
+
+
+@keyframes finalBloom {
+
+
+    from {
+
+        transform:scale(.9);
+
+    }
+
+
+    to {
+
+        transform:scale(1.1);
+
+    }
+
+
+}
 
 
 
@@ -771,43 +917,54 @@ transform:scale(1);
 @media(max-width:600px){
 
 
-h1{
+    .intro-content h1 {
 
-font-size:30px;
+        font-size:32px;
 
-}
-
-
-
-.intro-content p{
-
-font-size:16px;
-
-}
+    }
 
 
 
-#gardenArea{
+    .intro-content p {
 
+        font-size:17px;
 
-width:95%;
-
-height:60%;
-
-
-}
+    }
 
 
 
-.flower{
+    .garden-header h1 {
+
+        font-size:30px;
+
+    }
 
 
-width:28px;
 
-height:28px;
+    #flowersContainer {
+
+        width:95%;
+
+        height:65%;
+
+    }
 
 
-}
+
+    .flower {
+
+        font-size:28px;
+
+    }
+
+
+
+    #counter {
+
+        font-size:14px;
+
+    }
+
 
 
 }
